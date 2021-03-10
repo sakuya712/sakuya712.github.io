@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>saku note</title>
+    <link>https://sakuya712.github.io/</link>
+    <description>Recent content on saku note</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <copyright>Copyright © 2020–2021, sakuya712.</copyright>
+    <lastBuildDate>Sat, 06 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://sakuya712.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hugoで作成してみた</title>
+      <link>https://sakuya712.github.io/post/hugotest/</link>
+      <pubDate>Sat, 06 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://sakuya712.github.io/post/hugotest/</guid>
+      <description>
+        
+          &lt;p&gt;本当に簡単に作れる&lt;/p&gt;
+&lt;h2 id=&#34;これすごい&#34;&gt;これすごい&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;gitとMarkdownの知識だけあればサイトが作れる&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;html、cssなどのフロントエンドの知識は不要&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;更新反映はgitにアップロードするだけ&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;ブログにはピッタリ&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;ローカル環境では保存すれば瞬時にhtmlを生成&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;ハイライトも好きなものから選べる。お気に入りのmonokaiも使える&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-cs&#34; data-lang=&#34;cs&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;string&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;str&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;Hello&amp;#34;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;a href=&#34;https://github.com/alecthomas/chroma&#34;&gt;対応言語もいっぱい&lt;/a&gt;&lt;/p&gt;
+&lt;iframe width=&#34;560&#34; height=&#34;315&#34; src=&#34;https://www.youtube.com/embed/m-M1AtrxztU&#34; frameborder=&#34;0&#34; allow=&#34;accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture&#34; allowfullscreen&gt;&lt;/iframe&gt;
+&lt;ul&gt;
+&lt;li&gt;通常マークダウンではできない、youtubeとかも貼れる&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;絵文字も使えるよ😄&lt;/p&gt;
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>
