@@ -14,6 +14,18 @@
                 href="https://sakuya712.github.io/en/categories/"
                 />
   </url><url>
+    <loc>https://sakuya712.github.io/en/</loc>
+    <xhtml:link
+                rel="alternate"
+                hreflang="jp"
+                href="https://sakuya712.github.io/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://sakuya712.github.io/en/"
+                />
+  </url><url>
     <loc>https://sakuya712.github.io/en/series/</loc>
     <xhtml:link
                 rel="alternate"
@@ -36,18 +48,6 @@
                 rel="alternate"
                 hreflang="en"
                 href="https://sakuya712.github.io/en/tags/"
-                />
-  </url><url>
-    <loc>https://sakuya712.github.io/en/</loc>
-    <xhtml:link
-                rel="alternate"
-                hreflang="jp"
-                href="https://sakuya712.github.io/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://sakuya712.github.io/en/"
                 />
   </url>
 </urlset>

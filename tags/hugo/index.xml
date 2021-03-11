@@ -7,7 +7,167 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <copyright>Copyright © 2020–2021, sakuya712.</copyright>
-    <lastBuildDate>Sat, 06 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://sakuya712.github.io/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 11 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://sakuya712.github.io/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>10分で静的サイトを作成する【Hugo&#43;GitHub Pages】</title>
+      <link>https://sakuya712.github.io/post/10%E5%88%86%E3%81%A7%E9%9D%99%E7%9A%84%E3%82%B5%E3%82%A4%E3%83%88%E3%82%92%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8Bhugo&#43;github-pages/</link>
+      <pubDate>Thu, 11 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://sakuya712.github.io/post/10%E5%88%86%E3%81%A7%E9%9D%99%E7%9A%84%E3%82%B5%E3%82%A4%E3%83%88%E3%82%92%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8Bhugo&#43;github-pages/</guid>
+      <description>
+        
+          &lt;p&gt;手軽にサイトが作れる。しかも無料&lt;/p&gt;
+&lt;p&gt;目次&lt;/p&gt;
+&lt;!-- @import &#34;[TOC]&#34; {cmd=&#34;toc&#34; depthFrom=1 depthTo=6 orderedList=false} --&gt;
+&lt;!-- code_chunk_output --&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#hugo%E3%81%A8%E3%81%AF&#34;&gt;Hugoとは&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#github-pages%E3%81%A8%E3%81%AF&#34;&gt;GitHub Pagesとは&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%E5%AE%9F%E9%9A%9B%E3%81%AB%E4%BD%9C%E6%88%90%E3%81%97%E3%81%A6%E3%81%BF%E3%82%8B&#34;&gt;実際に作成してみる&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#1-hugo%E3%82%92%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB&#34;&gt;1. Hugoをインストール&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#2-github%E3%81%AB%E3%83%AA%E3%83%9D%E3%82%B8%E3%83%88%E3%83%AA%E3%82%92%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8B&#34;&gt;2. GitHubにリポジトリを作成する&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#3-%E5%88%9D%E6%9C%9F%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92github%E3%81%AB%E3%83%97%E3%83%83%E3%82%B7%E3%83%A5%E3%81%99%E3%82%8B&#34;&gt;3. 初期ファイルをGitHubにプッシュする&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#4-%E3%83%86%E3%83%BC%E3%83%9E%E3%82%92%E9%81%A9%E7%94%A8%E3%81%99%E3%82%8B&#34;&gt;4. テーマを適用する&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#5-%E3%83%87%E3%83%97%E3%83%AD%E3%82%A4%E3%81%99%E3%82%8B&#34;&gt;5. デプロイする&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#6-%E3%82%AB%E3%82%B9%E3%82%BF%E3%83%9E%E3%82%A4%E3%82%BA%E3%81%99%E3%82%8B&#34;&gt;6. カスタマイズする&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;!-- /code_chunk_output --&gt;
+&lt;h2 id=&#34;hugoとは&#34;&gt;Hugoとは&lt;/h2&gt;
+&lt;p&gt;Hugoは静的サイトを簡単に自動生成してくれるツールである。&lt;br&gt;
+こいつのいいところは&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Markdownだけで記事が書ける(HTMLの知識不要)&lt;/li&gt;
+&lt;li&gt;Goを使っているので生成が滅茶苦茶早い →&lt;a href=&#34;https://forestry.io/blog/hugo-vs-jekyll-benchmark/&#34;&gt;Jekyllとの比較&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;テーマが公開されており、簡単にそれらを試すことができる&lt;/li&gt;
+&lt;li&gt;無料&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;とくに自分的には&lt;code&gt;Markdownだけで記事が書ける&lt;/code&gt;点はすごく気に入っています。&lt;br&gt;
+自分はHTMLやCSSのフロント側の知識は皆無なので1から作成することはできないし、従来からあるブログ形式やワードプレスだと、管理画面で記事を書く感じになるので気軽に記事を書けないという欠点がありました。&lt;br&gt;
+しかし、このツールだとMarkdownでいいのでエディタさえあればとりあえず記事を書けるという気軽さがあります。ソース管理はGitHubで行います。静的サイトならこれで十分ですね。&lt;/p&gt;
+&lt;h2 id=&#34;github-pagesとは&#34;&gt;GitHub Pagesとは&lt;/h2&gt;
+&lt;p&gt;GitHub PagesとはGitHubが提供している静的サイトのホスティングサービスです。&lt;br&gt;
+このGitHub Pagesには2種類あり、ユーザ(組織アカウント)用のページとプロジェクト用のページがあります。&lt;/p&gt;
+&lt;p&gt;ユーザ用は&lt;br&gt;
+https://[USERNAME].github.io/&lt;br&gt;
+のようなURLになり、&lt;code&gt;[USERNAME].github.io&lt;/code&gt;というリポジトリを作成すると自動的にページを作成してくれます。&lt;br&gt;
+※[USERNAME]は自分のID名が入ります&lt;/p&gt;
+&lt;p&gt;プロジェクト用は&lt;br&gt;
+https://[USERNAME].github.io/[リポジトリ名]/&lt;br&gt;
+のようなURLになり、プロジェクト名は自由でリポジトリの数だけ作成できます。&lt;/p&gt;
+&lt;p&gt;今回は、ユーザ用のページで作成します。&lt;br&gt;
+理由としては、&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;プロジェクト用は課金しないと、ソースコードが丸見え&lt;/li&gt;
+&lt;li&gt;[リポジトリ名]が入るため階層が深くなり、設定を弄る必要がある。(ドメイン取得すれば解決できるが)&lt;br&gt;
+があります。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;ユーザ用でも&lt;code&gt;[USERNAME].github.io&lt;/code&gt;のリポジトリ自体は丸見えなのですが、ここにはHugoで自動生成されたものだけを置き、実際のデータ管理はプライベートリポジトリで行うことができます。&lt;br&gt;
+ファンサイトみたいなやつはプロジェクト用でもいいかもしれませんが、ブログとかはやっぱりプライベートにしたいですよね&lt;/p&gt;
+&lt;h2 id=&#34;実際に作成してみる&#34;&gt;実際に作成してみる&lt;/h2&gt;
+&lt;p&gt;以下、Windonws10の環境で行います。&lt;/p&gt;
+&lt;h3 id=&#34;1-hugoをインストール&#34;&gt;1. Hugoをインストール&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://github.com/gohugoio/hugo/releases&#34;&gt;公式&lt;/a&gt;から最新の&lt;code&gt;hugo_0.XX.0_Windows-64bit.zip&lt;/code&gt;をDLして解凍、適当な場所に保存します。&lt;br&gt;
+そしてそのフォルダの&lt;a href=&#34;https://www.atmarkit.co.jp/ait/articles/1805/11/news035.html&#34;&gt;Pathを通す&lt;/a&gt;だけです。&lt;/p&gt;
+&lt;p&gt;コマンドプロンプトを起動して&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bat&#34; data-lang=&#34;bat&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;hugo version
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;でバージョンが返ってきたらインストール完了です。&lt;/p&gt;
+&lt;h3 id=&#34;2-githubにリポジトリを作成する&#34;&gt;2. GitHubにリポジトリを作成する&lt;/h3&gt;
+&lt;p&gt;まずGitHubに二つリポジトリを作成します&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ソースコードを管理するリポジトリ&lt;/li&gt;
+&lt;li&gt;実際に公開するリポジトリ&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;まずソースコードを[管理するリポジトリ]を作成します。&lt;br&gt;
+このリポジトリ名はなんでもいいです。&lt;br&gt;
+プライベートでも問題ありません。
+自分の例では以下のように作成しています。(プライベートなのでみれないと思いますが)&lt;br&gt;
+&lt;a href=&#34;https://github.com/sakuya712/sakunote&#34;&gt;https://github.com/sakuya712/sakunote&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;次に実際に[サイトとして公開するリポジトリ]を作成します。&lt;br&gt;
+このリポジトリは先ほどのとおり&lt;code&gt;[USERNAME].github.io&lt;/code&gt;というリポジトリを作成します。&lt;br&gt;
+こちらをプライベートにしたい場合は課金が必要です。&lt;br&gt;
+それと、リポジトリ作成時にREADMEを作成するようにしてください。&lt;br&gt;
+(あとの工程で空っぽのリポジトリだとエラーになるため)&lt;br&gt;
+自分の場合は以下のようになっています。&lt;br&gt;
+&lt;a href=&#34;https://github.com/sakuya712/sakuya712.github.io&#34;&gt;https://github.com/sakuya712/sakuya712.github.io&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;3-初期ファイルをgithubにプッシュする&#34;&gt;3. 初期ファイルをGitHubにプッシュする&lt;/h3&gt;
+&lt;p&gt;まず適当にコマンドで作業ファイルに移動して以下のコマンドを打つ&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bat&#34; data-lang=&#34;bat&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;hugo new site myblog
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;これでHugoの初期ファイルが生成されます。&lt;/p&gt;
+&lt;p&gt;生成したディレクトリに移動して、リポジトリを作成、ソースコード管理のリモートリポジトリをセットします。&lt;br&gt;
+自分の場合では、&lt;code&gt;git remote add origin git@github.com:sakuya712/sakunote.git&lt;/code&gt;です。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bat&#34; data-lang=&#34;bat&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;cd&lt;/span&gt; myblog
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;git init
+&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;git remote add origin [ソースコード管理のリポジトリ]
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;リモートリポジトリをセットできたら初期ファイルをコミットして、プッシュしてください。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bat&#34; data-lang=&#34;bat&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;git add -A
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;git commit -m &lt;span class=&#34;s2&#34;&gt;&amp;#34;first commit&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;git push origin master
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;次にサイトとして公開するリポジトリを以下のようにして参照関連つけします。&lt;br&gt;
+自分の場合は&lt;code&gt;git@github.com:sakuya712/sakuya712.github.io.git&lt;/code&gt;です。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bat&#34; data-lang=&#34;bat&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;git submodule add [サイトとして公開するリポジトリ] public
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;(※このとき、リポジトリ作成時のREADMEがないとエラーになる)&lt;br&gt;
+ここで最後の&lt;code&gt;public&lt;/code&gt;を忘れないようにしてください。このフォルダにはHugoで生成されたファイルが入ります。&lt;/p&gt;
+&lt;p&gt;参照できたら&lt;code&gt;public&lt;/code&gt;フォルダに移動し、リポジトリを作成時のREADMEはもう要らないので削除。そしてコミットしてプッシュします。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bat&#34; data-lang=&#34;bat&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;cd&lt;/span&gt; public
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;git rm README.md
+&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;git add -A
+&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;git commit -m &lt;span class=&#34;s2&#34;&gt;&amp;#34;set myPages submodule&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;5&lt;/span&gt;git push origin master
+&lt;span class=&#34;ln&#34;&gt;6&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;cd&lt;/span&gt; ..\
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;これでリモートとローカルの関連付けができました。&lt;/p&gt;
+&lt;h3 id=&#34;4-テーマを適用する&#34;&gt;4. テーマを適用する&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://themes.gohugo.io/&#34;&gt;公式サイト&lt;/a&gt;から使いたいテーマを探します。&lt;br&gt;
+自分は&lt;a href=&#34;https://themes.gohugo.io/hugo-clarity/&#34;&gt;Clarity&lt;/a&gt;というものを使いました。&lt;br&gt;
+殆どのテーマではそこからGitHubのページに飛べるので、そのリポジトリを関連付けをします。&lt;br&gt;
+自分の場合は、&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bat&#34; data-lang=&#34;bat&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;git submodule add https://github.com/chipzoller/hugo-clarity themes/hugo-clarity
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;です。
+大抵のテーマにはサンプルデータが用意されているので&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bat&#34; data-lang=&#34;bat&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;robocopy /e /is .\themes\hugo-clarity\exampleSite\ .\
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;でサンプルデータをコピーしてください&lt;/p&gt;
+&lt;p&gt;このサンプルから最低限の変更が必要なのは&lt;code&gt;config.toml&lt;/code&gt;の&lt;code&gt;baseurl&lt;/code&gt;を自分のURLに変更することです。 &lt;br&gt;
+自分の場合は以下のようにします。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-toml&#34; data-lang=&#34;toml&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;baseurl&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;https://sakuya712.github.io&amp;#34;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;テーマが適用されたかのテスト方法として&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bat&#34; data-lang=&#34;bat&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;hugo server
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;で、ローカルサーバーを立てれます。&lt;br&gt;
+&lt;a href=&#34;http://localhost:1313&#34;&gt;http://localhost:1313&lt;/a&gt;にアクセスして、テーマが適用さえていたら成功です。&lt;br&gt;
+ローカルサーバーを閉じるときは[Ctrl+C]です&lt;/p&gt;
+&lt;h3 id=&#34;5-デプロイする&#34;&gt;5. デプロイする&lt;/h3&gt;
+&lt;p&gt;テーマが正常に適用できていると&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bat&#34; data-lang=&#34;bat&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;hugo
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;と打つことで&lt;code&gt;public&lt;/code&gt;フォルダに実際にデプロイするHTMLなどが生成されます。&lt;/p&gt;
+&lt;p&gt;毎回デプロイの作業は面倒なのでバッチファイルを作成します。&lt;br&gt;
+このリポジトリは生成されたものをただアップしていくだけなのでコメントやブランチは適当です。&lt;br&gt;
+Deploy.bat&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bat&#34; data-lang=&#34;bat&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;@&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;echo&lt;/span&gt; off
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;rem hugoで生成されたファイルをコミットしてgithub.ioにプッシュする&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;hugo
+&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;cd&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;%~dp0&lt;/span&gt;public
+&lt;span class=&#34;ln&#34;&gt;5&lt;/span&gt;git add -A
+&lt;span class=&#34;ln&#34;&gt;6&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;set&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;time_tmp&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;%time: =0%&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;7&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;set&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;now&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;%date:/=%%time_tmp:~0,2%%time_tmp:~3,2%%time_tmp:~6,2%&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;8&lt;/span&gt;git commit -m &lt;span class=&#34;nv&#34;&gt;%now%&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;9&lt;/span&gt;git push origin master
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;このバッチファイルを含めて管理するリポジトリにプッシュします。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bat&#34; data-lang=&#34;bat&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;git add -A
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;git commit -m &lt;span class=&#34;s2&#34;&gt;&amp;#34;template commit&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;git push origin master
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;そして、先ほど作ったDeploy.batを走らせるとデプロイ完了。&lt;br&gt;
+しばらくして、&lt;code&gt;https://[USERNAME].github.io/&lt;/code&gt;にアクセスするとページができています。&lt;/p&gt;
+&lt;h3 id=&#34;6-カスタマイズする&#34;&gt;6. カスタマイズする&lt;/h3&gt;
+&lt;p&gt;あとは、テーマの設定や素材の変更、サンプル記事を消して、自分の記事を追加するなどしてカスタマイズしてください。&lt;br&gt;
+ファイル管理は、管理するリポジトリで自由におこなってください。&lt;br&gt;
+サイトを更新したい場合は、Deploy.batを押すだけです。&lt;/p&gt;
+&lt;p&gt;お疲れ様でした。&lt;/p&gt;
+&lt;p&gt;次回は具体的なカスタマイズ方法を解説していきたい&lt;/p&gt;
+        
+      </description>
+    </item>
+    
     <item>
       <title>Hugoで作成してみた</title>
       <link>https://sakuya712.github.io/post/hugotest/</link>
