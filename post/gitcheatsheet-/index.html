@@ -1,8 +1,8 @@
 
 <!DOCTYPE html>
-<html lang="jp" data-figures="">
+<html lang="jp" data-figures="" class="page">
   <head>
-<title>シリーズ | saku note</title>
+<title>Git チートシート | saku note</title>
 <meta charset="utf-8">
 <meta name="generator" content="Hugo 0.81.0" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -14,18 +14,17 @@
   gtag('js', new Date());
   gtag('config', 'XXXXXXXXXX');
 </script>
+  
 <meta property="og:locale" content="jp" />
 
-<meta property="og:locale:alternate" content="en" />
-
 <meta property="og:type" content="article">
-<meta name="description" content="">
+<meta name="description" content="たまにしか使わないやつのメモ">
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="">
-<meta name="twitter:title" content="Series" />
-<meta property="og:url" content="https://sakuya712.github.io/series/" />
-<meta property="og:title" content="Series" />
-<meta property="og:description" content="" />
+<meta name="twitter:title" content="Git チートシート" />
+<meta property="og:url" content="https://sakuya712.github.io/post/gitcheatsheet-/" />
+<meta property="og:title" content="Git チートシート" />
+<meta property="og:description" content="たまにしか使わないやつのメモ" />
 <meta property="og:image" content="https://sakuya712.github.io/images/thumbnail.png" />
 <link rel="apple-touch-icon" sizes="180x180" href='https://sakuya712.github.io/icons/apple-touch-icon.png'>
 <link rel="icon" type="image/png" sizes="32x32" href='https://sakuya712.github.io/icons/favicon-32x32.png'>
@@ -34,8 +33,7 @@
 <meta name="msapplication-TileColor" content="#002538">
 <meta name="theme-color" content="#002538">
 
-<link rel="canonical" href="https://sakuya712.github.io/series/">
-<link rel="alternate" type="application/rss+xml" href="https://sakuya712.github.io/series/index.xml" title="saku note" />
+<link rel="canonical" href="https://sakuya712.github.io/post/gitcheatsheet-/">
 
     
 
@@ -116,14 +114,97 @@
 </header>
 
     <main>
-
+  
 <div class="grid-inverse wrap content">
-  <ul class="posts" id="posts">
-    <li>
+  <article class="post_content">
+    <h1 class="post_title">Git チートシート</h1><div class="post_meta">
+  
+    <svg class="icon">
+  <use xlink:href="#calendar"></use>
+</svg>
+    <span class="post_date">
+      2021年3月13日</span>
+      <a href='https://sakuya712.github.io/tags/git' title="Git" class="post_tag button button_translucent">Git
+      </a>
+</div>
 
+    
+  <div class="post_share">
+    Share on:
+    <a href="https://twitter.com/intent/tweet?text=Git%20%e3%83%81%e3%83%bc%e3%83%88%e3%82%b7%e3%83%bc%e3%83%88&url=https%3a%2f%2fsakuya712.github.io%2fpost%2fgitcheatsheet-%2f&tw_p=tweetbutton" class="twitter" title="Share on Twitter" target="_blank" rel="nofollow">
+      <svg class="icon">
+  <use xlink:href="#twitter"></use>
+</svg>
+    </a>
+    <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fsakuya712.github.io%2fpost%2fgitcheatsheet-%2f&t=Git%20%e3%83%81%e3%83%bc%e3%83%88%e3%82%b7%e3%83%bc%e3%83%88" class="facebook" title="Share on Facebook" target="_blank" rel="nofollow">
+      <svg class="icon">
+  <use xlink:href="#facebook"></use>
+</svg>
+    </a>
+    <a href="#linkedinshare" id = "linkedinshare" class="linkedin" title="Share on LinkedIn" rel="nofollow">
+      <svg class="icon">
+  <use xlink:href="#linkedin"></use>
+</svg>
+    </a>
+    <a href="https://sakuya712.github.io/post/gitcheatsheet-/" title="Copy Link" class="link link_yank">
+      <svg class="icon">
+  <use xlink:href="#copy"></use>
+</svg>
+    </a>
+  </div>
 
-    </li>
-  </ul>
+    
+    <p>たまにしか使わないやつのメモ</p>
+<p>目次</p>
+<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
+<!-- code_chunk_output -->
+<ul>
+<li><a href="#%E3%82%B5%E3%83%96%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB%E3%81%94%E3%81%A8clone%E3%81%99%E3%82%8B">サブモジュールごとCloneする</a></li>
+<li><a href="#%E3%82%B5%E3%83%96%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB%E3%81%AE%E4%B8%80%E9%83%A8%E3%81%A0%E3%81%91%E3%82%92%E5%88%A9%E7%94%A8%E3%81%99%E3%82%8B">サブモジュールの一部だけを利用する</a></li>
+<li><a href="#%E3%83%AA%E3%83%A2%E3%83%BC%E3%83%88%E3%83%AA%E3%83%9D%E3%82%B8%E3%83%88%E3%83%AA%E3%83%95%E3%82%A9%E3%83%AB%E3%83%80%E3%82%92%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8B">リモートリポジトリ(フォルダ)を作成する</a></li>
+<li><a href="#%E6%94%B9%E8%A1%8C%E3%82%B3%E3%83%BC%E3%83%89%E5%A4%89%E6%8F%9B%E3%82%92%E7%84%A1%E5%8A%B9%E3%81%AB%E3%81%99%E3%82%8B%E3%83%AD%E3%83%BC%E3%82%AB%E3%83%AB%E8%A8%AD%E5%AE%9A">改行コード変換を無効にする(ローカル設定)</a></li>
+<li><a href="#%E9%81%8E%E5%8E%BB%E3%81%AE%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E5%8F%96%E3%82%8A%E5%87%BA%E3%81%99">過去のファイルを取り出す</a></li>
+</ul>
+<!-- /code_chunk_output -->
+<h2 id="サブモジュールごとcloneする">サブモジュールごとCloneする</h2>
+<ul>
+<li>--recursiveをつけるとサブモジュールも一緒にCloneできる</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-bat" data-lang="bat"><span class="ln">1</span>git clone --recursive [リポジトリ]
+</code></pre></div><h2 id="サブモジュールの一部だけを利用する">サブモジュールの一部だけを利用する</h2>
+<ul>
+<li>sparse checkoutを使って一部しかみないようにする</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-bat" data-lang="bat"><span class="ln">1</span><span class="c1">rem サブモジュール追加</span>
+<span class="ln">2</span>git submodule add [参照リポジトリ]
+<span class="ln">3</span><span class="c1">rem sparse checkoutをサブモジュールで適用する</span>
+<span class="ln">4</span>git -C [参照フォルダ] config core.sparsecheckout true
+<span class="ln">5</span><span class="c1">rem 設定を.git内に書き込む</span>
+<span class="ln">6</span><span class="k">echo</span> [残したいファイル、ディレクトリ] <span class="p">&gt;</span> .git/modules/[参照フォルダ]/info/sparse-checkout 
+<span class="ln">7</span><span class="c1">rem ツリー情報を再読み込みする</span>
+<span class="ln">8</span>git -C [参照フォルダ] read-tree -mu HEAD
+</code></pre></div><h2 id="リモートリポジトリフォルダを作成する">リモートリポジトリ(フォルダ)を作成する</h2>
+<ul>
+<li>GitHubなど使わず、共有フォルダなどにリモートリポジトリを作成したい場合は、--bare --sharedをつけると作成できる</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-bat" data-lang="bat"><span class="ln">1</span>git init  [フォルダ名].git --bare --shared
+</code></pre></div><h2 id="改行コード変換を無効にするローカル設定">改行コード変換を無効にする(ローカル設定)</h2>
+<ul>
+<li>このリポジトリだけ改行コード変換を無効にしたい場合</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-bat" data-lang="bat"><span class="ln">1</span>git config --local core.autocrlf false
+</code></pre></div><h2 id="過去のファイルを取り出す">過去のファイルを取り出す</h2>
+<ul>
+<li>全部取り出す場合はarchiveを使う</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-bat" data-lang="bat"><span class="ln">1</span>git archive [コミットIDなど] -o [ファイル名].zip
+</code></pre></div><ul>
+<li>差分だけ出したい場合はdiffを使う</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-bat" data-lang="bat"><span class="ln">1</span>git diff --name-only --diff-filter=d [コミットIDなど1] [コミットIDなど2]
+</code></pre></div>
+
+  </article>
 <aside class="sidebar">
   <section class="sidebar_inner">
     
@@ -134,9 +215,6 @@
       <a href='https://sakuya712.github.io/about/' class="button mt-1" role="button" title='続きを読む'>続きを読む</a>
     <h2 class="mt-4">最近の記事</h2>
     <ul class="flex-column">
-      <li>
-        <a href="https://sakuya712.github.io/post/gitcheatsheet-/" class="nav-link" title="Git チートシート">Git チートシート</a>
-      </li>
       <li>
         <a href="https://sakuya712.github.io/post/10%E5%88%86%E3%81%A7%E9%9D%99%E7%9A%84%E3%82%B5%E3%82%A4%E3%83%88%E3%82%92%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8Bhugo&#43;github-pages/" class="nav-link" title="10分で静的サイトを作成する【Hugo&#43;GitHub Pages】">10分で静的サイトを作成する【Hugo&#43;GitHub Pages】</a>
       </li>
@@ -194,9 +272,8 @@
   </section>
 </aside>
 
+  
 </div>
-
-
     </main><svg width="0" height="0" class="hidden">
   <symbol viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" id="facebook">
     <path d="M437 0H75C33.648 0 0 33.648 0 75v362c0 41.352 33.648 75 75 75h151V331h-60v-90h60v-61c0-49.629 40.371-90 90-90h91v90h-91v61h91l-15 90h-76v181h121c41.352 0 75-33.648 75-75V75c0-41.352-33.648-75-75-75zm0 0"></path>
