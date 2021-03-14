@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hyper-V on saku note</title>
+    <link>https://sakuya712.github.io/tags/hyper-v/</link>
+    <description>Recent content in Hyper-V on saku note</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <copyright>Copyright © 2020–2021, sakuya712.</copyright>
+    <lastBuildDate>Sun, 07 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://sakuya712.github.io/tags/hyper-v/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hyper-Vで簡単LAN内ファイル共有ファイル構築</title>
+      <link>https://sakuya712.github.io/post/hyper-v%E3%81%A7%E7%B0%A1%E5%8D%98lan%E5%86%85%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E5%85%B1%E6%9C%89%E3%83%95%E3%82%A9%E3%83%AB%E3%83%80%E6%A7%8B%E7%AF%89/</link>
+      <pubDate>Sun, 07 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://sakuya712.github.io/post/hyper-v%E3%81%A7%E7%B0%A1%E5%8D%98lan%E5%86%85%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E5%85%B1%E6%9C%89%E3%83%95%E3%82%A9%E3%83%AB%E3%83%80%E6%A7%8B%E7%AF%89/</guid>
+      <description>
+        
+          &lt;p&gt;Windowsの共有フォルダとはおさらば&lt;/p&gt;
+&lt;p&gt;目次&lt;/p&gt;
+&lt;!-- @import &#34;[TOC]&#34; {cmd=&#34;toc&#34; depthFrom=1 depthTo=6 orderedList=false} --&gt;
+&lt;!-- code_chunk_output --&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#hyper-v%E3%81%A7%E7%B0%A1%E5%8D%98lan%E5%86%85%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E5%85%B1%E6%9C%89%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E6%A7%8B%E7%AF%89&#34;&gt;Hyper-Vで簡単LAN内ファイル共有ファイル構築&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%E4%BD%9C%E3%82%8B%E3%81%8D%E3%81%A3%E3%81%8B%E3%81%91&#34;&gt;作るきっかけ&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%E7%92%B0%E5%A2%83&#34;&gt;環境&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#hyper-v%E3%81%AE%E8%A8%AD%E5%AE%9A&#34;&gt;Hyper-Vの設定&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#hyper-v%E3%82%92%E6%9C%89%E5%8A%B9%E3%81%AB%E3%81%99%E3%82%8B&#34;&gt;Hyper-Vを有効にする&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#os%E3%82%92%E5%85%A5%E6%89%8B%E3%81%99%E3%82%8B&#34;&gt;OSを入手する&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#hyper-v%E3%81%A7%E4%BB%AE%E6%83%B3%E7%92%B0%E5%A2%83%E3%82%92%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8B&#34;&gt;Hyper-Vで仮想環境を作成する&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#os%E3%82%92%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%99%E3%82%8B&#34;&gt;OSをインストールする&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%E4%BB%AE%E6%83%B3%E7%92%B0%E5%A2%83os%E8%A8%AD%E5%AE%9A&#34;&gt;仮想環境OS設定&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%E6%8E%A5%E7%B6%9A%E7%A2%BA%E8%AA%8D&#34;&gt;接続確認&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%E3%83%90%E3%83%83%E3%82%AF%E3%82%A2%E3%83%83%E3%83%97%E6%96%B9%E6%B3%95&#34;&gt;バックアップ方法&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;!-- /code_chunk_output --&gt;
+&lt;h1 id=&#34;hyper-vで簡単lan内ファイル共有ファイル構築&#34;&gt;Hyper-Vで簡単LAN内ファイル共有ファイル構築&lt;/h1&gt;
+&lt;h3 id=&#34;作るきっかけ&#34;&gt;作るきっかけ&lt;/h3&gt;
+&lt;p&gt;いままではwindowsに標準搭載の共有フォルダ機能をつかっていたのだが、これがなにかの拍子で接続できなくなることがあった。&lt;br&gt;
+以前はwindowsのアプデで設定が変わったのが原因だった。今回はルーターを変えた際に接続できなくってしまった。&lt;br&gt;
+恐らく前の設定を持ち続けているのが原因だろうが、対処法がよくわからない。&lt;br&gt;
+Windowsの共有システムはなにかと設定が多くてスマホやiPadとかでも接続が上手くいかない場合もあった。&lt;br&gt;
+なので、いっそのこと共有するようなものは仮想環境の方に全部ぶち込もうという風結論ずけた。&lt;br&gt;
+バックアップもエクスポートするだけでできるし。&lt;/p&gt;
+&lt;h3 id=&#34;環境&#34;&gt;環境&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Windows10 Pro build 1909 (Homeではできません)&lt;/li&gt;
+&lt;li&gt;Intel Core i7 8700K&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;hyper-vの設定&#34;&gt;Hyper-Vの設定&lt;/h3&gt;
+&lt;h4 id=&#34;hyper-vを有効にする&#34;&gt;Hyper-Vを有効にする&lt;/h4&gt;
+&lt;p&gt;初期状態ではHyper-Vは有効になっていません。&lt;br&gt;
+前準備として、UEFI/BIOS画面を開いてIntel VT／AMD-Vが有効化されているか確認する&lt;br&gt;
+そのあとコントロールパネルからHyper-Vを有効にする&lt;/p&gt;
+&lt;p&gt;→&lt;a href=&#34;https://www.atmarkit.co.jp/ait/articles/1806/25/news026.html&#34;&gt;参考サイト&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;有効化して、再起動すればコントロールパネルの管理ツールに&lt;code&gt;Hyper-V マネージャー&lt;/code&gt;が追加されている。&lt;/p&gt;
+&lt;h4 id=&#34;osを入手する&#34;&gt;OSを入手する&lt;/h4&gt;
+&lt;p&gt;なんでもいいのですが今回は容量軽い、メモリ使用量が少ないLinux Mint Mate版を使用します。&lt;br&gt;
+→&lt;a href=&#34;https://www.linuxmint.com/download.php&#34;&gt;ダウンロード&lt;/a&gt;&lt;br&gt;
+自分の環境ではなぜか画面がおかしくなっていたので&lt;a href=&#34;https://www.linuxmint.com/edition.php?id=276&#34;&gt;19.3版&lt;/a&gt;をダウンロードしました。&lt;/p&gt;
+&lt;h4 id=&#34;hyper-vで仮想環境を作成する&#34;&gt;Hyper-Vで仮想環境を作成する&lt;/h4&gt;
+&lt;p&gt;最初はネットワークの設定&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;最初に仮想スイッチマネージャーを開く&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/sakuya712/sakunoteImages/master/HyperV_LAN/001.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;新しい仮想ネットワークの作成で、外部を選択で作成、適当に名前をつけてOKをする&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/sakuya712/sakunoteImages/master/HyperV_LAN/002.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;これは二回目以降はやる必要はありません。&lt;/p&gt;
+&lt;p&gt;次に仮想マシンを作成します。 新規→仮想マシンを選択&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;適当に名前をつけて保存する場所を選択&lt;/li&gt;
+&lt;li&gt;世代は第一世代を選択&lt;/li&gt;
+&lt;li&gt;メモリは2GBにしてみた&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/sakuya712/sakunoteImages/master/HyperV_LAN/003.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ネットワークは先ほど作成したネットを選ぶ&lt;/li&gt;
+&lt;li&gt;ストレージは可変にするので後で設定&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/sakuya712/sakunoteImages/master/HyperV_LAN/004.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;とりあえず作成ウィザードは完了です。&lt;br&gt;
+次に先ほど飛ばしたストレージを作成します。&lt;br&gt;
+仮想マシン一覧から右クリックで設定を選んで、IDEコントローラを選ぶ&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ハードドライブを選んだら追加を押す&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/sakuya712/sakunoteImages/master/HyperV_LAN/005.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;フォーマットはVHDX&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/sakuya712/sakunoteImages/master/HyperV_LAN/006.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;容量可変&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/sakuya712/sakunoteImages/master/HyperV_LAN/007.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ストレージの保存場所&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/sakuya712/sakunoteImages/master/HyperV_LAN/008.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ここでは容量を50GBとしてますが、実際のストレージのギリギリ限界まで作ってもいいと思います。可変にしているので最初からこのストレージを要求されません。&lt;/li&gt;
+&lt;li&gt;ストレージ容量は後で変えることはできますが、パーテーションの再設定をしないといけないです。→&lt;a href=&#34;https://qiita.com/nakat-t/items/87d0ae049a5e0b57e469&#34;&gt;仮想HDDの容量を増やす方法&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/sakuya712/sakunoteImages/master/HyperV_LAN/009.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;最後にチェックポイントは残ると厄介なので、&lt;code&gt;自動チェックポイントを使用する&lt;/code&gt;を外しておきます。(バックアップはエクスポートでやる)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/sakuya712/sakunoteImages/master/HyperV_LAN/010.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Hyper-V側の設定は終わりです。&lt;/p&gt;
+&lt;h2 id=&#34;osをインストールする&#34;&gt;OSをインストールする&lt;/h2&gt;
+&lt;p&gt;仮想マシン一覧から作成したマシンをダブルクリック新しいウインドウが表示されます。&lt;br&gt;
+そこでメディア→DVDドライブ→ディスクの挿入でDLしておいたLinux mintのイメージファイルを選択します。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/sakuya712/sakunoteImages/master/HyperV_LAN/011.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;そのあと起動ボタンを押すとLinux mintが立ち上がります。&lt;br&gt;
+デスクトップが表示されたら成功です。&lt;br&gt;
+ですがこの状態ではまだお試し版なので今度はインストールを行います
+Install Linux Mintのアイコンをダブルクリック&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/sakuya712/sakunoteImages/master/HyperV_LAN/012.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;キーボードを選択, 英語配列キーボードを使っている場合でもとりあえずはこれでOK&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/sakuya712/sakunoteImages/master/HyperV_LAN/013.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;余計なものを入れたくないのでチェックを外す&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/sakuya712/sakunoteImages/master/HyperV_LAN/014.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;一番を上のもの選ぶ&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/sakuya712/sakunoteImages/master/HyperV_LAN/015.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;地域はTokyo選択&lt;/li&gt;
+&lt;li&gt;ユーザーを設定を行う&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;ここまで行うとOSのインストールが始まる。&lt;br&gt;
+インストールが終わると一度シャットダウンします。&lt;/p&gt;
+&lt;p&gt;メディア→DVDドライブ→ディスク取り出しして起動&lt;/p&gt;
+&lt;p&gt;これでOSのインストールは完了&lt;/p&gt;
+&lt;h3 id=&#34;仮想環境os設定&#34;&gt;仮想環境OS設定&lt;/h3&gt;
+&lt;p&gt;まずいつものパッケージアップデート&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;sudo apt update
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;sudo apt upgrade
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;英語配列のキーボードを使っている場合は右下のキーボードマーク右クリック設定&lt;br&gt;
+以下のようなダイアログがでるので&lt;code&gt;＋ボタン&lt;/code&gt;を押して&lt;code&gt;キーボード 英語&lt;/code&gt;を選ぶ、そのあと&lt;code&gt;↑ボタン&lt;/code&gt;で&lt;code&gt;キーボード 英語&lt;/code&gt;の優先度を上げます。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/sakuya712/sakunoteImages/master/HyperV_LAN/016.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/sakuya712/sakunoteImages/master/HyperV_LAN/017.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;ここでいよいよSambaをインストールする&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;sudo apt install samba
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;インストールが完了したら設定ファイルを開く&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;sudo nano /etc/samba/smb.conf
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;そこから[global]の要素を見つけて&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-ini&#34; data-lang=&#34;ini&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;[global]&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;dos charset&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;CP932&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;unix charset&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;UTF-8&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;を追加する&lt;br&gt;
+Windowsのワークグループ名変えている場合は&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-ini&#34; data-lang=&#34;ini&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;workgroup&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;WORKGROUP&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;を変更&lt;br&gt;
+最終行まで行って以下のものを追加する&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-ini&#34; data-lang=&#34;ini&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;[share]&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;path&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;/home/share/&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;writable&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;yes&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;guest ok&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;yes&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;guest only&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;yes&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;6&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;crate mode&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;0777&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;7&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;directory mode&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;0777&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;誰でも書き込みOK、ゲストもOKという設定です。個人PC内の環境なので、セキュリティは考えてない&lt;br&gt;
+書き終わったら、[Ctrl + S]で保存、[Ctrl + X]で閉じる&lt;/p&gt;
+&lt;p&gt;共有フォルダを作成する&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 1&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;# 共有フォルダ作成&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 2&lt;/span&gt;sudo mkdir /home/share
+&lt;span class=&#34;ln&#34;&gt; 3&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;# 共有できるように、ディレクトリの所有者、グループを変更&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 4&lt;/span&gt;sudo chown nobody:nogroup /home/share/
+&lt;span class=&#34;ln&#34;&gt; 5&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;# 誰でも読み書きできるようにする。&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 6&lt;/span&gt;sudo chmod &lt;span class=&#34;m&#34;&gt;777&lt;/span&gt; /home/share/
+&lt;span class=&#34;ln&#34;&gt; 7&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;# 適当にファイル作成&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt; 8&lt;/span&gt;touch /home/share/test.txt
+&lt;span class=&#34;ln&#34;&gt; 9&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;# sambaを再起動&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;10&lt;/span&gt;sudo service smbd restart
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;おまけでシンボリックリンク(ショートカットカット)をデスクトップに作成&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; デスクトップ
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;ln -s /home/share
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;最後にIPアドレスを固定にする&lt;br&gt;
+Linux Mintはwindowと同じ感覚てIPを固定できます&lt;br&gt;
+→&lt;a href=&#34;https://inakadeikinaosu.com/pc/ipadress_kotei/&#34;&gt;IPアドレスを固定にする方法(Linux Mint)&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;再起動してIPアドレスが設定したものになったか確認する&lt;/p&gt;
+&lt;h2 id=&#34;接続確認&#34;&gt;接続確認&lt;/h2&gt;
+&lt;p&gt;WindowsではPCフォルダ右クリックで&lt;code&gt;ネットワークの場所を追加する&lt;/code&gt;を選び、
+&lt;code&gt;\\[固定したプライベートIP]\share\&lt;/code&gt;を入力する。&lt;br&gt;
+ユーザーとパスワードが聞かれるので、Linux Mint側で作ったアカウント情報を入れると接続できます。&lt;br&gt;
+読み込み/書き込みができたら成功です。&lt;/p&gt;
+&lt;p&gt;あとはこのフォルダの配下に共有したいファイルを入れていくだけです。&lt;br&gt;
+お疲れ様でした。&lt;/p&gt;
+&lt;h2 id=&#34;バックアップ方法&#34;&gt;バックアップ方法&lt;/h2&gt;
+&lt;p&gt;バックアップは仮想マシン一覧からバックアップを取りたいものを右クリック→エクスポート&lt;br&gt;
+保存先を入れれば完了です。&lt;br&gt;
+逆に取り込みたい場合は&lt;code&gt;仮想マシンのインポート&lt;/code&gt;を行う。&lt;br&gt;
+このエクスポートは自動化できるみたいなのでこれは別の記事で書きたいと思う。&lt;/p&gt;
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>
