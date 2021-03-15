@@ -23,6 +23,7 @@
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;#%E3%82%B5%E3%83%96%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB%E3%81%94%E3%81%A8clone%E3%81%99%E3%82%8B&#34;&gt;サブモジュールごとCloneする&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#%E3%82%B5%E3%83%96%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB%E3%81%AE%E4%B8%80%E9%83%A8%E3%81%A0%E3%81%91%E3%82%92%E5%88%A9%E7%94%A8%E3%81%99%E3%82%8B&#34;&gt;サブモジュールの一部だけを利用する&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%E3%82%B5%E3%83%96%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB%E3%81%AE%E6%9C%80%E6%96%B0%E3%81%AB%E6%9B%B4%E6%96%B0%E3%81%99%E3%82%8B&#34;&gt;サブモジュールの最新に更新する&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#%E3%83%AA%E3%83%A2%E3%83%BC%E3%83%88%E3%83%AA%E3%83%9D%E3%82%B8%E3%83%88%E3%83%AA%E3%83%95%E3%82%A9%E3%83%AB%E3%83%80%E3%82%92%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8B&#34;&gt;リモートリポジトリ(フォルダ)を作成する&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#%E6%94%B9%E8%A1%8C%E3%82%B3%E3%83%BC%E3%83%89%E5%A4%89%E6%8F%9B%E3%82%92%E7%84%A1%E5%8A%B9%E3%81%AB%E3%81%99%E3%82%8B%E3%83%AD%E3%83%BC%E3%82%AB%E3%83%AB%E8%A8%AD%E5%AE%9A&#34;&gt;改行コード変換を無効にする(ローカル設定)&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#%E9%81%8E%E5%8E%BB%E3%81%AE%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E5%8F%96%E3%82%8A%E5%87%BA%E3%81%99&#34;&gt;過去のファイルを取り出す&lt;/a&gt;&lt;/li&gt;
@@ -36,15 +37,18 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;サブモジュールの一部だけを利用する&#34;&gt;サブモジュールの一部だけを利用する&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;sparse checkoutを使って一部しかみないようにする&lt;/li&gt;
+&lt;li&gt;submoduleするときはブランチを指定する方がいい。dll参照のときなんかはmasterでいいと思う&lt;/li&gt;
 &lt;/ul&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bat&#34; data-lang=&#34;bat&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;rem サブモジュール追加&lt;/span&gt;
-&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;git submodule add [参照リポジトリ]
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;git submodule add -b [ブランチ名] [参照リポジトリ]
 &lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;rem sparse checkoutをサブモジュールで適用する&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;git -C [参照フォルダ] config core.sparsecheckout true
 &lt;span class=&#34;ln&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;rem 設定を.git内に書き込む&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;6&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;echo&lt;/span&gt; [残したいファイル、ディレクトリ] &lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt; .git/modules/[参照フォルダ]/info/sparse-checkout 
 &lt;span class=&#34;ln&#34;&gt;7&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;rem ツリー情報を再読み込みする&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;8&lt;/span&gt;git -C [参照フォルダ] read-tree -mu HEAD
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;サブモジュールの最新に更新する&#34;&gt;サブモジュールの最新に更新する&lt;/h2&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bat&#34; data-lang=&#34;bat&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;git submodule foreach git pull origin master
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;リモートリポジトリフォルダを作成する&#34;&gt;リモートリポジトリ(フォルダ)を作成する&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;GitHubなど使わず、共有フォルダなどにリモートリポジトリを作成したい場合は、--bare --sharedをつけると作成できる&lt;/li&gt;

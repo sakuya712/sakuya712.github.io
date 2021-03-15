@@ -7,12 +7,12 @@
 <meta name="generator" content="Hugo 0.81.0" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<script async src="https://www.googletagmanager.com/gtag/js?id=XXXXXXXXXX"></script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-HRQY10EG2T"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-  gtag('config', 'XXXXXXXXXX');
+  gtag('config', 'G-HRQY10EG2T');
 </script>
   
 <meta property="og:locale" content="jp" />
@@ -161,6 +161,7 @@
 <ul>
 <li><a href="#%E3%82%B5%E3%83%96%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB%E3%81%94%E3%81%A8clone%E3%81%99%E3%82%8B">サブモジュールごとCloneする</a></li>
 <li><a href="#%E3%82%B5%E3%83%96%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB%E3%81%AE%E4%B8%80%E9%83%A8%E3%81%A0%E3%81%91%E3%82%92%E5%88%A9%E7%94%A8%E3%81%99%E3%82%8B">サブモジュールの一部だけを利用する</a></li>
+<li><a href="#%E3%82%B5%E3%83%96%E3%83%A2%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB%E3%81%AE%E6%9C%80%E6%96%B0%E3%81%AB%E6%9B%B4%E6%96%B0%E3%81%99%E3%82%8B">サブモジュールの最新に更新する</a></li>
 <li><a href="#%E3%83%AA%E3%83%A2%E3%83%BC%E3%83%88%E3%83%AA%E3%83%9D%E3%82%B8%E3%83%88%E3%83%AA%E3%83%95%E3%82%A9%E3%83%AB%E3%83%80%E3%82%92%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8B">リモートリポジトリ(フォルダ)を作成する</a></li>
 <li><a href="#%E6%94%B9%E8%A1%8C%E3%82%B3%E3%83%BC%E3%83%89%E5%A4%89%E6%8F%9B%E3%82%92%E7%84%A1%E5%8A%B9%E3%81%AB%E3%81%99%E3%82%8B%E3%83%AD%E3%83%BC%E3%82%AB%E3%83%AB%E8%A8%AD%E5%AE%9A">改行コード変換を無効にする(ローカル設定)</a></li>
 <li><a href="#%E9%81%8E%E5%8E%BB%E3%81%AE%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E5%8F%96%E3%82%8A%E5%87%BA%E3%81%99">過去のファイルを取り出す</a></li>
@@ -174,15 +175,18 @@
 </code></pre></div><h2 id="サブモジュールの一部だけを利用する">サブモジュールの一部だけを利用する</h2>
 <ul>
 <li>sparse checkoutを使って一部しかみないようにする</li>
+<li>submoduleするときはブランチを指定する方がいい。dll参照のときなんかはmasterでいいと思う</li>
 </ul>
 <div class="highlight"><pre class="chroma"><code class="language-bat" data-lang="bat"><span class="ln">1</span><span class="c1">rem サブモジュール追加</span>
-<span class="ln">2</span>git submodule add [参照リポジトリ]
+<span class="ln">2</span>git submodule add -b [ブランチ名] [参照リポジトリ]
 <span class="ln">3</span><span class="c1">rem sparse checkoutをサブモジュールで適用する</span>
 <span class="ln">4</span>git -C [参照フォルダ] config core.sparsecheckout true
 <span class="ln">5</span><span class="c1">rem 設定を.git内に書き込む</span>
 <span class="ln">6</span><span class="k">echo</span> [残したいファイル、ディレクトリ] <span class="p">&gt;</span> .git/modules/[参照フォルダ]/info/sparse-checkout 
 <span class="ln">7</span><span class="c1">rem ツリー情報を再読み込みする</span>
 <span class="ln">8</span>git -C [参照フォルダ] read-tree -mu HEAD
+</code></pre></div><h2 id="サブモジュールの最新に更新する">サブモジュールの最新に更新する</h2>
+<div class="highlight"><pre class="chroma"><code class="language-bat" data-lang="bat"><span class="ln">1</span>git submodule foreach git pull origin master
 </code></pre></div><h2 id="リモートリポジトリフォルダを作成する">リモートリポジトリ(フォルダ)を作成する</h2>
 <ul>
 <li>GitHubなど使わず、共有フォルダなどにリモートリポジトリを作成したい場合は、--bare --sharedをつけると作成できる</li>

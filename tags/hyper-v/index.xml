@@ -193,7 +193,7 @@ Windowsのワークグループ名変えている場合は&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-sh&#34; data-lang=&#34;sh&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;nb&#34;&gt;cd&lt;/span&gt; デスクトップ
 &lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;ln -s /home/share
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;最後にIPアドレスを固定にする&lt;br&gt;
-Linux Mintはwindowと同じ感覚てIPを固定できます&lt;br&gt;
+Linux Mintはwindowsと同じ感覚でIPを固定できます&lt;br&gt;
 →&lt;a href=&#34;https://inakadeikinaosu.com/pc/ipadress_kotei/&#34;&gt;IPアドレスを固定にする方法(Linux Mint)&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;再起動してIPアドレスが設定したものになったか確認する&lt;/p&gt;
 &lt;h2 id=&#34;接続確認&#34;&gt;接続確認&lt;/h2&gt;
