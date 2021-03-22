@@ -216,16 +216,16 @@ DLできたらDBを保存するディレクトリに移動させてください�
 ここではわかりやすく<code>C:\gitea</code>として説明します。<br>
 またファイル名が長いので<code>gitea.exe </code>にリネームしておきます</p>
 <h3 id="3-giteaを起動してみる">3. Giteaを起動してみる</h3>
-<p>といっても以下のコマンドを実行するだけです。
+<p>といっても以下のコマンドを実行するだけです。<br>
 コマンドプロンプト</p>
 <div class="highlight"><pre class="chroma"><code class="language-bat" data-lang="bat"><span class="ln">1</span><span class="k">cd</span> C:\gitea
 <span class="ln">2</span>gitea.exe ./gitea web
-</code></pre></div><p>これだけでローカルサーバーに作成されています。
+</code></pre></div><p>これだけでローカルサーバーに作成されています。<br>
 <a href="http://localhost:3000/">http://localhost:3000/</a>にアクセスしてます。</p>
 <p>たったこれだけでできてしました。簡単すぎる…</p>
 <h3 id="4-初期設定を行う">4. 初期設定を行う</h3>
 <p>右上の登録ボタンを押すと初期設定が行えます。<br>
-データベースはお手軽に扱える<code>SQLite3</code>を選択、サイトタイトルはリポジトリパスはお好みで</p>
+データベースはお手軽に扱える<code>SQLite3</code>を選択、サイトタイトルやリポジトリパスはお好みで</p>
 <p><img src="https://raw.githubusercontent.com/sakuya712/sakunoteImages/master/gitea/001.png" alt=""></p>
 <p>複数のPCで使うのであれば<code>SSHサーバーのドメイン</code>はコンピューター名<br>
 <code>GiteaのベースURL</code>は<code>http://&lt;コンピューター名&gt;:3000/</code>にしておくのが無難です。<br>
@@ -237,7 +237,7 @@ DLできたらDBを保存するディレクトリに移動させてください�
 <p><code>giteaをインストール</code>ボタンを押します。
 先ほど設定した管理者アカウントでログインできたら初期設定完了です。</p>
 <p>あとはGitHubと同じように右上にある＋ボタンでリポジトリ作成してみてテストしてみてください。<br>
-GitHubとおなじ感じでクローン、プッシュ、プルリクなどができます。<br>
+GitHubと同じ感覚でクローン、プッシュ、プルリクなどができます。<br>
 それと他のPCからアクセスできるかも試してください。<br>
 できない場合は大抵はファイアウォールのせいです。<code>gitea.exe</code>のローカルもしくはドメイン間だけ通信許可を出せば他のPCでも見れるようになると思います。<br>
 ローカルで使うならHTTPS化も要らないでしょう。ローカルサーバに入られたり、ホストのPCになにか仕掛けられないかぎり。<br>

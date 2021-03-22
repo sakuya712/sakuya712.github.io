@@ -74,16 +74,16 @@ DLできたらDBを保存するディレクトリに移動させてください�
 ここではわかりやすく&lt;code&gt;C:\gitea&lt;/code&gt;として説明します。&lt;br&gt;
 またファイル名が長いので&lt;code&gt;gitea.exe &lt;/code&gt;にリネームしておきます&lt;/p&gt;
 &lt;h3 id=&#34;3-giteaを起動してみる&#34;&gt;3. Giteaを起動してみる&lt;/h3&gt;
-&lt;p&gt;といっても以下のコマンドを実行するだけです。
+&lt;p&gt;といっても以下のコマンドを実行するだけです。&lt;br&gt;
 コマンドプロンプト&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bat&#34; data-lang=&#34;bat&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;cd&lt;/span&gt; C:\gitea
 &lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;gitea.exe ./gitea web
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;これだけでローカルサーバーに作成されています。
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;これだけでローカルサーバーに作成されています。&lt;br&gt;
 &lt;a href=&#34;http://localhost:3000/&#34;&gt;http://localhost:3000/&lt;/a&gt;にアクセスしてます。&lt;/p&gt;
 &lt;p&gt;たったこれだけでできてしました。簡単すぎる…&lt;/p&gt;
 &lt;h3 id=&#34;4-初期設定を行う&#34;&gt;4. 初期設定を行う&lt;/h3&gt;
 &lt;p&gt;右上の登録ボタンを押すと初期設定が行えます。&lt;br&gt;
-データベースはお手軽に扱える&lt;code&gt;SQLite3&lt;/code&gt;を選択、サイトタイトルはリポジトリパスはお好みで&lt;/p&gt;
+データベースはお手軽に扱える&lt;code&gt;SQLite3&lt;/code&gt;を選択、サイトタイトルやリポジトリパスはお好みで&lt;/p&gt;
 &lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/sakuya712/sakunoteImages/master/gitea/001.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
 &lt;p&gt;複数のPCで使うのであれば&lt;code&gt;SSHサーバーのドメイン&lt;/code&gt;はコンピューター名&lt;br&gt;
 &lt;code&gt;GiteaのベースURL&lt;/code&gt;は&lt;code&gt;http://&amp;lt;コンピューター名&amp;gt;:3000/&lt;/code&gt;にしておくのが無難です。&lt;br&gt;
@@ -95,7 +95,7 @@ DLできたらDBを保存するディレクトリに移動させてください�
 &lt;p&gt;&lt;code&gt;giteaをインストール&lt;/code&gt;ボタンを押します。
 先ほど設定した管理者アカウントでログインできたら初期設定完了です。&lt;/p&gt;
 &lt;p&gt;あとはGitHubと同じように右上にある＋ボタンでリポジトリ作成してみてテストしてみてください。&lt;br&gt;
-GitHubとおなじ感じでクローン、プッシュ、プルリクなどができます。&lt;br&gt;
+GitHubと同じ感覚でクローン、プッシュ、プルリクなどができます。&lt;br&gt;
 それと他のPCからアクセスできるかも試してください。&lt;br&gt;
 できない場合は大抵はファイアウォールのせいです。&lt;code&gt;gitea.exe&lt;/code&gt;のローカルもしくはドメイン間だけ通信許可を出せば他のPCでも見れるようになると思います。&lt;br&gt;
 ローカルで使うならHTTPS化も要らないでしょう。ローカルサーバに入られたり、ホストのPCになにか仕掛けられないかぎり。&lt;br&gt;
