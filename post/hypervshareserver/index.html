@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="jp" data-figures="" class="page">
   <head>
-<title>Sobre | saku note</title>
+<title>Hyper-Vで簡単LAN内ファイル共有ファイル構築 | saku note</title>
 <meta charset="utf-8">
 <meta name="generator" content="Hugo 0.81.0" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -18,13 +18,13 @@
 <meta property="og:locale" content="jp" />
 
 <meta property="og:type" content="article">
-<meta name="description" content="Hugo, the world&#39;s fastest framework for building websites">
+<meta name="description" content="Windowsの共有フォルダとはおさらば">
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="">
-<meta name="twitter:title" content="Sobre" />
-<meta property="og:url" content="https://sakuya712.github.io/about.pt/" />
-<meta property="og:title" content="Sobre" />
-<meta property="og:description" content="Hugo, the world&#39;s fastest framework for building websites" />
+<meta name="twitter:title" content="Hyper-Vで簡単LAN内ファイル共有ファイル構築" />
+<meta property="og:url" content="https://sakuya712.github.io/post/hypervshareserver/" />
+<meta property="og:title" content="Hyper-Vで簡単LAN内ファイル共有ファイル構築" />
+<meta property="og:description" content="Windowsの共有フォルダとはおさらば" />
 <meta property="og:image" content="https://sakuya712.github.io/images/thumbnail.png" />
 <link rel="apple-touch-icon" sizes="180x180" href='https://sakuya712.github.io/icons/apple-touch-icon.png'>
 <link rel="icon" type="image/png" sizes="32x32" href='https://sakuya712.github.io/icons/favicon-32x32.png'>
@@ -33,7 +33,7 @@
 <meta name="msapplication-TileColor" content="#002538">
 <meta name="theme-color" content="#002538">
 
-<link rel="canonical" href="https://sakuya712.github.io/about.pt/">
+<link rel="canonical" href="https://sakuya712.github.io/post/hypervshareserver/">
 
     
 
@@ -117,24 +117,30 @@
   
 <div class="grid-inverse wrap content">
   <article class="post_content">
-    <h1 class="post_title">Sobre</h1><div class="post_meta">
+    <h1 class="post_title">Hyper-Vで簡単LAN内ファイル共有ファイル構築</h1><div class="post_meta">
   
     <svg class="icon">
   <use xlink:href="#calendar"></use>
 </svg>
     <span class="post_date">
-      2019年2月28日</span>
+      2021年3月7日</span>
+      <a href='https://sakuya712.github.io/tags/hyper-v' title="Hyper-V" class="post_tag button button_translucent">Hyper-V
+      </a>
+      <a href='https://sakuya712.github.io/tags/linux-mint' title="Linux Mint" class="post_tag button button_translucent">Linux Mint
+      </a>
+      <a href='https://sakuya712.github.io/tags/samba' title="Samba" class="post_tag button button_translucent">Samba
+      </a>
 </div>
 
     
   <div class="post_share">
     Share on:
-    <a href="https://twitter.com/intent/tweet?text=Sobre&url=https%3a%2f%2fsakuya712.github.io%2fabout.pt%2f&tw_p=tweetbutton" class="twitter" title="Share on Twitter" target="_blank" rel="nofollow">
+    <a href="https://twitter.com/intent/tweet?text=Hyper-V%e3%81%a7%e7%b0%a1%e5%8d%98LAN%e5%86%85%e3%83%95%e3%82%a1%e3%82%a4%e3%83%ab%e5%85%b1%e6%9c%89%e3%83%95%e3%82%a1%e3%82%a4%e3%83%ab%e6%a7%8b%e7%af%89&url=https%3a%2f%2fsakuya712.github.io%2fpost%2fhypervshareserver%2f&tw_p=tweetbutton" class="twitter" title="Share on Twitter" target="_blank" rel="nofollow">
       <svg class="icon">
   <use xlink:href="#twitter"></use>
 </svg>
     </a>
-    <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fsakuya712.github.io%2fabout.pt%2f&t=Sobre" class="facebook" title="Share on Facebook" target="_blank" rel="nofollow">
+    <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fsakuya712.github.io%2fpost%2fhypervshareserver%2f&t=Hyper-V%e3%81%a7%e7%b0%a1%e5%8d%98LAN%e5%86%85%e3%83%95%e3%82%a1%e3%82%a4%e3%83%ab%e5%85%b1%e6%9c%89%e3%83%95%e3%82%a1%e3%82%a4%e3%83%ab%e6%a7%8b%e7%af%89" class="facebook" title="Share on Facebook" target="_blank" rel="nofollow">
       <svg class="icon">
   <use xlink:href="#facebook"></use>
 </svg>
@@ -144,7 +150,7 @@
   <use xlink:href="#linkedin"></use>
 </svg>
     </a>
-    <a href="https://sakuya712.github.io/about.pt/" title="Copy Link" class="link link_yank">
+    <a href="https://sakuya712.github.io/post/hypervshareserver/" title="Copy Link" class="link link_yank">
       <svg class="icon">
   <use xlink:href="#copy"></use>
 </svg>
@@ -152,21 +158,193 @@
   </div>
 
     
-    <p>Tradução em português. Apenas para demonstração, o resto do artigo não está traduzido.</p>
-<p>Written in Go, Hugo is an open source static site generator available under the <a href="https://github.com/gohugoio/hugo/blob/master/LICENSE">Apache Licence 2.0.</a> Hugo supports TOML, YAML and JSON data file types, Markdown and HTML content files and uses shortcodes to add rich content. Other notable features are taxonomies, multilingual mode, image processing, custom output formats, HTML/CSS/JS minification and support for Sass SCSS workflows.</p>
-<p>Hugo makes use of a variety of open source projects including:</p>
+    <p>Windowsの共有フォルダとはおさらば</p>
+<p>目次</p>
+<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
+<!-- code_chunk_output -->
 <ul>
-<li><a href="https://github.com/yuin/goldmark">https://github.com/yuin/goldmark</a></li>
-<li><a href="https://github.com/alecthomas/chroma">https://github.com/alecthomas/chroma</a></li>
-<li><a href="https://github.com/muesli/smartcrop">https://github.com/muesli/smartcrop</a></li>
-<li><a href="https://github.com/spf13/cobra">https://github.com/spf13/cobra</a></li>
-<li><a href="https://github.com/spf13/viper">https://github.com/spf13/viper</a></li>
+<li><a href="#%E4%BD%9C%E3%82%8B%E3%81%8D%E3%81%A3%E3%81%8B%E3%81%91">作るきっかけ</a></li>
+<li><a href="#%E7%92%B0%E5%A2%83">環境</a></li>
+<li><a href="#hyper-v%E3%81%AE%E8%A8%AD%E5%AE%9A">Hyper-Vの設定</a>
+<ul>
+<li><a href="#hyper-v%E3%82%92%E6%9C%89%E5%8A%B9%E3%81%AB%E3%81%99%E3%82%8B">Hyper-Vを有効にする</a></li>
+<li><a href="#os%E3%82%92%E5%85%A5%E6%89%8B%E3%81%99%E3%82%8B">OSを入手する</a></li>
+<li><a href="#hyper-v%E3%81%A7%E4%BB%AE%E6%83%B3%E7%92%B0%E5%A2%83%E3%82%92%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8B">Hyper-Vで仮想環境を作成する</a></li>
 </ul>
-<p>Hugo is ideal for blogs, corporate websites, creative portfolios, online magazines, single page applications or even a website with thousands of pages.</p>
-<p>Hugo is for people who want to hand code their own website without worrying about setting up complicated runtimes, dependencies and databases.</p>
-<p>Websites built with Hugo are extremelly fast, secure and can be deployed anywhere including, AWS, GitHub Pages, Heroku, Netlify and any other hosting provider.</p>
-<p>Learn more and contribute on <a href="https://github.com/gohugoio">GitHub</a>.</p>
-
+</li>
+<li><a href="#os%E3%82%92%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%99%E3%82%8B">OSをインストールする</a>
+<ul>
+<li><a href="#%E4%BB%AE%E6%83%B3%E7%92%B0%E5%A2%83os%E8%A8%AD%E5%AE%9A">仮想環境OS設定</a></li>
+</ul>
+</li>
+<li><a href="#%E6%8E%A5%E7%B6%9A%E7%A2%BA%E8%AA%8D">接続確認</a></li>
+<li><a href="#%E3%83%90%E3%83%83%E3%82%AF%E3%82%A2%E3%83%83%E3%83%97%E6%96%B9%E6%B3%95">バックアップ方法</a></li>
+</ul>
+<!-- /code_chunk_output -->
+<h2 id="作るきっかけ">作るきっかけ</h2>
+<p>いままではwindowsに標準搭載の共有フォルダ機能をつかっていたのだが、これがなにかの拍子で接続できなくなることがあった。<br>
+以前はwindowsのアプデで設定が変わったのが原因だった。今回はルーターを変えた際に接続できなくってしまった。<br>
+恐らく前の設定を持ち続けているのが原因だろうが、対処法がよくわからない。<br>
+Windowsの共有システムはなにかと設定が多くてスマホやiPadとかでも接続が上手くいかない場合もあった。<br>
+なので、いっそのこと共有するようなものは仮想環境の方に全部ぶち込もうという風結論ずけた。<br>
+バックアップもエクスポートするだけでできるし。</p>
+<h2 id="環境">環境</h2>
+<ul>
+<li>Windows10 Pro build 1909 (Homeではできません)</li>
+<li>Intel Core i7 8700K</li>
+</ul>
+<h2 id="hyper-vの設定">Hyper-Vの設定</h2>
+<h4 id="hyper-vを有効にする">Hyper-Vを有効にする</h4>
+<p>初期状態ではHyper-Vは有効になっていません。<br>
+前準備として、UEFI/BIOS画面を開いてIntel VT／AMD-Vが有効化されているか確認する<br>
+そのあとコントロールパネルからHyper-Vを有効にする</p>
+<p>→<a href="https://www.atmarkit.co.jp/ait/articles/1806/25/news026.html">参考サイト</a></p>
+<p>有効化して、再起動すればコントロールパネルの管理ツールに<code>Hyper-V マネージャー</code>が追加されている。</p>
+<h4 id="osを入手する">OSを入手する</h4>
+<p>なんでもいいのですが今回は容量軽い、メモリ使用量が少ないLinux Mint Mate版を使用します。<br>
+→<a href="https://www.linuxmint.com/download.php">ダウンロード</a><br>
+自分の環境ではなぜか画面がおかしくなっていたので<a href="https://www.linuxmint.com/edition.php?id=276">19.3版</a>をダウンロードしました。</p>
+<h4 id="hyper-vで仮想環境を作成する">Hyper-Vで仮想環境を作成する</h4>
+<p>最初はネットワークの設定</p>
+<ul>
+<li>最初に仮想スイッチマネージャーを開く</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/sakuya712/sakunoteImages/master/HyperV_LAN/001.png" alt=""></p>
+<ul>
+<li>新しい仮想ネットワークの作成で、外部を選択で作成、適当に名前をつけてOKをする</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/sakuya712/sakunoteImages/master/HyperV_LAN/002.png" alt=""></p>
+<p>これは二回目以降はやる必要はありません。</p>
+<p>次に仮想マシンを作成します。 新規→仮想マシンを選択</p>
+<ul>
+<li>適当に名前をつけて保存する場所を選択</li>
+<li>世代は第一世代を選択</li>
+<li>メモリは2GBにしてみた</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/sakuya712/sakunoteImages/master/HyperV_LAN/003.png" alt=""></p>
+<ul>
+<li>ネットワークは先ほど作成したネットを選ぶ</li>
+<li>ストレージは可変にするので後で設定</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/sakuya712/sakunoteImages/master/HyperV_LAN/004.png" alt=""></p>
+<p>とりあえず作成ウィザードは完了です。<br>
+次に先ほど飛ばしたストレージを作成します。<br>
+仮想マシン一覧から右クリックで設定を選んで、IDEコントローラを選ぶ</p>
+<ul>
+<li>ハードドライブを選んだら追加を押す</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/sakuya712/sakunoteImages/master/HyperV_LAN/005.png" alt=""></p>
+<ul>
+<li>フォーマットはVHDX</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/sakuya712/sakunoteImages/master/HyperV_LAN/006.png" alt=""></p>
+<ul>
+<li>容量可変</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/sakuya712/sakunoteImages/master/HyperV_LAN/007.png" alt=""></p>
+<ul>
+<li>ストレージの保存場所</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/sakuya712/sakunoteImages/master/HyperV_LAN/008.png" alt=""></p>
+<ul>
+<li>ここでは容量を50GBとしてますが、実際のストレージのギリギリ限界まで作ってもいいと思います。可変にしているので最初からこのストレージを要求されません。</li>
+<li>ストレージ容量は後で変えることはできますが、パーテーションの再設定をしないといけないです。→<a href="https://qiita.com/nakat-t/items/87d0ae049a5e0b57e469">仮想HDDの容量を増やす方法</a></li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/sakuya712/sakunoteImages/master/HyperV_LAN/009.png" alt=""></p>
+<ul>
+<li>最後にチェックポイントは残ると厄介なので、<code>自動チェックポイントを使用する</code>を外しておきます。(バックアップはエクスポートでやる)</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/sakuya712/sakunoteImages/master/HyperV_LAN/010.png" alt=""></p>
+<p>Hyper-V側の設定は終わりです。</p>
+<h2 id="osをインストールする">OSをインストールする</h2>
+<p>仮想マシン一覧から作成したマシンをダブルクリック新しいウインドウが表示されます。<br>
+そこでメディア→DVDドライブ→ディスクの挿入でDLしておいたLinux mintのイメージファイルを選択します。</p>
+<p><img src="https://raw.githubusercontent.com/sakuya712/sakunoteImages/master/HyperV_LAN/011.png" alt=""></p>
+<p>そのあと起動ボタンを押すとLinux mintが立ち上がります。<br>
+デスクトップが表示されたら成功です。<br>
+ですがこの状態ではまだお試し版なので今度はインストールを行います
+Install Linux Mintのアイコンをダブルクリック</p>
+<p><img src="https://raw.githubusercontent.com/sakuya712/sakunoteImages/master/HyperV_LAN/012.png" alt=""></p>
+<ul>
+<li>キーボードを選択, 英語配列キーボードを使っている場合でもとりあえずはこれでOK</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/sakuya712/sakunoteImages/master/HyperV_LAN/013.png" alt=""></p>
+<ul>
+<li>余計なものを入れたくないのでチェックを外す</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/sakuya712/sakunoteImages/master/HyperV_LAN/014.png" alt=""></p>
+<ul>
+<li>一番を上のもの選ぶ</li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/sakuya712/sakunoteImages/master/HyperV_LAN/015.png" alt=""></p>
+<ul>
+<li>地域はTokyo選択</li>
+<li>ユーザーを設定を行う</li>
+</ul>
+<p>ここまで行うとOSのインストールが始まる。<br>
+インストールが終わると一度シャットダウンします。</p>
+<p>メディア→DVDドライブ→ディスク取り出しして起動</p>
+<p>これでOSのインストールは完了</p>
+<h3 id="仮想環境os設定">仮想環境OS設定</h3>
+<p>まずいつものパッケージアップデート</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="ln">1</span>sudo apt update
+<span class="ln">2</span>sudo apt upgrade
+</code></pre></div><p>英語配列のキーボードを使っている場合は右下のキーボードマーク右クリック設定<br>
+以下のようなダイアログがでるので<code>＋ボタン</code>を押して<code>キーボード 英語</code>を選ぶ、そのあと<code>↑ボタン</code>で<code>キーボード 英語</code>の優先度を上げます。</p>
+<p><img src="https://raw.githubusercontent.com/sakuya712/sakunoteImages/master/HyperV_LAN/016.png" alt=""></p>
+<p><img src="https://raw.githubusercontent.com/sakuya712/sakunoteImages/master/HyperV_LAN/017.png" alt=""></p>
+<p>ここでいよいよSambaをインストールする</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="ln">1</span>sudo apt install samba
+</code></pre></div><p>インストールが完了したら設定ファイルを開く</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="ln">1</span>sudo nano /etc/samba/smb.conf
+</code></pre></div><p>そこから[global]の要素を見つけて</p>
+<div class="highlight"><pre class="chroma"><code class="language-ini" data-lang="ini"><span class="ln">1</span><span class="k">[global]</span>
+<span class="ln">2</span><span class="na">dos charset</span> <span class="o">=</span> <span class="s">CP932</span>
+<span class="ln">3</span><span class="na">unix charset</span> <span class="o">=</span> <span class="s">UTF-8</span>
+</code></pre></div><p>を追加する<br>
+Windowsのワークグループ名変えている場合は</p>
+<div class="highlight"><pre class="chroma"><code class="language-ini" data-lang="ini"><span class="ln">1</span><span class="na">workgroup</span> <span class="o">=</span> <span class="s">WORKGROUP</span>
+</code></pre></div><p>を変更<br>
+最終行まで行って以下のものを追加する</p>
+<div class="highlight"><pre class="chroma"><code class="language-ini" data-lang="ini"><span class="ln">1</span><span class="k">[share]</span>
+<span class="ln">2</span><span class="na">path</span> <span class="o">=</span> <span class="s">/home/share/</span>
+<span class="ln">3</span><span class="na">writable</span> <span class="o">=</span> <span class="s">yes</span>
+<span class="ln">4</span><span class="na">guest ok</span> <span class="o">=</span> <span class="s">yes</span>
+<span class="ln">5</span><span class="na">guest only</span> <span class="o">=</span> <span class="s">yes</span>
+<span class="ln">6</span><span class="na">crate mode</span> <span class="o">=</span> <span class="s">0777</span>
+<span class="ln">7</span><span class="na">directory mode</span> <span class="o">=</span> <span class="s">0777</span>
+</code></pre></div><p>誰でも書き込みOK、ゲストもOKという設定です。個人PC内の環境なので、セキュリティは考えてない<br>
+書き終わったら、[Ctrl + S]で保存、[Ctrl + X]で閉じる</p>
+<p>共有フォルダを作成する</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="ln"> 1</span><span class="c1"># 共有フォルダ作成</span>
+<span class="ln"> 2</span>sudo mkdir /home/share
+<span class="ln"> 3</span><span class="c1"># 共有できるように、ディレクトリの所有者、グループを変更</span>
+<span class="ln"> 4</span>sudo chown nobody:nogroup /home/share/
+<span class="ln"> 5</span><span class="c1"># 誰でも読み書きできるようにする。</span>
+<span class="ln"> 6</span>sudo chmod <span class="m">777</span> /home/share/
+<span class="ln"> 7</span><span class="c1"># 適当にファイル作成</span>
+<span class="ln"> 8</span>touch /home/share/test.txt
+<span class="ln"> 9</span><span class="c1"># sambaを再起動</span>
+<span class="ln">10</span>sudo service smbd restart
+</code></pre></div><p>おまけでシンボリックリンク(ショートカットカット)をデスクトップに作成</p>
+<div class="highlight"><pre class="chroma"><code class="language-sh" data-lang="sh"><span class="ln">1</span><span class="nb">cd</span> デスクトップ
+<span class="ln">2</span>ln -s /home/share
+</code></pre></div><p>最後にIPアドレスを固定にする<br>
+Linux Mintはwindowsと同じ感覚でIPを固定できます<br>
+→<a href="https://inakadeikinaosu.com/pc/ipadress_kotei/">IPアドレスを固定にする方法(Linux Mint)</a></p>
+<p>再起動してIPアドレスが設定したものになったか確認する</p>
+<h2 id="接続確認">接続確認</h2>
+<p>WindowsではPCフォルダ右クリックで<code>ネットワークの場所を追加する</code>を選び、
+<code>\\[固定したプライベートIP]\share\</code>を入力する。<br>
+ユーザーとパスワードが聞かれるので、Linux Mint側で作ったアカウント情報を入れると接続できます。<br>
+読み込み/書き込みができたら成功です。</p>
+<p>あとはこのフォルダの配下に共有したいファイルを入れていくだけです。<br>
+お疲れ様でした。</p>
+<h2 id="バックアップ方法">バックアップ方法</h2>
+<p>バックアップは仮想マシン一覧からバックアップを取りたいものを右クリック→エクスポート<br>
+保存先を入れれば完了です。<br>
+逆に取り込みたい場合は<code>仮想マシンのインポート</code>を行う。<br>
+このエクスポートは自動化できるみたいなのでこれは別の記事で書きたいと思う。</p>
 
   </article>
 <aside class="sidebar">
@@ -187,9 +365,6 @@
       </li>
       <li>
         <a href="https://sakuya712.github.io/post/hugogithubpages/" class="nav-link" title="10分で静的サイトを作成する【Hugo&#43;GitHub Pages】">10分で静的サイトを作成する【Hugo&#43;GitHub Pages】</a>
-      </li>
-      <li>
-        <a href="https://sakuya712.github.io/post/hypervshareserver/" class="nav-link" title="Hyper-Vで簡単LAN内ファイル共有ファイル構築">Hyper-Vで簡単LAN内ファイル共有ファイル構築</a>
       </li>
       <li>
         <a href="https://sakuya712.github.io/post/hugotest/" class="nav-link" title="Hugoで作成してみた">Hugoで作成してみた</a>

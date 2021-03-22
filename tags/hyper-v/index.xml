@@ -10,18 +10,16 @@
     <lastBuildDate>Sun, 07 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://sakuya712.github.io/tags/hyper-v/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Hyper-Vで簡単LAN内ファイル共有ファイル構築</title>
-      <link>https://sakuya712.github.io/post/hyper-v%E3%81%A7%E7%B0%A1%E5%8D%98lan%E5%86%85%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E5%85%B1%E6%9C%89%E3%83%95%E3%82%A9%E3%83%AB%E3%83%80%E6%A7%8B%E7%AF%89/</link>
+      <link>https://sakuya712.github.io/post/hypervshareserver/</link>
       <pubDate>Sun, 07 Mar 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://sakuya712.github.io/post/hyper-v%E3%81%A7%E7%B0%A1%E5%8D%98lan%E5%86%85%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E5%85%B1%E6%9C%89%E3%83%95%E3%82%A9%E3%83%AB%E3%83%80%E6%A7%8B%E7%AF%89/</guid>
+      <guid>https://sakuya712.github.io/post/hypervshareserver/</guid>
       <description>
         
           &lt;p&gt;Windowsの共有フォルダとはおさらば&lt;/p&gt;
 &lt;p&gt;目次&lt;/p&gt;
 &lt;!-- @import &#34;[TOC]&#34; {cmd=&#34;toc&#34; depthFrom=1 depthTo=6 orderedList=false} --&gt;
 &lt;!-- code_chunk_output --&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#hyper-v%E3%81%A7%E7%B0%A1%E5%8D%98lan%E5%86%85%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E5%85%B1%E6%9C%89%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E6%A7%8B%E7%AF%89&#34;&gt;Hyper-Vで簡単LAN内ファイル共有ファイル構築&lt;/a&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;#%E4%BD%9C%E3%82%8B%E3%81%8D%E3%81%A3%E3%81%8B%E3%81%91&#34;&gt;作るきっかけ&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#%E7%92%B0%E5%A2%83&#34;&gt;環境&lt;/a&gt;&lt;/li&gt;
@@ -40,23 +38,20 @@
 &lt;li&gt;&lt;a href=&#34;#%E6%8E%A5%E7%B6%9A%E7%A2%BA%E8%AA%8D&#34;&gt;接続確認&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#%E3%83%90%E3%83%83%E3%82%AF%E3%82%A2%E3%83%83%E3%83%97%E6%96%B9%E6%B3%95&#34;&gt;バックアップ方法&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
 &lt;!-- /code_chunk_output --&gt;
-&lt;h1 id=&#34;hyper-vで簡単lan内ファイル共有ファイル構築&#34;&gt;Hyper-Vで簡単LAN内ファイル共有ファイル構築&lt;/h1&gt;
-&lt;h3 id=&#34;作るきっかけ&#34;&gt;作るきっかけ&lt;/h3&gt;
+&lt;h2 id=&#34;作るきっかけ&#34;&gt;作るきっかけ&lt;/h2&gt;
 &lt;p&gt;いままではwindowsに標準搭載の共有フォルダ機能をつかっていたのだが、これがなにかの拍子で接続できなくなることがあった。&lt;br&gt;
 以前はwindowsのアプデで設定が変わったのが原因だった。今回はルーターを変えた際に接続できなくってしまった。&lt;br&gt;
 恐らく前の設定を持ち続けているのが原因だろうが、対処法がよくわからない。&lt;br&gt;
 Windowsの共有システムはなにかと設定が多くてスマホやiPadとかでも接続が上手くいかない場合もあった。&lt;br&gt;
 なので、いっそのこと共有するようなものは仮想環境の方に全部ぶち込もうという風結論ずけた。&lt;br&gt;
 バックアップもエクスポートするだけでできるし。&lt;/p&gt;
-&lt;h3 id=&#34;環境&#34;&gt;環境&lt;/h3&gt;
+&lt;h2 id=&#34;環境&#34;&gt;環境&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;Windows10 Pro build 1909 (Homeではできません)&lt;/li&gt;
 &lt;li&gt;Intel Core i7 8700K&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;hyper-vの設定&#34;&gt;Hyper-Vの設定&lt;/h3&gt;
+&lt;h2 id=&#34;hyper-vの設定&#34;&gt;Hyper-Vの設定&lt;/h2&gt;
 &lt;h4 id=&#34;hyper-vを有効にする&#34;&gt;Hyper-Vを有効にする&lt;/h4&gt;
 &lt;p&gt;初期状態ではHyper-Vは有効になっていません。&lt;br&gt;
 前準備として、UEFI/BIOS画面を開いてIntel VT／AMD-Vが有効化されているか確認する&lt;br&gt;

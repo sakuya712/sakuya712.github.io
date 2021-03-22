@@ -7,13 +7,130 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <copyright>Copyright © 2020–2021, sakuya712.</copyright>
-    <lastBuildDate>Sat, 13 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://sakuya712.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 22 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://sakuya712.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Giteaを使ってローカルでGitHubライクサーバーを作成する</title>
+      <link>https://sakuya712.github.io/post/gitea/</link>
+      <pubDate>Mon, 22 Mar 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://sakuya712.github.io/post/gitea/</guid>
+      <description>
+        
+          &lt;p&gt;GitHubには上げたくなけど専用サーバーをつくるのしんどい方は必見&lt;/p&gt;
+&lt;p&gt;目次&lt;/p&gt;
+&lt;!-- @import &#34;[TOC]&#34; {cmd=&#34;toc&#34; depthFrom=1 depthTo=6 orderedList=false} --&gt;
+&lt;!-- code_chunk_output --&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%E5%AF%BE%E8%B1%A1%E8%80%85&#34;&gt;対象者&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%E4%BD%9C%E3%82%8B%E3%81%8D%E3%81%A3%E3%81%8B%E3%81%91&#34;&gt;作るきっかけ&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#gitea%E3%81%A8%E3%81%AF&#34;&gt;Giteaとは&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#gitea%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E6%A7%8B%E7%AF%89%E3%81%97%E3%81%A6%E3%81%BF%E3%82%8B&#34;&gt;Giteaを使って構築してみる&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#1-%E5%89%8D%E6%BA%96%E5%82%99&#34;&gt;1. 前準備&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#2-gitea%E3%82%92dl%E3%81%99%E3%82%8B&#34;&gt;2. GiteaをDLする&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#3-gitea%E3%82%92%E8%B5%B7%E5%8B%95%E3%81%97%E3%81%A6%E3%81%BF%E3%82%8B&#34;&gt;3. Giteaを起動してみる&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#4-%E5%88%9D%E6%9C%9F%E8%A8%AD%E5%AE%9A%E3%82%92%E8%A1%8C%E3%81%86&#34;&gt;4. 初期設定を行う&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#5-%E8%87%AA%E5%8B%95%E7%9A%84%E3%81%AB%E8%B5%B7%E5%8B%95%E3%81%95%E3%81%9B%E3%82%8B&#34;&gt;5. 自動的に起動させる&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%E3%81%8A%E3%82%8F%E3%82%8A%E3%81%AB&#34;&gt;おわりに&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;!-- /code_chunk_output --&gt;
+&lt;h2 id=&#34;対象者&#34;&gt;対象者&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;会社のデータなのでGitHubに上げることができない&lt;/li&gt;
+&lt;li&gt;1人もしくは小規模でGitを使用する&lt;/li&gt;
+&lt;li&gt;専用サーバー機を用意してまで大それたことはしたくない&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;作るきっかけ&#34;&gt;作るきっかけ&lt;/h2&gt;
+&lt;p&gt;現在のGitHubではプライベートリポジトリも無料でできますが、それでも社内ツールみないなものは上げたくないものです。&lt;br&gt;
+一応ローカルにリモートリポジトリを作成自体はできるのですが、単純にリポジトリがあるだけなのでGitHubみたいにイシューやプルリクのような便利なものはありません。&lt;br&gt;
+これを実現するにはGitLabみたいなのを使って専用サーバーをつくるできるのですが、それはしんどい。そんな大それたことはしたくない。。。&lt;br&gt;
+どうにか簡単にできないものかと調べていたところGiteaというものたどりついた&lt;br&gt;
+で、少しいじってみたか滅茶苦茶簡単に作れたのでぜひ広まって欲しいと思い記事にしました。&lt;/p&gt;
+&lt;h2 id=&#34;giteaとは&#34;&gt;Giteaとは&lt;/h2&gt;
+&lt;p&gt;特徴として&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;gitHubライクなサイトを作成できる→&lt;a href=&#34;https://try.gitea.io/&#34;&gt;サンプル&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;ローカルサーバー内で完結できる&lt;/li&gt;
+&lt;li&gt;SQLite3に対応しているので手軽&lt;/li&gt;
+&lt;li&gt;軽い。ラズパイでも余裕らしい。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;があります。&lt;/p&gt;
+&lt;p&gt;恐らくこの手のもので一番有名なのはGitLabですが、あれはアカウントが必要でスペックも結構必要な感じで自分もあきらめていましたが、&lt;br&gt;
+これなら誰かがホストになればわざわざ専用サーバーを用意しなくてもよさそうな感じです。&lt;br&gt;
+手軽にできるので1人Gitしてる方にもオススメです&lt;/p&gt;
+&lt;h2 id=&#34;giteaを使って構築してみる&#34;&gt;Giteaを使って構築してみる&lt;/h2&gt;
+&lt;h3 id=&#34;1-前準備&#34;&gt;1. 前準備&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Gitのインストール&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://support.eonet.jp/connect/net/multi_bbr/eo-rt100/quick/ip_static_win10.html&#34;&gt;IPアドレスを固定&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;はここでは解説しませんが、各自やっておいてください。&lt;/p&gt;
+&lt;h3 id=&#34;2-giteaをdlする&#34;&gt;2. GiteaをDLする&lt;/h3&gt;
+&lt;p&gt;本題のGiteaほうですが、&lt;a href=&#34;https://dl.gitea.io/gitea&#34;&gt;ここから&lt;/a&gt;DLしてください。&lt;br&gt;
+この記事を書いているときは1.13.5がCurrent Releaseだったのでこれの&lt;code&gt;gitea-1.13.5-windows-4.0-amd64.exe&lt;/code&gt;を選びました。&lt;br&gt;
+DLできたらDBを保存するディレクトリに移動させてください。&lt;br&gt;
+ここではわかりやすく&lt;code&gt;C:\gitea&lt;/code&gt;として説明します。&lt;br&gt;
+またファイル名が長いので&lt;code&gt;gitea.exe &lt;/code&gt;にリネームしておきます&lt;/p&gt;
+&lt;h3 id=&#34;3-giteaを起動してみる&#34;&gt;3. Giteaを起動してみる&lt;/h3&gt;
+&lt;p&gt;といっても以下のコマンドを実行するだけです。
+コマンドプロンプト&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bat&#34; data-lang=&#34;bat&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;cd&lt;/span&gt; C:\gitea
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;gitea.exe ./gitea web
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;これだけでローカルサーバーに作成されています。
+&lt;a href=&#34;http://localhost:3000/&#34;&gt;http://localhost:3000/&lt;/a&gt;にアクセスしてます。&lt;/p&gt;
+&lt;p&gt;たったこれだけでできてしました。簡単すぎる…&lt;/p&gt;
+&lt;h3 id=&#34;4-初期設定を行う&#34;&gt;4. 初期設定を行う&lt;/h3&gt;
+&lt;p&gt;右上の登録ボタンを押すと初期設定が行えます。&lt;br&gt;
+データベースはお手軽に扱える&lt;code&gt;SQLite3&lt;/code&gt;を選択、サイトタイトルはリポジトリパスはお好みで&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/sakuya712/sakunoteImages/master/gitea/001.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;複数のPCで使うのであれば&lt;code&gt;SSHサーバーのドメイン&lt;/code&gt;はコンピューター名&lt;br&gt;
+&lt;code&gt;GiteaのベースURL&lt;/code&gt;は&lt;code&gt;http://&amp;lt;コンピューター名&amp;gt;:3000/&lt;/code&gt;にしておくのが無難です。&lt;br&gt;
+コンピューター名は&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bat&#34; data-lang=&#34;bat&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;hostname
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;でわかります。&lt;/p&gt;
+&lt;p&gt;オプション設定ですが、ローカルで使うのであればメール設定とサーバーと外部サービスの設定の項目は飛ばしていいでしょう。&lt;br&gt;
+最後に管理者アカウントの設定でユーザー名、パスワード、メアドを設定してください。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;giteaをインストール&lt;/code&gt;ボタンを押します。
+先ほど設定した管理者アカウントでログインできたら初期設定完了です。&lt;/p&gt;
+&lt;p&gt;あとはGitHubと同じように右上にある＋ボタンでリポジトリ作成してみてテストしてみてください。&lt;br&gt;
+GitHubとおなじ感じでクローン、プッシュ、プルリクなどができます。&lt;br&gt;
+それと他のPCからアクセスできるかも試してください。&lt;br&gt;
+できない場合は大抵はファイアウォールのせいです。&lt;code&gt;gitea.exe&lt;/code&gt;のローカルもしくはドメイン間だけ通信許可を出せば他のPCでも見れるようになると思います。&lt;br&gt;
+ローカルで使うならHTTPS化も要らないでしょう。ローカルサーバに入られたり、ホストのPCになにか仕掛けられないかぎり。&lt;br&gt;
+少なくとも会社のPCではないでしょう(起こってたら情シスが死にます)&lt;/p&gt;
+&lt;h3 id=&#34;5-自動的に起動させる&#34;&gt;5. 自動的に起動させる&lt;/h3&gt;
+&lt;p&gt;環境はできたけど毎回パソコン起動するたびに&lt;code&gt;./gitea web&lt;/code&gt;とするのは面倒なので起動時に自動的に開始されるようにします。&lt;/p&gt;
+&lt;p&gt;といっても&lt;a href=&#34;https://docs.gitea.io/en-us/windows-service/&#34;&gt;公式&lt;/a&gt;に記載しているとおりにやるだけです。&lt;/p&gt;
+&lt;p&gt;まず、&lt;code&gt;C:\gitea\custom\conf\app.ini&lt;/code&gt;にあるファイルを開き&lt;code&gt;RUN_USER =&lt;/code&gt;の値をコンピュータ名にします。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-ini&#34; data-lang=&#34;ini&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;na&#34;&gt;RUN_USER&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;コンピュータ名&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;次にコマンドプロンプトを&lt;strong&gt;管理者&lt;/strong&gt;で起動します
+ここで、gitea.exeがあるパスとapp.iniがあるパスを指定します。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bat&#34; data-lang=&#34;bat&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;sc.exe create Gitea start= auto binPath= &lt;span class=&#34;s2&#34;&gt;&amp;#34;\&amp;#34;&lt;/span&gt;C:\gitea\gitea.exe\&lt;span class=&#34;s2&#34;&gt;&amp;#34; web --config \&amp;#34;&lt;/span&gt;C:\gitea\custom\conf\app.ini&lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;rem [SC] CreateService SUCCESS&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;でSuccessが出たら登録完了です。
+早速起動してみましょう。&lt;br&gt;
+「Windows」キーを押しながら「R」キーで「ファイル名を指定して実行」→&lt;code&gt;services.msc&lt;/code&gt;の入力するとサービス一覧がでます。&lt;br&gt;
+そこから先ほど登録したGiteaの項目があるのでクリックして&lt;code&gt;開始&lt;/code&gt;ボタンを押すと起動します。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/sakuya712/sakunoteImages/master/gitea/002.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;これでいちいち&lt;code&gt;./gitea web&lt;/code&gt;しなくても見れるようになりました。&lt;/p&gt;
+&lt;p&gt;ちなみに登録削除する場合は&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bat&#34; data-lang=&#34;bat&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;sc.exe delete Gitea 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;です。&lt;/p&gt;
+&lt;h2 id=&#34;おわりに&#34;&gt;おわりに&lt;/h2&gt;
+&lt;p&gt;ローカルでGitHubと同じ感覚でリポジトリが見れるのはやっぱりいいですね、しかもこっちはちゃっかり日本語化されてるし。&lt;br&gt;
+そしてこんなのが気軽に作れてしまう。最近は本当に便利な世の中だなと思う。&lt;/p&gt;
+        
+      </description>
+    </item>
+    
     <item>
       <title>Git チートシート</title>
-      <link>https://sakuya712.github.io/post/gitcheatsheet-/</link>
+      <link>https://sakuya712.github.io/post/gitcheatsheet/</link>
       <pubDate>Sat, 13 Mar 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://sakuya712.github.io/post/gitcheatsheet-/</guid>
+      <guid>https://sakuya712.github.io/post/gitcheatsheet/</guid>
       <description>
         
           &lt;p&gt;たまにしか使わないやつのメモ&lt;/p&gt;
@@ -75,10 +192,10 @@
     
     <item>
       <title>10分で静的サイトを作成する【Hugo&#43;GitHub Pages】</title>
-      <link>https://sakuya712.github.io/post/10%E5%88%86%E3%81%A7%E9%9D%99%E7%9A%84%E3%82%B5%E3%82%A4%E3%83%88%E3%82%92%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8Bhugo&#43;github-pages/</link>
+      <link>https://sakuya712.github.io/post/hugogithubpages/</link>
       <pubDate>Thu, 11 Mar 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://sakuya712.github.io/post/10%E5%88%86%E3%81%A7%E9%9D%99%E7%9A%84%E3%82%B5%E3%82%A4%E3%83%88%E3%82%92%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8Bhugo&#43;github-pages/</guid>
+      <guid>https://sakuya712.github.io/post/hugogithubpages/</guid>
       <description>
         
           &lt;p&gt;手軽にサイトが作れる。しかも無料&lt;/p&gt;
@@ -235,18 +352,16 @@ Deploy.bat&lt;/p&gt;
     
     <item>
       <title>Hyper-Vで簡単LAN内ファイル共有ファイル構築</title>
-      <link>https://sakuya712.github.io/post/hyper-v%E3%81%A7%E7%B0%A1%E5%8D%98lan%E5%86%85%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E5%85%B1%E6%9C%89%E3%83%95%E3%82%A9%E3%83%AB%E3%83%80%E6%A7%8B%E7%AF%89/</link>
+      <link>https://sakuya712.github.io/post/hypervshareserver/</link>
       <pubDate>Sun, 07 Mar 2021 00:00:00 +0000</pubDate>
       
-      <guid>https://sakuya712.github.io/post/hyper-v%E3%81%A7%E7%B0%A1%E5%8D%98lan%E5%86%85%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E5%85%B1%E6%9C%89%E3%83%95%E3%82%A9%E3%83%AB%E3%83%80%E6%A7%8B%E7%AF%89/</guid>
+      <guid>https://sakuya712.github.io/post/hypervshareserver/</guid>
       <description>
         
           &lt;p&gt;Windowsの共有フォルダとはおさらば&lt;/p&gt;
 &lt;p&gt;目次&lt;/p&gt;
 &lt;!-- @import &#34;[TOC]&#34; {cmd=&#34;toc&#34; depthFrom=1 depthTo=6 orderedList=false} --&gt;
 &lt;!-- code_chunk_output --&gt;
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;#hyper-v%E3%81%A7%E7%B0%A1%E5%8D%98lan%E5%86%85%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E5%85%B1%E6%9C%89%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E6%A7%8B%E7%AF%89&#34;&gt;Hyper-Vで簡単LAN内ファイル共有ファイル構築&lt;/a&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;#%E4%BD%9C%E3%82%8B%E3%81%8D%E3%81%A3%E3%81%8B%E3%81%91&#34;&gt;作るきっかけ&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#%E7%92%B0%E5%A2%83&#34;&gt;環境&lt;/a&gt;&lt;/li&gt;
@@ -265,23 +380,20 @@ Deploy.bat&lt;/p&gt;
 &lt;li&gt;&lt;a href=&#34;#%E6%8E%A5%E7%B6%9A%E7%A2%BA%E8%AA%8D&#34;&gt;接続確認&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;#%E3%83%90%E3%83%83%E3%82%AF%E3%82%A2%E3%83%83%E3%83%97%E6%96%B9%E6%B3%95&#34;&gt;バックアップ方法&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
 &lt;!-- /code_chunk_output --&gt;
-&lt;h1 id=&#34;hyper-vで簡単lan内ファイル共有ファイル構築&#34;&gt;Hyper-Vで簡単LAN内ファイル共有ファイル構築&lt;/h1&gt;
-&lt;h3 id=&#34;作るきっかけ&#34;&gt;作るきっかけ&lt;/h3&gt;
+&lt;h2 id=&#34;作るきっかけ&#34;&gt;作るきっかけ&lt;/h2&gt;
 &lt;p&gt;いままではwindowsに標準搭載の共有フォルダ機能をつかっていたのだが、これがなにかの拍子で接続できなくなることがあった。&lt;br&gt;
 以前はwindowsのアプデで設定が変わったのが原因だった。今回はルーターを変えた際に接続できなくってしまった。&lt;br&gt;
 恐らく前の設定を持ち続けているのが原因だろうが、対処法がよくわからない。&lt;br&gt;
 Windowsの共有システムはなにかと設定が多くてスマホやiPadとかでも接続が上手くいかない場合もあった。&lt;br&gt;
 なので、いっそのこと共有するようなものは仮想環境の方に全部ぶち込もうという風結論ずけた。&lt;br&gt;
 バックアップもエクスポートするだけでできるし。&lt;/p&gt;
-&lt;h3 id=&#34;環境&#34;&gt;環境&lt;/h3&gt;
+&lt;h2 id=&#34;環境&#34;&gt;環境&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;Windows10 Pro build 1909 (Homeではできません)&lt;/li&gt;
 &lt;li&gt;Intel Core i7 8700K&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;hyper-vの設定&#34;&gt;Hyper-Vの設定&lt;/h3&gt;
+&lt;h2 id=&#34;hyper-vの設定&#34;&gt;Hyper-Vの設定&lt;/h2&gt;
 &lt;h4 id=&#34;hyper-vを有効にする&#34;&gt;Hyper-Vを有効にする&lt;/h4&gt;
 &lt;p&gt;初期状態ではHyper-Vは有効になっていません。&lt;br&gt;
 前準備として、UEFI/BIOS画面を開いてIntel VT／AMD-Vが有効化されているか確認する&lt;br&gt;
