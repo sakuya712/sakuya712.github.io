@@ -51,7 +51,7 @@
   
     
   
-  <body data-code="100" data-lines="false" id="documentTop">
+  <body data-code="500" data-lines="false" id="documentTop">
 
 <header class="nav_header" >
   <nav class="nav"><a href='https://sakuya712.github.io' class="nav_brand nav_item" title="saku note">
@@ -240,9 +240,15 @@ DLできたらDBを保存するディレクトリに移動させてください�
 GitHubと同じ感覚でクローン、プッシュ、プルリクなどができます。<br>
 それと他のPCからアクセスできるかも試してください。<br>
 できない場合は大抵はファイアウォールのせいです。<code>gitea.exe</code>のローカルもしくはドメイン間だけ通信許可を出せば他のPCでも見れるようになると思います。<br>
-ローカルで使うならHTTPS化も要らないでしょう。ローカルサーバに入られたり、ホストのPCになにか仕掛けられないかぎり。<br>
-少なくとも会社のPCではないでしょう(起こってたら情シスが死にます)</p>
-<h3 id="5-自動的に起動させる">5. 自動的に起動させる</h3>
+ローカルで使うならHTTPS化もしません。ローカルサーバに入られたり、ホストのPCになにか仕掛けられないかぎり問題なし。</p>
+<p>なお、Gitのプロキシ設定で対象を指定せずに使うとGiteaのリポジトリにアクセスできません。<br>
+.gitconfigで特定のURLのみプロキシを通すようにします。</p>
+<p>GitHubでのみプロキシを使う場合は以下のように書きます。</p>
+<div class="highlight"><pre class="chroma"><code class="language-ini" data-lang="ini"><span class="ln">1</span><span class="k">[http &#34;https://github.com/&#34;]</span>
+<span class="ln">2</span>    <span class="na">proxy</span> <span class="o">=</span> <span class="s">プロキシURL</span>
+<span class="ln">3</span><span class="k">[https &#34;https://github.com/&#34;]</span>
+<span class="ln">4</span>    <span class="na">proxy</span> <span class="o">=</span> <span class="s">プロキシURL</span>
+</code></pre></div><h3 id="5-自動的に起動させる">5. 自動的に起動させる</h3>
 <p>環境はできたけど毎回パソコン起動するたびに<code>./gitea web</code>とするのは面倒なので起動時に自動的に開始されるようにします。</p>
 <p>といっても<a href="https://docs.gitea.io/en-us/windows-service/">公式</a>に記載しているとおりにやるだけです。</p>
 <p>まず、<code>C:\gitea\custom\conf\app.ini</code>にあるファイルを開き<code>RUN_USER =</code>の値をコンピュータ名にします。</p>
@@ -276,6 +282,9 @@ GitHubと同じ感覚でクローン、プッシュ、プルリクなどがで�
     <h2 class="mt-4">最近の記事</h2>
     <ul class="flex-column">
       <li>
+        <a href="https://sakuya712.github.io/post/vbamemo/" class="nav-link" title="VBA メモ">VBA メモ</a>
+      </li>
+      <li>
         <a href="https://sakuya712.github.io/post/gitcheatsheet/" class="nav-link" title="Git チートシート">Git チートシート</a>
       </li>
       <li>
@@ -293,6 +302,11 @@ GitHubと同じ感覚でクローン、プッシュ、プルリクなどがで�
       <nav class="tags_nav">
         <a href='https://sakuya712.github.io/categories/git/' class="post_tag button button_translucent" title="git">
           GIT
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://sakuya712.github.io/categories/vba/' class="post_tag button button_translucent" title="vba">
+          VBA
           <span class="button_tally">1</span>
         </a>
         
@@ -332,6 +346,11 @@ GitHubと同じ感覚でクローン、プッシュ、プルリクなどがで�
           <span class="button_tally">2</span>
         </a>
         
+        <a href='https://sakuya712.github.io/tags/excel/' class="post_tag button button_translucent" title="excel">
+          EXCEL
+          <span class="button_tally">1</span>
+        </a>
+        
         <a href='https://sakuya712.github.io/tags/gitea/' class="post_tag button button_translucent" title="gitea">
           GITEA
           <span class="button_tally">1</span>
@@ -364,6 +383,11 @@ GitHubと同じ感覚でクローン、プッシュ、プルリクなどがで�
         
         <a href='https://sakuya712.github.io/tags/samba/' class="post_tag button button_translucent" title="samba">
           SAMBA
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://sakuya712.github.io/tags/vba/' class="post_tag button button_translucent" title="vba">
+          VBA
           <span class="button_tally">1</span>
         </a>
         

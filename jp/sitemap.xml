@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://sakuya712.github.io/</loc>
-    <lastmod>2021-03-22T00:00:00+00:00</lastmod>
+    <lastmod>2021-05-06T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -16,7 +16,7 @@
                 />
   </url><url>
     <loc>https://sakuya712.github.io/categories/</loc>
-    <lastmod>2021-03-22T00:00:00+00:00</lastmod>
+    <lastmod>2021-05-06T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -27,6 +27,34 @@
                 hreflang="jp"
                 href="https://sakuya712.github.io/categories/"
                 />
+  </url><url>
+    <loc>https://sakuya712.github.io/tags/excel/</loc>
+    <lastmod>2021-05-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://sakuya712.github.io/post/</loc>
+    <lastmod>2021-05-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://sakuya712.github.io/tags/</loc>
+    <lastmod>2021-05-06T00:00:00+00:00</lastmod>
+    <xhtml:link
+                rel="alternate"
+                hreflang="en"
+                href="https://sakuya712.github.io/en/tags/"
+                />
+    <xhtml:link
+                rel="alternate"
+                hreflang="jp"
+                href="https://sakuya712.github.io/tags/"
+                />
+  </url><url>
+    <loc>https://sakuya712.github.io/tags/vba/</loc>
+    <lastmod>2021-05-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://sakuya712.github.io/categories/vba/</loc>
+    <lastmod>2021-05-06T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://sakuya712.github.io/post/vbamemo/</loc>
+    <lastmod>2021-05-06T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://sakuya712.github.io/tags/git/</loc>
     <lastmod>2021-03-22T00:00:00+00:00</lastmod>
@@ -42,22 +70,6 @@
   </url><url>
     <loc>https://sakuya712.github.io/tags/github/</loc>
     <lastmod>2021-03-22T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://sakuya712.github.io/post/</loc>
-    <lastmod>2021-03-22T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://sakuya712.github.io/tags/</loc>
-    <lastmod>2021-03-22T00:00:00+00:00</lastmod>
-    <xhtml:link
-                rel="alternate"
-                hreflang="en"
-                href="https://sakuya712.github.io/en/tags/"
-                />
-    <xhtml:link
-                rel="alternate"
-                hreflang="jp"
-                href="https://sakuya712.github.io/tags/"
-                />
   </url><url>
     <loc>https://sakuya712.github.io/post/gitcheatsheet/</loc>
     <lastmod>2021-03-13T00:00:00+00:00</lastmod>

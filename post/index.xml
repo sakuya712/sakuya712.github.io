@@ -7,7 +7,84 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <copyright>Copyright © 2020–2021, sakuya712.</copyright>
-    <lastBuildDate>Mon, 22 Mar 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://sakuya712.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 06 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://sakuya712.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>VBA メモ</title>
+      <link>https://sakuya712.github.io/post/vbamemo/</link>
+      <pubDate>Thu, 06 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://sakuya712.github.io/post/vbamemo/</guid>
+      <description>
+        
+          &lt;p&gt;VBAに関するちょっとしたメモ&lt;/p&gt;
+&lt;p&gt;目次&lt;/p&gt;
+&lt;!-- @import &#34;[TOC]&#34; {cmd=&#34;toc&#34; depthFrom=1 depthTo=6 orderedList=false} --&gt;
+&lt;!-- code_chunk_output --&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#formula%E3%81%AE%E8%A8%AD%E5%AE%9A%E6%99%82%E3%82%92%E3%81%A4%E3%81%91%E3%82%8C%E3%81%B0%E7%9B%B8%E5%AF%BE%E5%8F%82%E7%85%A7%E3%81%A7%E6%9B%B8%E3%81%8D%E8%BE%BC%E3%82%93%E3%81%A7%E3%81%8F%E3%82%8C%E3%82%8B&#34;&gt;Formulaの設定時、=をつければ相対参照で書き込んでくれる&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%E5%85%A5%E5%8A%9B%E8%A6%8F%E5%88%B6%E3%81%8C%E3%81%86%E3%81%BE%E3%81%8F%E3%81%84%E3%81%8B%E3%81%AA%E3%81%84%E3%81%A8%E3%81%8D&#34;&gt;入力規制がうまくいかないとき&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%E6%9C%80%E5%88%9D%E3%81%ABdelete%E3%81%97%E3%82%88%E3%81%86&#34;&gt;最初にDeleteしよう&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%E5%8F%82%E7%85%A7%E5%BD%A2%E5%BC%8F%E3%81%8C%E5%90%88%E3%81%A3%E3%81%A6%E3%81%84%E3%81%AA%E3%81%84&#34;&gt;参照形式が合っていない&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#sortorientation%E3%81%AFxlsortorientation%E5%88%97%E6%8C%99%E3%82%92%E4%BD%BF%E3%82%8F%E3%81%AA%E3%81%84&#34;&gt;Sort.OrientationはXlSortOrientation列挙を使わない&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;!-- /code_chunk_output --&gt;
+&lt;h3 id=&#34;formulaの設定時をつければ相対参照で書き込んでくれる&#34;&gt;Formulaの設定時、=をつければ相対参照で書き込んでくれる&lt;/h3&gt;
+&lt;p&gt;A列は、B列の同じ行を参照するという処理をしたい場合&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-vb&#34; data-lang=&#34;vb&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Range&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;A1:A100&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;).&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Formula&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;=B1&amp;#34;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;と書けば、 セルA1は&amp;quot;=B1&amp;quot;、セルA2は&amp;quot;=B2&amp;quot;と処理してくれる。&lt;br&gt;
+逆に絶対参照したい場合は&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-vb&#34; data-lang=&#34;vb&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Range&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;A1:A100&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;).&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Formula&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;=$B$1&amp;#34;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;とすれば全部B1を参照してくれる。&lt;br&gt;
+これは入力規制などでセル範囲を指定する場合も同じで&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-vb&#34; data-lang=&#34;vb&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;With&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Range&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;A1:A100&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;).&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Validation&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;    &lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Delete&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;    &lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Add&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Type&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;xlValidateList&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Formula1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;=B1:B3&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;End&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;With&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;と指定してもちゃんと相対的に入力規制を設定してくれる&lt;br&gt;
+またこれらは【R1C1参照形式】を使用するとしているとちゃんと処理も変わる&lt;br&gt;
+渡すのはただの文字列だが、思ってた以上に賢く処理しているみたいです。&lt;/p&gt;
+&lt;h3 id=&#34;入力規制がうまくいかないとき&#34;&gt;入力規制がうまくいかないとき&lt;/h3&gt;
+&lt;h4 id=&#34;最初にdeleteしよう&#34;&gt;最初にDeleteしよう&lt;/h4&gt;
+&lt;p&gt;既に入力規制があるところにAddしようとすると&lt;code&gt;「1004：アプリケーション定義またはオブジェクト定義のエラーです」&lt;/code&gt;がでます。&lt;br&gt;
+逆に入力規制がない状態でDeleteしても特になにも言ってこないので、とりあえず最初はDeleteしとけば問題ないと思います&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-vb&#34; data-lang=&#34;vb&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;With&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Range&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;A1&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;).&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Validation&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;    &lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Delete&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;    &lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Add&lt;/span&gt; &lt;span class=&#34;c&#34;&gt;&amp;#39;入力規制内容
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;c&#34;&gt;&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;End&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;With&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h4 id=&#34;参照形式が合っていない&#34;&gt;参照形式が合っていない&lt;/h4&gt;
+&lt;p&gt;通常の設定では&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-vb&#34; data-lang=&#34;vb&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;With&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Range&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;A1&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;).&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Validation&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;    &lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Delete&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;    &lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Add&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Type&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;xlValidateList&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Formula1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;=B1:B3&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;End&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;With&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;は設定できるのですが、【R1C1参照形式】に設定している場合、参照できずにエラーを出してしまいます。&lt;/p&gt;
+&lt;p&gt;そこで&lt;a href=&#34;https://docs.microsoft.com/ja-jp/office/vba/api/excel.application.convertformula&#34;&gt;Application.ConvertFormulaメソッド&lt;/a&gt;を使って置換を行います。&lt;br&gt;
+さらに現在の設定を&lt;a href=&#34;https://docs.microsoft.com/ja-jp/office/vba/api/excel.application.referencestyle&#34;&gt;Application.ReferenceStyleプロパティ&lt;/a&gt;で取得できます。&lt;/p&gt;
+&lt;p&gt;ですので&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-vb&#34; data-lang=&#34;vb&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Application&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ConvertFormula&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;参照内容&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;err&#34;&gt;←&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;の参照の形式&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Application&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ReferenceStyle&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;とすればどちらでも対応できるマクロになります。&lt;/p&gt;
+&lt;p&gt;&amp;lt;例&amp;gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-vb&#34; data-lang=&#34;vb&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;With&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Range&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;A1&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;).&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Validation&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;    &lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Delete&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;    &lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Add&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;Type&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;xlValidateList&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; _
+&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;        &lt;span class=&#34;n&#34;&gt;Formula1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;:&lt;/span&gt;&lt;span class=&#34;o&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Application&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ConvertFormula&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt; _
+&lt;span class=&#34;ln&#34;&gt;5&lt;/span&gt;                    &lt;span class=&#34;s&#34;&gt;&amp;#34;=B1:B3&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; _
+&lt;span class=&#34;ln&#34;&gt;6&lt;/span&gt;                    &lt;span class=&#34;n&#34;&gt;xlA1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; _
+&lt;span class=&#34;ln&#34;&gt;7&lt;/span&gt;                    &lt;span class=&#34;n&#34;&gt;Application&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;ReferenceStyle&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;8&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;End&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;With&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;sortorientationはxlsortorientation列挙を使わない&#34;&gt;Sort.OrientationはXlSortOrientation列挙を使わない&lt;/h3&gt;
+&lt;p&gt;Sort.Orientationはソートを行か列かの設定を行うプロパティである。&lt;br&gt;
+この引数はXlSortOrientationを指定しているが、この列挙の変数名がややこしいということで使われていません。→&lt;a href=&#34;https://docs.microsoft.com/ja-jp/office/vba/api/excel.sort&#34;&gt;Sortオブジェクトのドキュメントにも使われていない&lt;/a&gt;&lt;br&gt;
+そこで代わりに&lt;code&gt;xlTopToBottom&lt;/code&gt;(行方向の並び替え)、&lt;code&gt;xlLeftToRight&lt;/code&gt;(列方向の並び替え)を使います。この列挙はエクセルのConstantsにあります。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-vb&#34; data-lang=&#34;vb&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Excel&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Constants&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;xlTopToBottom&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;恐らく後付けでこの定数を作成したんだとおもいます。(新しい列挙型作ってそれを引数にすればいいのに…)&lt;/p&gt;
+        
+      </description>
+    </item>
+    
     <item>
       <title>Giteaを使ってローカルでGitHubライクサーバーを作成する</title>
       <link>https://sakuya712.github.io/post/gitea/</link>
@@ -98,9 +175,15 @@ DLできたらDBを保存するディレクトリに移動させてください�
 GitHubと同じ感覚でクローン、プッシュ、プルリクなどができます。&lt;br&gt;
 それと他のPCからアクセスできるかも試してください。&lt;br&gt;
 できない場合は大抵はファイアウォールのせいです。&lt;code&gt;gitea.exe&lt;/code&gt;のローカルもしくはドメイン間だけ通信許可を出せば他のPCでも見れるようになると思います。&lt;br&gt;
-ローカルで使うならHTTPS化も要らないでしょう。ローカルサーバに入られたり、ホストのPCになにか仕掛けられないかぎり。&lt;br&gt;
-少なくとも会社のPCではないでしょう(起こってたら情シスが死にます)&lt;/p&gt;
-&lt;h3 id=&#34;5-自動的に起動させる&#34;&gt;5. 自動的に起動させる&lt;/h3&gt;
+ローカルで使うならHTTPS化もしません。ローカルサーバに入られたり、ホストのPCになにか仕掛けられないかぎり問題なし。&lt;/p&gt;
+&lt;p&gt;なお、Gitのプロキシ設定で対象を指定せずに使うとGiteaのリポジトリにアクセスできません。&lt;br&gt;
+.gitconfigで特定のURLのみプロキシを通すようにします。&lt;/p&gt;
+&lt;p&gt;GitHubでのみプロキシを使う場合は以下のように書きます。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-ini&#34; data-lang=&#34;ini&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;[http &amp;#34;https://github.com/&amp;#34;]&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;    &lt;span class=&#34;na&#34;&gt;proxy&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;プロキシURL&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;[https &amp;#34;https://github.com/&amp;#34;]&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;    &lt;span class=&#34;na&#34;&gt;proxy&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;プロキシURL&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;5-自動的に起動させる&#34;&gt;5. 自動的に起動させる&lt;/h3&gt;
 &lt;p&gt;環境はできたけど毎回パソコン起動するたびに&lt;code&gt;./gitea web&lt;/code&gt;とするのは面倒なので起動時に自動的に開始されるようにします。&lt;/p&gt;
 &lt;p&gt;といっても&lt;a href=&#34;https://docs.gitea.io/en-us/windows-service/&#34;&gt;公式&lt;/a&gt;に記載しているとおりにやるだけです。&lt;/p&gt;
 &lt;p&gt;まず、&lt;code&gt;C:\gitea\custom\conf\app.ini&lt;/code&gt;にあるファイルを開き&lt;code&gt;RUN_USER =&lt;/code&gt;の値をコンピュータ名にします。&lt;/p&gt;
