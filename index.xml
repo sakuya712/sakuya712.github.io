@@ -7,9 +7,128 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <copyright>Copyright © 2020–2021, sakuya712.</copyright>
-    <lastBuildDate>Sun, 09 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://sakuya712.github.io/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 05 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://sakuya712.github.io/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>CraftTweakerについてのメモ</title>
+      <title>MineCraft GTCE(GregTech)の日本語化</title>
+      <link>https://sakuya712.github.io/post/gtcejapanese/</link>
+      <pubDate>Sat, 05 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://sakuya712.github.io/post/gtcejapanese/</guid>
+      <description>
+        
+          &lt;p&gt;MineCraftのMODのGTCE(GregTech)の日本語化&lt;/p&gt;
+&lt;p&gt;目次&lt;/p&gt;
+&lt;!-- @import &#34;[TOC]&#34; {cmd=&#34;toc&#34; depthFrom=1 depthTo=6 orderedList=false} --&gt;
+&lt;!-- code_chunk_output --&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#gtcegregtech-community-edition%E3%81%A8%E3%81%AF&#34;&gt;GTCE(GregTech Community Edition)とは&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%E6%97%A5%E6%9C%AC%E8%AA%9E%E5%8C%96&#34;&gt;日本語化&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%E9%81%A9%E7%94%A8%E6%96%B9%E6%B3%95&#34;&gt;適用方法&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%E6%97%A5%E6%9C%AC%E8%AA%9E%E5%8C%96%E3%81%99%E3%82%8B%E3%81%AB%E4%BD%BF%E3%81%A3%E3%81%9F%E3%82%B5%E3%82%A4%E3%83%88%E3%83%84%E3%83%BC%E3%83%AB&#34;&gt;日本語化するに使ったサイト・ツール&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;!-- /code_chunk_output --&gt;
+&lt;h2 id=&#34;gtcegregtech-community-editionとは&#34;&gt;GTCE(GregTech Community Edition)とは&lt;/h2&gt;
+&lt;p&gt;GTCEはMineCraft ver1.12の大型工業MODです。&lt;br&gt;
+割と有名なMODですが大規模MODなので日本語がありません&lt;/p&gt;
+&lt;h2 id=&#34;日本語化&#34;&gt;日本語化&lt;/h2&gt;
+&lt;p&gt;需要があるかわかりませんがこのGTCEの日本語のlangファイルを作成しました。&lt;br&gt;
+全部は翻訳できていないですが、ゲーム上で表示される部分の9.5割くらいは完成しています。&lt;br&gt;
+※ GT5Uから引き継いでいるファイルみたいなのでGTCEでは未実装で使われていない箇所もあります。&lt;br&gt;
+そのような箇所はまだ翻訳していません。&lt;/p&gt;
+&lt;p&gt;リポジトリ&lt;br&gt;
+&lt;a href=&#34;https://github.com/sakuya712/GTCE_JapaneseLocalize&#34;&gt;https://github.com/sakuya712/GTCE_JapaneseLocalize&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;リポジトリにも書いている通りUnlicenseにしているので自由に加工してもらって構いません。&lt;/p&gt;
+&lt;h2 id=&#34;適用方法&#34;&gt;適用方法&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;MODファイルの拡張子をjarからzipに変更する&lt;/li&gt;
+&lt;li&gt;エクスプローラーで開いて&lt;code&gt;\assets\gregtech\lang&lt;/code&gt;まで進んでいく&lt;/li&gt;
+&lt;li&gt;ここに&lt;code&gt;ja_jp.lang&lt;/code&gt;ファイルを追加する&lt;/li&gt;
+&lt;li&gt;拡張子をjarに戻してマイクラを起動する&lt;/li&gt;
+&lt;li&gt;マイクラの言語設定を日本語に設定する&lt;/li&gt;
+&lt;li&gt;日本語化完了&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;日本語化するに使ったサイトツール&#34;&gt;日本語化するに使ったサイト・ツール&lt;/h2&gt;
+&lt;p&gt;これは余談になりますが、今回に日本語化するとき調べ方を書き留めて置きます。&lt;/p&gt;
+&lt;p&gt;実は直訳でいいなら簡単に作れてしまいます。&lt;br&gt;
+VScodeには&lt;a href=&#34;https://marketplace.visualstudio.com/items?itemName=funkyremi.vscode-google-translate&#34;&gt;Vscode Google Translate&lt;/a&gt;などの翻訳ツールがあるのでこれをインストール&lt;br&gt;
+翻訳するところをマルチ選択すれば一括で翻訳できます。&lt;/p&gt;
+&lt;p&gt;ですが、これで完成とはならないことが多いです。&lt;br&gt;
+はやり自動翻訳だと意味がわかりにくい、訳す必要がないものまで訳してしまいます。&lt;/p&gt;
+&lt;p&gt;なので結局おかしい所は個々で修正しました。&lt;br&gt;
+自分がこの作業をやっていて参考にしていたのはキクタンでお馴染みのアルクが提供する&lt;a href=&#34;https://eow.alc.co.jp/&#34;&gt;英辞郎&lt;/a&gt;でした。&lt;br&gt;
+単語の意味が多く書かれていて例文も多いのでいい感じの翻訳を作りやすかったです。&lt;/p&gt;
+&lt;p&gt;あとはたまに&lt;a href=&#34;https://ejje.weblio.jp/&#34;&gt;Weblio辞書&lt;/a&gt;も使っていました。&lt;br&gt;
+今回翻訳したものが化学などの専門用語が多いものでしたのでそういう時に使えます。&lt;br&gt;
+ただ、個々の意味を調べるときははやり英辞郎の方が優秀かと思います。&lt;/p&gt;
+&lt;p&gt;長文のときは&lt;a href=&#34;https://www.deepl.com/ja/translator&#34;&gt;DeepL翻訳&lt;/a&gt;も使います。&lt;br&gt;
+ただこれは補助で使う場合が多く、結局自分で文章を変えることが多かったです。&lt;/p&gt;
+&lt;p&gt;最終的には実際にゲームを起動して確認することも大事です。結局使われる場面で翻訳も変わるので、ここから修正というパターンもありました。&lt;/p&gt;
+&lt;p&gt;今回初めて日本語化ファイルをやってみてやっぱりゲームの翻訳って大変だなと思いました。&lt;br&gt;
+普通の文書を翻訳するより数倍疲れます。&lt;br&gt;
+PCゲームだとよく「日本語化はよ」とか言っている方がいますがやっぱり簡単にできるものではありません。&lt;br&gt;
+作成者には感謝して使っていきたいと思いました。&lt;/p&gt;
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>【Python】C#から機能を逆引きメモ</title>
+      <link>https://sakuya712.github.io/post/cspython/</link>
+      <pubDate>Tue, 11 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://sakuya712.github.io/post/cspython/</guid>
+      <description>
+        
+          &lt;p&gt;普段C#を知っていて、Pythonをたまに使う人向けのメモ&lt;/p&gt;
+&lt;!-- @import &#34;[TOC]&#34; {cmd=&#34;toc&#34; depthFrom=1 depthTo=6 orderedList=false} --&gt;
+&lt;!-- code_chunk_output --&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%E6%96%87%E5%AD%97%E5%88%97%E3%81%AE%E9%80%90%E8%AA%9E%E7%9A%84%E6%96%87%E5%AD%97%E5%88%97%E3%81%AFr&#34;&gt;文字列の@(逐語的文字列)はr&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#contains%E3%81%AF-%E5%80%A4-in-%E3%83%AA%E3%82%B9%E3%83%88&#34;&gt;Containsは 値 in リスト&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;!-- /code_chunk_output --&gt;
+&lt;h3 id=&#34;文字列の逐語的文字列はr&#34;&gt;文字列の@(逐語的文字列)はr&lt;/h3&gt;
+&lt;p&gt;特殊文字を無視したい場合エスケープ文字を使いますが、パス名など複数出る場合は面倒なのでこの文字列は&lt;code&gt;文字として扱え&lt;/code&gt;と指定することができます。&lt;br&gt;
+それをC#では逐語的文字列といいます。&lt;/p&gt;
+&lt;p&gt;C#&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-cs&#34; data-lang=&#34;cs&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;string&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;myStr&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;@&amp;#34;C:\foo\bar.png&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Python&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-py&#34; data-lang=&#34;py&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;myStr&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;sa&#34;&gt;r&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;C:\foo\bar.png&amp;#34;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;但し、Pythonでは逐語的文字列内でも&lt;code&gt;\&lt;/code&gt;はエスケープになるので&lt;code&gt;\&lt;/code&gt;を末尾につけることはできません。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-py&#34; data-lang=&#34;py&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;# ダブルクォーテーションをエスケープしてしまうのでエラーになる&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;sa&#34;&gt;r&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;C:\foo\bar&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\&amp;#34;&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;#これならOK&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;sa&#34;&gt;r&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;C:\foo\bar&amp;#34;&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;+&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;\\&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;# C:\foo\bar\&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;containsは-値-in-リスト&#34;&gt;Containsは 値 in リスト&lt;/h3&gt;
+&lt;p&gt;リストに存在するかどうかを調べたい場合は&lt;/p&gt;
+&lt;p&gt;C#&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-cs&#34; data-lang=&#34;cs&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;List&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;string&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;myList&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;new&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;List&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;string&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;()&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;    &lt;span class=&#34;s&#34;&gt;&amp;#34;A&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;B&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;C&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;D&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;E&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;};&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;System&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Diagnostics&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Debug&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;WriteLine&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;myList&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Contains&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;B&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;));&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;6&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;// true
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Python&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-py&#34; data-lang=&#34;py&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;mylist&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;[&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;A&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;B&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;C&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;D&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;,&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;E&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;]&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;B&amp;#34;&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;mylist&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;# true&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;これは文字列から文字が存在するかどうかを調べたい場合も同じです&lt;/p&gt;
+&lt;p&gt;C#&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-cs&#34; data-lang=&#34;cs&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;kt&#34;&gt;string&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;myStr&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s&#34;&gt;&amp;#34;HelloWorld&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;System&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Diagnostics&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Debug&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;WriteLine&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;myStr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;Contains&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s&#34;&gt;&amp;#34;Hello&amp;#34;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;));&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;// true
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Python&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-py&#34; data-lang=&#34;py&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;n&#34;&gt;myStr&lt;/span&gt; &lt;span class=&#34;o&#34;&gt;=&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;HelloWorld&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;print&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;Hello&amp;#34;&lt;/span&gt; &lt;span class=&#34;ow&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;n&#34;&gt;myStr&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;# true&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>CraftTweakerの構文メモ</title>
       <link>https://sakuya712.github.io/post/crafttweaker01/</link>
       <pubDate>Sun, 09 May 2021 00:00:00 +0000</pubDate>
       

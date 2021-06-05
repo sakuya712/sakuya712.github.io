@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>GregTech on saku note</title>
+    <link>https://sakuya712.github.io/tags/gregtech/</link>
+    <description>Recent content in GregTech on saku note</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <copyright>Copyright © 2020–2021, sakuya712.</copyright>
+    <lastBuildDate>Sat, 05 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://sakuya712.github.io/tags/gregtech/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>MineCraft GTCE(GregTech)の日本語化</title>
+      <link>https://sakuya712.github.io/post/gtcejapanese/</link>
+      <pubDate>Sat, 05 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://sakuya712.github.io/post/gtcejapanese/</guid>
+      <description>
+        
+          &lt;p&gt;MineCraftのMODのGTCE(GregTech)の日本語化&lt;/p&gt;
+&lt;p&gt;目次&lt;/p&gt;
+&lt;!-- @import &#34;[TOC]&#34; {cmd=&#34;toc&#34; depthFrom=1 depthTo=6 orderedList=false} --&gt;
+&lt;!-- code_chunk_output --&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#gtcegregtech-community-edition%E3%81%A8%E3%81%AF&#34;&gt;GTCE(GregTech Community Edition)とは&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%E6%97%A5%E6%9C%AC%E8%AA%9E%E5%8C%96&#34;&gt;日本語化&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%E9%81%A9%E7%94%A8%E6%96%B9%E6%B3%95&#34;&gt;適用方法&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%E6%97%A5%E6%9C%AC%E8%AA%9E%E5%8C%96%E3%81%99%E3%82%8B%E3%81%AB%E4%BD%BF%E3%81%A3%E3%81%9F%E3%82%B5%E3%82%A4%E3%83%88%E3%83%84%E3%83%BC%E3%83%AB&#34;&gt;日本語化するに使ったサイト・ツール&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;!-- /code_chunk_output --&gt;
+&lt;h2 id=&#34;gtcegregtech-community-editionとは&#34;&gt;GTCE(GregTech Community Edition)とは&lt;/h2&gt;
+&lt;p&gt;GTCEはMineCraft ver1.12の大型工業MODです。&lt;br&gt;
+割と有名なMODですが大規模MODなので日本語がありません&lt;/p&gt;
+&lt;h2 id=&#34;日本語化&#34;&gt;日本語化&lt;/h2&gt;
+&lt;p&gt;需要があるかわかりませんがこのGTCEの日本語のlangファイルを作成しました。&lt;br&gt;
+全部は翻訳できていないですが、ゲーム上で表示される部分の9.5割くらいは完成しています。&lt;br&gt;
+※ GT5Uから引き継いでいるファイルみたいなのでGTCEでは未実装で使われていない箇所もあります。&lt;br&gt;
+そのような箇所はまだ翻訳していません。&lt;/p&gt;
+&lt;p&gt;リポジトリ&lt;br&gt;
+&lt;a href=&#34;https://github.com/sakuya712/GTCE_JapaneseLocalize&#34;&gt;https://github.com/sakuya712/GTCE_JapaneseLocalize&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;リポジトリにも書いている通りUnlicenseにしているので自由に加工してもらって構いません。&lt;/p&gt;
+&lt;h2 id=&#34;適用方法&#34;&gt;適用方法&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;MODファイルの拡張子をjarからzipに変更する&lt;/li&gt;
+&lt;li&gt;エクスプローラーで開いて&lt;code&gt;\assets\gregtech\lang&lt;/code&gt;まで進んでいく&lt;/li&gt;
+&lt;li&gt;ここに&lt;code&gt;ja_jp.lang&lt;/code&gt;ファイルを追加する&lt;/li&gt;
+&lt;li&gt;拡張子をjarに戻してマイクラを起動する&lt;/li&gt;
+&lt;li&gt;マイクラの言語設定を日本語に設定する&lt;/li&gt;
+&lt;li&gt;日本語化完了&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;日本語化するに使ったサイトツール&#34;&gt;日本語化するに使ったサイト・ツール&lt;/h2&gt;
+&lt;p&gt;これは余談になりますが、今回に日本語化するとき調べ方を書き留めて置きます。&lt;/p&gt;
+&lt;p&gt;実は直訳でいいなら簡単に作れてしまいます。&lt;br&gt;
+VScodeには&lt;a href=&#34;https://marketplace.visualstudio.com/items?itemName=funkyremi.vscode-google-translate&#34;&gt;Vscode Google Translate&lt;/a&gt;などの翻訳ツールがあるのでこれをインストール&lt;br&gt;
+翻訳するところをマルチ選択すれば一括で翻訳できます。&lt;/p&gt;
+&lt;p&gt;ですが、これで完成とはならないことが多いです。&lt;br&gt;
+はやり自動翻訳だと意味がわかりにくい、訳す必要がないものまで訳してしまいます。&lt;/p&gt;
+&lt;p&gt;なので結局おかしい所は個々で修正しました。&lt;br&gt;
+自分がこの作業をやっていて参考にしていたのはキクタンでお馴染みのアルクが提供する&lt;a href=&#34;https://eow.alc.co.jp/&#34;&gt;英辞郎&lt;/a&gt;でした。&lt;br&gt;
+単語の意味が多く書かれていて例文も多いのでいい感じの翻訳を作りやすかったです。&lt;/p&gt;
+&lt;p&gt;あとはたまに&lt;a href=&#34;https://ejje.weblio.jp/&#34;&gt;Weblio辞書&lt;/a&gt;も使っていました。&lt;br&gt;
+今回翻訳したものが化学などの専門用語が多いものでしたのでそういう時に使えます。&lt;br&gt;
+ただ、個々の意味を調べるときははやり英辞郎の方が優秀かと思います。&lt;/p&gt;
+&lt;p&gt;長文のときは&lt;a href=&#34;https://www.deepl.com/ja/translator&#34;&gt;DeepL翻訳&lt;/a&gt;も使います。&lt;br&gt;
+ただこれは補助で使う場合が多く、結局自分で文章を変えることが多かったです。&lt;/p&gt;
+&lt;p&gt;最終的には実際にゲームを起動して確認することも大事です。結局使われる場面で翻訳も変わるので、ここから修正というパターンもありました。&lt;/p&gt;
+&lt;p&gt;今回初めて日本語化ファイルをやってみてやっぱりゲームの翻訳って大変だなと思いました。&lt;br&gt;
+普通の文書を翻訳するより数倍疲れます。&lt;br&gt;
+PCゲームだとよく「日本語化はよ」とか言っている方がいますがやっぱり簡単にできるものではありません。&lt;br&gt;
+作成者には感謝して使っていきたいと思いました。&lt;/p&gt;
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>
