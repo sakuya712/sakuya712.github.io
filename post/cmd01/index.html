@@ -169,16 +169,15 @@
 </code></pre></div><p>もちろん手動でコピペしてもできますが、フォルダが多いほどこれは面倒になります。<br>
 ということでこういうは自動化しようということでBATファイルを作成<br>
 忘れないようにメモ</p>
-<div class="highlight"><pre class="chroma"><code class="language-cmd" data-lang="cmd"><span class="ln"> 1</span><span class="p">@</span><span class="k">echo</span> off
-<span class="ln"> 2</span>
-<span class="ln"> 3</span><span class="c1">rem &#34;Drag And Drop the copy folder&#34;</span>
-<span class="ln"> 4</span>
-<span class="ln"> 5</span><span class="k">cd</span> <span class="nv">%1</span>
-<span class="ln"> 6</span><span class="k">cd</span> ..
-<span class="ln"> 7</span><span class="k">for</span> <span class="k">/f</span> <span class="se">%%</span>f <span class="k">in</span> <span class="p">(</span><span class="s1">&#39;dir /b /ad&#39;</span><span class="p">)</span> <span class="k">do</span> <span class="p">(</span>
-<span class="ln"> 8</span>    xcopy /e /y <span class="nv">%1</span> <span class="se">%%</span>f
-<span class="ln"> 9</span><span class="p">)</span>
-<span class="ln">10</span><span class="k">pause</span>
+<div class="highlight"><pre class="chroma"><code class="language-cmd" data-lang="cmd"><span class="ln">1</span><span class="p">@</span><span class="k">echo</span> off
+<span class="ln">2</span><span class="c1">rem &#34;Drag And Drop the copy folder&#34;</span>
+<span class="ln">3</span>
+<span class="ln">4</span><span class="k">cd</span> <span class="nv">%1</span>
+<span class="ln">5</span><span class="k">cd</span> ..
+<span class="ln">6</span><span class="k">for</span> <span class="k">/f</span> <span class="se">%%</span>f <span class="k">in</span> <span class="p">(</span><span class="s1">&#39;dir /b /ad&#39;</span><span class="p">)</span> <span class="k">do</span> <span class="p">(</span>
+<span class="ln">7</span>    xcopy /e /y <span class="nv">%1</span> <span class="se">%%</span>f
+<span class="ln">8</span><span class="p">)</span>
+<span class="ln">9</span><span class="k">pause</span>
 </code></pre></div><p>ベースとなるフォルダをドラッグアンドドロップでBATを実行してください。<br>
 (普通にダブルクリックしてもなにも起こりません)<br>
 するとベースと同じ階層にある各フォルダにコピーしてくれます。<br>
@@ -214,6 +213,9 @@ BAT後</p>
         <a href="https://sakuya712.github.io/post/crafttweaker01/" class="nav-link" title="CraftTweakerの構文メモ">CraftTweakerの構文メモ</a>
       </li>
       <li>
+        <a href="https://sakuya712.github.io/post/vscode01/" class="nav-link" title="コマンド【code】後コマンドプロンプトを閉じたい">コマンド【code】後コマンドプロンプトを閉じたい</a>
+      </li>
+      <li>
         <a href="https://sakuya712.github.io/post/vbamemo/" class="nav-link" title="VBA メモ">VBA メモ</a>
       </li>
       <li>
@@ -224,9 +226,6 @@ BAT後</p>
       </li>
       <li>
         <a href="https://sakuya712.github.io/post/hugogithubpages/" class="nav-link" title="10分で静的サイトを作成する【Hugo&#43;GitHub Pages】">10分で静的サイトを作成する【Hugo&#43;GitHub Pages】</a>
-      </li>
-      <li>
-        <a href="https://sakuya712.github.io/post/hypervshareserver/" class="nav-link" title="Hyper-Vで簡単LAN内ファイル共有ファイル構築">Hyper-Vで簡単LAN内ファイル共有ファイル構築</a>
       </li>
     </ul>
     <div>
@@ -254,6 +253,11 @@ BAT後</p>
         
         <a href='https://sakuya712.github.io/categories/vba/' class="post_tag button button_translucent" title="vba">
           VBA
+          <span class="button_tally">1</span>
+        </a>
+        
+        <a href='https://sakuya712.github.io/categories/vscode/' class="post_tag button button_translucent" title="vscode">
+          VSCODE
           <span class="button_tally">1</span>
         </a>
         
@@ -423,6 +427,10 @@ BAT後</p>
             
             
             <a href='https://sakuya712.github.io/tags/vba/' class=" post_tag button button_translucent" data-position=1 title="vba">VBA<span class="button_tally">1</span>
+            </a>
+            
+            
+            <a href='https://sakuya712.github.io/tags/vscode/' class=" post_tag button button_translucent" data-position=1 title="vscode">VSCODE<span class="button_tally">1</span>
             </a>
             
             

@@ -31,16 +31,15 @@
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;もちろん手動でコピペしてもできますが、フォルダが多いほどこれは面倒になります。&lt;br&gt;
 ということでこういうは自動化しようということでBATファイルを作成&lt;br&gt;
 忘れないようにメモ&lt;/p&gt;
-&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-cmd&#34; data-lang=&#34;cmd&#34;&gt;&lt;span class=&#34;ln&#34;&gt; 1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;@&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;echo&lt;/span&gt; off
-&lt;span class=&#34;ln&#34;&gt; 2&lt;/span&gt;
-&lt;span class=&#34;ln&#34;&gt; 3&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;rem &amp;#34;Drag And Drop the copy folder&amp;#34;&lt;/span&gt;
-&lt;span class=&#34;ln&#34;&gt; 4&lt;/span&gt;
-&lt;span class=&#34;ln&#34;&gt; 5&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;cd&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;%1&lt;/span&gt;
-&lt;span class=&#34;ln&#34;&gt; 6&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;cd&lt;/span&gt; ..
-&lt;span class=&#34;ln&#34;&gt; 7&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;/f&lt;/span&gt; &lt;span class=&#34;se&#34;&gt;%%&lt;/span&gt;f &lt;span class=&#34;k&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;dir /b /ad&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;do&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
-&lt;span class=&#34;ln&#34;&gt; 8&lt;/span&gt;    xcopy /e /y &lt;span class=&#34;nv&#34;&gt;%1&lt;/span&gt; &lt;span class=&#34;se&#34;&gt;%%&lt;/span&gt;f
-&lt;span class=&#34;ln&#34;&gt; 9&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
-&lt;span class=&#34;ln&#34;&gt;10&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;pause&lt;/span&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-cmd&#34; data-lang=&#34;cmd&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;@&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;echo&lt;/span&gt; off
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;rem &amp;#34;Drag And Drop the copy folder&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;cd&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;%1&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;cd&lt;/span&gt; ..
+&lt;span class=&#34;ln&#34;&gt;6&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;/f&lt;/span&gt; &lt;span class=&#34;se&#34;&gt;%%&lt;/span&gt;f &lt;span class=&#34;k&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;dir /b /ad&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;do&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;7&lt;/span&gt;    xcopy /e /y &lt;span class=&#34;nv&#34;&gt;%1&lt;/span&gt; &lt;span class=&#34;se&#34;&gt;%%&lt;/span&gt;f
+&lt;span class=&#34;ln&#34;&gt;8&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;9&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;pause&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;ベースとなるフォルダをドラッグアンドドロップでBATを実行してください。&lt;br&gt;
 (普通にダブルクリックしてもなにも起こりません)&lt;br&gt;
 するとベースと同じ階層にある各フォルダにコピーしてくれます。&lt;br&gt;
@@ -490,6 +489,50 @@ CraftTweakerとはレシピなどをスクリプトで書き換えることが�
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>コマンド【code】後コマンドプロンプトを閉じたい</title>
+      <link>https://sakuya712.github.io/post/vscode01/</link>
+      <pubDate>Fri, 07 May 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://sakuya712.github.io/post/vscode01/</guid>
+      <description>
+        
+          &lt;p&gt;VSCodeのコマンドcodeの話&lt;/p&gt;
+&lt;h2 id=&#34;コマンドcode後コマンドプロンプトを閉じたい&#34;&gt;コマンド【code】後コマンドプロンプトを閉じたい&lt;/h2&gt;
+&lt;p&gt;VSCodeにはコマンドプロンプトから呼び出せるように&lt;code&gt;code&lt;/code&gt;というコマンドが用意されています。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-cmd&#34; data-lang=&#34;cmd&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;code .
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;と入力すれば現在のディレクトリをワークスペースとしてVSCodeを開けるので便利です。&lt;br&gt;
+しかしこの方法、VSCodeが開いてもコマンドプロンプトは起動したままです。&lt;br&gt;
+これは恐らくnanoやviみたいにCUIで操作する人が使うイメージを想定しているんだと思いますが、&lt;br&gt;
+バッチファイルなどの何らかの処理をcmdで返してVSCodeを起動したいだけの場合はコマンドプロンプトが残るのは邪魔でしかありません。&lt;br&gt;
+そこでVSCodeを起動したらコマンドプロンプトが閉じるようなコマンドを追加したいと思います。&lt;/p&gt;
+&lt;h2 id=&#34;解決方法&#34;&gt;解決方法&lt;/h2&gt;
+&lt;p&gt;調べてみると同様のことが&lt;a href=&#34;https://github.com/Microsoft/vscode/issues/6608&#34;&gt;issue&lt;/a&gt;にありました。&lt;br&gt;
+要約すると&lt;br&gt;
+windowsの場合特に弄ってなければcodeを実行させている実態は以下の場所にあります。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;%LOCALAPPDATA%\Programs\Microsoft VS Code\bin
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;フルパスは
+&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;C:\Users\[ユーザー名]\AppData\Local\Programs\Microsoft VS Code\bin
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;そこにある&lt;code&gt;code.cmd&lt;/code&gt;をコピーして適当にリネームします。&lt;br&gt;
+ここでは&lt;code&gt;codeExit.cmd&lt;/code&gt;とします。&lt;br&gt;
+これをエディタなどで開いて5行目を修正する。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-cmd&#34; data-lang=&#34;cmd&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;%~dp0&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;..\Code.exe&amp;#34;&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;%~dp0&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;..\resources\app\out\cli.js&amp;#34;&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;%*&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;を
+&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;start&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;&amp;#34;&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;%~dp0&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;..\Code.exe&amp;#34;&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;%~dp0&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;..\resources\app\out\cli.js&amp;#34;&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;%*&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;に変更する
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;これで完了&lt;br&gt;
+試しに&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-cmd&#34; data-lang=&#34;cmd&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;codeExit .
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;というバッチを作成して実行するとVSCodeが開き、コマンドプロンプトは閉じてくれました。&lt;/p&gt;
+&lt;p&gt;念のため修正したところを解説すると&lt;br&gt;
+どうやら通常のcodeは(省略されていますが)callで呼んでいるみたいです。&lt;br&gt;
+callは呼んだルーチンが終了するのを待つのでVSCodeが閉じられるまでコマンドプロンプトが開きっぱなしということが起こります。&lt;br&gt;
+しかし、startで呼ぶと新しいプロセスとして実行されるため、VScodeを開く命令をしたあと最終行に到達し、コマンドプロンプトが閉じるということらしいです。&lt;br&gt;
+なお&amp;quot;&amp;quot;の空文字は新しいプロセスを実行するときのウィンドウ名です。なので特に意味はありません。(但し、無くすことはできない)&lt;/p&gt;
         
       </description>
     </item>
