@@ -7,7 +7,134 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <copyright>Copyright © 2020–2021, sakuya712.</copyright>
-    <lastBuildDate>Sun, 06 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://sakuya712.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 20 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://sakuya712.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>【cmd】毎日決まった時間にバックアップし、一定期間経つと削除する方法</title>
+      <link>https://sakuya712.github.io/post/cmd02/</link>
+      <pubDate>Sun, 20 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://sakuya712.github.io/post/cmd02/</guid>
+      <description>
+        
+          &lt;p&gt;毎日自動でバックアップする方法&lt;/p&gt;
+&lt;p&gt;目次&lt;/p&gt;
+&lt;!-- @import &#34;[TOC]&#34; {cmd=&#34;toc&#34; depthFrom=1 depthTo=6 orderedList=false} --&gt;
+&lt;!-- code_chunk_output --&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%E4%BD%9C%E3%82%8B%E3%81%8D%E3%81%A3%E3%81%8B%E3%81%91&#34;&gt;作るきっかけ&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#windows%E3%81%AF%E3%82%BF%E3%82%B9%E3%82%AF%E3%82%B9%E3%82%B1%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%A9%E3%81%A7%E8%87%AA%E5%8B%95%E5%8C%96%E3%81%A7%E3%81%8D%E3%82%8B&#34;&gt;windowsはタスクスケジューラで自動化できる&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#bat%E4%BD%9C%E6%88%90&#34;&gt;bat作成&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#gitea%E3%81%AE%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%92%E3%82%B7%E3%83%A3%E3%83%83%E3%83%88%E3%83%80%E3%82%A6%E3%83%B3%E3%81%99%E3%82%8B&#34;&gt;Giteaのサーバーをシャットダウンする&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#gitea%E3%81%AE%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E3%83%90%E3%83%83%E3%82%AF%E3%82%A2%E3%83%83%E3%83%97%E3%81%99%E3%82%8B&#34;&gt;Giteaのデータをバックアップする&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%E5%8F%A4%E3%81%84%E3%83%90%E3%83%83%E3%82%AF%E3%82%A2%E3%83%83%E3%83%97%E3%82%92%E5%89%8A%E9%99%A4%E3%81%99%E3%82%8B&#34;&gt;古いバックアップを削除する&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#gitea%E3%81%AE%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%92%E5%86%8D%E8%B5%B7%E5%8B%95%E3%81%99%E3%82%8B&#34;&gt;Giteaのサーバーを再起動する&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%E3%82%B9%E3%82%B1%E3%82%B8%E3%83%A5%E3%83%BC%E3%83%AB%E3%82%92%E7%99%BB%E9%8C%B2%E3%81%99%E3%82%8B&#34;&gt;スケジュールを登録する&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;!-- /code_chunk_output --&gt;
+&lt;h2 id=&#34;作るきっかけ&#34;&gt;作るきっかけ&lt;/h2&gt;
+&lt;p&gt;&lt;a href=&#34;https://sakuya712.github.io/post/gitea/&#34;&gt;前の記事&lt;/a&gt;でローカルにGiteaを立ち上げてたのですが、さすがにバックアップはしておこうということで自動でバックアップする方法調べました。&lt;br&gt;
+ただ、無尽蔵のバックアップしてもストレージを圧迫するだけなので、一定のバックアップ個数になると古いものを消すような細工をしたいと思います。&lt;/p&gt;
+&lt;p&gt;なおこの記事はGiteaのバックアップを前提に書いていますが、普通のバックアップにももちろん使用できます。&lt;/p&gt;
+&lt;h2 id=&#34;windowsはタスクスケジューラで自動化できる&#34;&gt;windowsはタスクスケジューラで自動化できる&lt;/h2&gt;
+&lt;p&gt;あまり使っている方は少ないかもしれませんが、windowsにはタスクスケジューラという便利ツールが最初からインストールされています。&lt;br&gt;
+これを使用することで特定のタイミングでbatを走らせたりできます。&lt;br&gt;
+今回の場合は&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Giteaのサーバーをシャットダウンする&lt;/li&gt;
+&lt;li&gt;Giteaのデータをバックアップする&lt;/li&gt;
+&lt;li&gt;古いバックアップを削除する&lt;/li&gt;
+&lt;li&gt;Giteaのサーバーを再起動する&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;これを毎日自動的にやらせます。&lt;/p&gt;
+&lt;h2 id=&#34;bat作成&#34;&gt;bat作成&lt;/h2&gt;
+&lt;p&gt;では実際に自動化するためのbatを作成してみます。&lt;br&gt;
+なお通常のバックアップの場合は、サーバーのシャットダウン、再起動の部分は飛ばして問題ありません&lt;/p&gt;
+&lt;h3 id=&#34;giteaのサーバーをシャットダウンする&#34;&gt;Giteaのサーバーをシャットダウンする&lt;/h3&gt;
+&lt;p&gt;Giteaを立ち上げたままだとコピーできないので、最初はサーバーを落とす必要があります。&lt;br&gt;
+そのbatファイルはこのように書きます。&lt;br&gt;
+「Gitea」の部分はサービスに登録されている名前です。&lt;/p&gt;
+&lt;p&gt;ServerShutdown.bat&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bat&#34; data-lang=&#34;bat&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;sc stop Gitea
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;giteaのデータをバックアップする&#34;&gt;Giteaのデータをバックアップする&lt;/h3&gt;
+&lt;p&gt;次に実際にバックアップを取ります。
+今日の日付を取得して、&lt;code&gt;20210620&lt;/code&gt;のようなフォルダを作成しそこにコピーしてきます。&lt;/p&gt;
+&lt;p&gt;※バックアップするフォルダとバックアップ先のパスを設定してください&lt;br&gt;
+Backup.bat&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bat&#34; data-lang=&#34;bat&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;echo&lt;/span&gt; off
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;set&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;now&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;=&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;%date:/=%&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;rem コピー元&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;Set&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;SourcePath&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;=&lt;/span&gt;C:\foo
+&lt;span class=&#34;ln&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;rem コピー先&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;6&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;Set&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;CopyToPath&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;=&lt;/span&gt;D:\bar\GiteaBackup\&lt;span class=&#34;nv&#34;&gt;%now%&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;7&lt;/span&gt;robocopy /e /xo &lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;%SourcePath%&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;  &lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;%CopyToPath%&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;古いバックアップを削除する&#34;&gt;古いバックアップを削除する&lt;/h3&gt;
+&lt;p&gt;今度は古いバックアップを削除するbatです。&lt;br&gt;
+バックアップしている親ディレクトリを設定して、&lt;code&gt;count&lt;/code&gt;で残して置く個数を設定しておきます。&lt;/p&gt;
+&lt;p&gt;DelOldBackup.bat&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bat&#34; data-lang=&#34;bat&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;echo&lt;/span&gt; off
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;rem バックアップしているディレクトリ&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;set&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;BackupDir&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;=&lt;/span&gt;D:\bar\GiteaBackup
+&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;rem 保存するファイル世代の数&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;set&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;count&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;=&lt;/span&gt;10
+&lt;span class=&#34;ln&#34;&gt;6&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;cd&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;%BackupDir%&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;7&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;/f&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;skip=&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;%count%&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt; &lt;span class=&#34;se&#34;&gt;%%&lt;/span&gt;f &lt;span class=&#34;k&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;dir /b /ad /o-n&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;do&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;8&lt;/span&gt;    &lt;span class=&#34;k&#34;&gt;rmdir&lt;/span&gt; rd /s /q &lt;span class=&#34;se&#34;&gt;%%&lt;/span&gt;f
+&lt;span class=&#34;ln&#34;&gt;9&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;これについて少し解説しておくと&lt;br&gt;
+&lt;code&gt;dir /b /ad /o-n&lt;/code&gt;はフォルダを降順で列挙します。&lt;br&gt;
+つまり&lt;code&gt;202106020, 202106021, 202106022&lt;/code&gt;のフォルダがあれば&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bat&#34; data-lang=&#34;bat&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;202106022
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;202106021
+&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;202106020
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;のように列挙されす。
+それを&lt;code&gt;count&lt;/code&gt;で設定した分だけスキップして、for文内にある&lt;code&gt;rmdir&lt;/code&gt;のディレクトリ削除を行うので&lt;br&gt;
+&lt;code&gt;count&lt;/code&gt;で設定したバックアップ数より多い場合、古いフォルダが削除されるということになります。&lt;/p&gt;
+&lt;h3 id=&#34;giteaのサーバーを再起動する&#34;&gt;Giteaのサーバーを再起動する&lt;/h3&gt;
+&lt;p&gt;最後にGiteaを再起動します。&lt;/p&gt;
+&lt;p&gt;ServerBoot.bat&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bat&#34; data-lang=&#34;bat&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;sc start Gitea
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h2 id=&#34;スケジュールを登録する&#34;&gt;スケジュールを登録する&lt;/h2&gt;
+&lt;p&gt;タスクスケジューラはスタートからでもできますが、GUIだと面倒なのでこれもcmdでやってしまいましょう。
+先ほど作成したbatファイルをバックアップしているディレクトリに置きます。&lt;br&gt;
+イメージとしてはこんな感じ&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;GiteaBackup
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;    ├20210620 ─ バックアップデータ
+&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;    ...
+&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;    ├Backup.bat
+&lt;span class=&#34;ln&#34;&gt;5&lt;/span&gt;    ├DelOldBackup.bat
+&lt;span class=&#34;ln&#34;&gt;6&lt;/span&gt;    ├ServerBoot.bat
+&lt;span class=&#34;ln&#34;&gt;7&lt;/span&gt;    └ServerShutdown.bat
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;そして新たに以下のようなbatファイルを作成し、バックアップ頻度や時間を指定(後述)を修正、完成したら&lt;code&gt;管理者として実行&lt;/code&gt;で実行します。 &lt;br&gt;
+TaskAdd.bat&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bat&#34; data-lang=&#34;bat&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;echo&lt;/span&gt; off
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;set&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;batDir&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;=&lt;/span&gt;D:\bar\GiteaBackup\
+&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;schtasks /create /tn &lt;span class=&#34;s2&#34;&gt;&amp;#34;Giteaシャットダウン&amp;#34;&lt;/span&gt; /tr &lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;%batDir%&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;ServerShutdown.bat&amp;#34;&lt;/span&gt; /sc DAILY /st 12:05 /rl highest /F
+&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;schtasks /create /tn &lt;span class=&#34;s2&#34;&gt;&amp;#34;Giteaバックアップ&amp;#34;&lt;/span&gt; /tr &lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;%batDir%&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;Backup.bat&amp;#34;&lt;/span&gt; /sc DAILY /st 12:06 /rl highest /F
+&lt;span class=&#34;ln&#34;&gt;5&lt;/span&gt;schtasks /create /tn &lt;span class=&#34;s2&#34;&gt;&amp;#34;Gitea旧バックアップ削除&amp;#34;&lt;/span&gt; /tr &lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;%batDir%&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;DelOldBackup.bat&amp;#34;&lt;/span&gt; /sc DAILY /st 12:09 /rl highest /F
+&lt;span class=&#34;ln&#34;&gt;6&lt;/span&gt;schtasks /create /tn &lt;span class=&#34;s2&#34;&gt;&amp;#34;Gitea再起動&amp;#34;&lt;/span&gt; /tr &lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;%batDir%&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;ServerBoot.bat&amp;#34;&lt;/span&gt; /sc DAILY /st 12:10 /rl highest /F
+&lt;span class=&#34;ln&#34;&gt;7&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;pause&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;なにも問題なければタスクスケジューラに登録されています。&lt;/p&gt;
+&lt;p&gt;意味を解説すると&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;schtasks /create&lt;/code&gt;でタスクスケジューラに新規登録&lt;br&gt;
+&lt;code&gt;/tn &amp;quot;Giteaシャットダウン&amp;quot;&lt;/code&gt;でタスク名を設定&lt;br&gt;
+&lt;code&gt;/tr &amp;quot;%batDir%ServerShutdown.bat&amp;quot;&lt;/code&gt;で実行するものを設定&lt;br&gt;
+&lt;code&gt;/sc DAILY&lt;/code&gt;(1日ごと)で実行頻度を設定&lt;br&gt;
+これには他にも、&lt;code&gt;HOURLY&lt;/code&gt;(1時間ごと),&lt;code&gt;WEEKLY&lt;/code&gt;(一週間ごと),&lt;code&gt;MONTHLY&lt;/code&gt;(1か月ごと)などがあります&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;/st 12:05&lt;/code&gt;で実行する時間を指定&lt;br&gt;
+自分は12:00から昼休みなので、
+12:05にサーバーをシャットダウン-&amp;gt;12:06にバックアップ-&amp;gt;12:09に重複削除、12:10にサーバー再起動としています。&lt;br&gt;
+これはお好みで弄ってください。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;/rl highest&lt;/code&gt;で管理者として実行します。サービスの停止/実行には管理者実行が必要です。&lt;br&gt;
+&lt;code&gt;/F&lt;/code&gt;同名のタスクがある場合は上書きします。&lt;/p&gt;
+&lt;p&gt;指定した時間に実行されれば成功です。&lt;/p&gt;
+&lt;p&gt;これで万が一メインPCがぶっ壊れてもGiteaのリポジトリは生存できる状態になりました。&lt;/p&gt;
+        
+      </description>
+    </item>
+    
     <item>
       <title>【cmd】ベースフォルダの中身を同じ階層のフォルダに一括コピー</title>
       <link>https://sakuya712.github.io/post/cmd01/</link>
