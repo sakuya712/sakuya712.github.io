@@ -7,7 +7,115 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
     <copyright>Copyright © 2020–2021, sakuya712.</copyright>
-    <lastBuildDate>Fri, 07 May 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://sakuya712.github.io/tags/vscode/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 01 Aug 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://sakuya712.github.io/tags/vscode/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>VSCodeでGASの開発できるようにする</title>
+      <link>https://sakuya712.github.io/post/vscode-gas01/</link>
+      <pubDate>Sun, 01 Aug 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://sakuya712.github.io/post/vscode-gas01/</guid>
+      <description>
+        
+          &lt;p&gt;GASをVSCodeで書きたい&lt;/p&gt;
+&lt;h2 id=&#34;gasはtypescriptで書ける&#34;&gt;GASはTypeScriptで書ける&lt;/h2&gt;
+&lt;p&gt;Google Apps Scripts（GAS）はJavaScriptベースで作れた言語です。&lt;br&gt;
+初期のころはブラウザ上でコーディングしていく感じでしたがgoogleが&lt;a href=&#34;https://github.com/google/clasp&#34;&gt;clasp&lt;/a&gt;というツールを開発したおかげでローカル環境で開発、TypeScriptを変換してGASを書けるようになりました。&lt;br&gt;
+これによりVSCodeでも簡単に開発可能になりました。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;TypeScriptを知らない方へ&lt;/p&gt;
+&lt;p&gt;TypeScriptはJavaScriptを静的型付をしてメンテナンス性を向上させた言語です。&lt;br&gt;
+型推論がある程度されるのでエディタが対応していれば入力補完がいい感じになります。&lt;br&gt;
+そしてVSCodeはTypeScriptの入力補完は高性能です。&lt;br&gt;
+(VSCode自体, Electron + Node.js + TypeScriptで作成されています)&lt;/p&gt;
+&lt;p&gt;このページではTypeScript(.ts)前提で進めますが、JavaScript(.js)でもプッシュできます。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;開発環境を構築する&#34;&gt;開発環境を構築する&lt;/h2&gt;
+&lt;h3 id=&#34;1-nodejsをインストールする&#34;&gt;1. Node.jsをインストールする&lt;/h3&gt;
+&lt;p&gt;npmを使うのでNode.jsを使います。&lt;br&gt;
+LTS(推奨版)が無難です。この記事を書いたときは14.17.4でした&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://nodejs.org/ja/&#34;&gt;https://nodejs.org/ja/&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;2-typescripttslinstclaspをインストール&#34;&gt;2. TypeScript、TSLinst、claspをインストール&lt;/h3&gt;
+&lt;p&gt;TypeScriptで使うこの２つをインストール&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-cmd&#34; data-lang=&#34;cmd&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;npm install -g typescript
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;npm install -g tslint
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;で、今回の要であるclaspをインストール
+これにより、googleと通信可能になります&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-cmd&#34; data-lang=&#34;cmd&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;npm install -g @google/clasp
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;3-google-apps-script-apiをオンにする&#34;&gt;3. Google Apps Script APIをオンにする&lt;/h3&gt;
+&lt;p&gt;初期設定ではAPIは使えないようになっています。&lt;br&gt;
+Googleにログインして以下のURLからAPIをオンに変更してください。&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://script.google.com/home/usersettings&#34;&gt;https://script.google.com/home/usersettings&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;4-ワークスペースを作成する&#34;&gt;4. ワークスペースを作成する。&lt;/h3&gt;
+&lt;p&gt;ワークスペースとなるディレクトリを作成します。&lt;br&gt;
+ここでは分かりやすくC直下にGASディレクトリを作成し、&lt;code&gt;C:\GAS\test1&lt;/code&gt;で開発したいともいます。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-cmd&#34; data-lang=&#34;cmd&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;cd&lt;/span&gt; \
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;mkdir&lt;/span&gt; GAS
+&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;cd&lt;/span&gt; GAS
+&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;mkdir&lt;/span&gt; test1
+&lt;span class=&#34;ln&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;cd&lt;/span&gt; test1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;作成できたら&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-cmd&#34; data-lang=&#34;cmd&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;npm init --y
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;でpackage.jsonを作成します。
+そのあと定義ファイルが入ったファイルを取得します。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-cmd&#34; data-lang=&#34;cmd&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;npm i @types/google-apps-script --save-dev
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;これでVSCode上でも入力補完が使えるようになります。&lt;/p&gt;
+&lt;h3 id=&#34;5-claspを使っていろいろ弄ってみる&#34;&gt;5. claspを使っていろいろ弄ってみる&lt;/h3&gt;
+&lt;p&gt;GASを弄るには最初にログインします。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-cmd&#34; data-lang=&#34;cmd&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;clasp login
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;を実行するとブラウザが立ち上がり、アクセス許可を聞いてくるので許可します。&lt;/p&gt;
+&lt;p&gt;次にプロジェクトを作成してみます。&lt;br&gt;
+&amp;quot;Hello&amp;quot;はプロジェクト名になります。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-cmd&#34; data-lang=&#34;cmd&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;clasp create --title &lt;span class=&#34;s2&#34;&gt;&amp;#34;Hello&amp;#34;&lt;/span&gt; --rootDir ./src
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;すると以下のように聞いてくるので矢印キーで作成したいものを選びます。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-cmd&#34; data-lang=&#34;cmd&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;? Create which script? (Use arrow keys)
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;&amp;gt;&lt;/span&gt; standalone
+&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;  docs
+&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;  sheets
+&lt;span class=&#34;ln&#34;&gt;5&lt;/span&gt;  slides
+&lt;span class=&#34;ln&#34;&gt;6&lt;/span&gt;  forms
+&lt;span class=&#34;ln&#34;&gt;7&lt;/span&gt;  webapp
+&lt;span class=&#34;ln&#34;&gt;8&lt;/span&gt;  api
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;ここではテストをしたいだけなのでstandaloneを選ぶことにします。&lt;/p&gt;
+&lt;p&gt;作成されたか確認してみます。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-cmd&#34; data-lang=&#34;cmd&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;clasp open
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;を実行するとブラウザで作成したプロジェクトが開かれます。&lt;/p&gt;
+&lt;h3 id=&#34;6-実際に書いてpush-pullしてみる&#34;&gt;6. 実際に書いてpush, pullしてみる&lt;/h3&gt;
+&lt;p&gt;ここからはVSCodeを使って実際に書いてみます。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-cmd&#34; data-lang=&#34;cmd&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;code .
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;このディレクトリをワークスペースとして開きます。
+srcフォルダにHelloWorld.tsを作成し&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-ts&#34; data-lang=&#34;ts&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Hello() {&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;    &lt;span class=&#34;nx&#34;&gt;Logger&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;log&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;HelloWorld&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;  &lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;をコピペして保存します。
+このとき&lt;code&gt;log&lt;/code&gt;を選択すると&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;(method) GoogleAppsScript.Base.Logger.log(data: any): GoogleAppsScript.Base.Logger (+1 overload)
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;ちゃんとGASのメソッドの説明が読み込めていることが分かります。もちろん補完もされます。&lt;/p&gt;
+&lt;p&gt;これをプロジェクト側に反映したいと思います。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-cmd&#34; data-lang=&#34;cmd&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;clasp push
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;を実行するとpushします。&lt;br&gt;
+ブラウザでプロジェクトを確認するとHelloWorld.gsが作成されています&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;// Compiled using test1 1.0.0 (TypeScript 4.3.5)
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Hello&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;    &lt;span class=&#34;nx&#34;&gt;Logger&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;log&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;HelloWorld&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;逆にpullしたい場合は&lt;code&gt;clasp pull&lt;/code&gt;をするだけです。&lt;br&gt;
+ブラウザ側で&lt;code&gt;こんにちは&lt;/code&gt;に変えて保存&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-js&#34; data-lang=&#34;js&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;// Compiled using test1 1.0.0 (TypeScript 4.3.5)
+&lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;&lt;span class=&#34;kd&#34;&gt;function&lt;/span&gt; &lt;span class=&#34;nx&#34;&gt;Hello&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;()&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;{&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;    &lt;span class=&#34;nx&#34;&gt;Logger&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;.&lt;/span&gt;&lt;span class=&#34;nx&#34;&gt;log&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;こんにちは&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;);&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;pullすると&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-cmd&#34; data-lang=&#34;cmd&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;clasp pull
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;HelloWorld.js&lt;/code&gt;がローカルに作成されます。&lt;/p&gt;
+&lt;p&gt;これでVSCodeで開発できるようになりました。&lt;br&gt;
+自分もこれで本格的にスプレッドシートのスクリプトを作成していきたいと思います。&lt;/p&gt;
+        
+      </description>
+    </item>
+    
     <item>
       <title>コマンド【code】後コマンドプロンプトを閉じたい</title>
       <link>https://sakuya712.github.io/post/vscode01/</link>
