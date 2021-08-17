@@ -219,11 +219,11 @@ Backup.bat</p>
 <span class="ln">4</span><span class="c1">rem 保存するファイル世代の数</span>
 <span class="ln">5</span><span class="k">set</span> <span class="nv">count</span><span class="p">=</span>10
 <span class="ln">6</span><span class="k">cd</span> <span class="nv">%BackupDir%</span>
-<span class="ln">7</span><span class="k">for</span> <span class="k">/f</span> <span class="s2">&#34;skip=</span><span class="nv">%count%</span><span class="s2">&#34;</span> <span class="se">%%</span>f <span class="k">in</span> <span class="p">(</span><span class="s1">&#39;dir /b /ad /o-n&#39;</span><span class="p">)</span> <span class="k">do</span> <span class="p">(</span>
-<span class="ln">8</span>    <span class="k">rmdir</span> rd /s /q <span class="se">%%</span>f
+<span class="ln">7</span><span class="k">for</span> <span class="k">/f</span> <span class="s2">&#34;skip=</span><span class="nv">%count%</span><span class="s2">&#34;</span> <span class="se">%%</span>f <span class="k">in</span> <span class="p">(</span><span class="s1">&#39;dir &#34;</span><span class="nv">%BackupDir%</span><span class="s1">&#34; /b /ad /o-n&#39;</span><span class="p">)</span> <span class="k">do</span> <span class="p">(</span>
+<span class="ln">8</span>    <span class="k">rmdir</span> rd /s /q <span class="s2">&#34;</span><span class="nv">%BackupDir%</span><span class="s2">\</span><span class="se">%%</span><span class="s2">f&#34;</span>
 <span class="ln">9</span><span class="p">)</span>
 </code></pre></div><p>これについて少し解説しておくと<br>
-<code>dir /b /ad /o-n</code>はフォルダを降順で列挙します。<br>
+<code>dir &quot;%BackupDir%&quot; /b /ad /o-n</code>はBackupDirにあるフォルダを降順で列挙します。<br>
 つまり<code>202106020, 202106021, 202106022</code>のフォルダがあれば</p>
 <div class="highlight"><pre class="chroma"><code class="language-bat" data-lang="bat"><span class="ln">1</span>202106022
 <span class="ln">2</span>202106021
@@ -282,7 +282,10 @@ TaskAdd.bat</p>
     <h2 class="mt-4">最近の記事</h2>
     <ul class="flex-column">
       <li>
-        <a href="https://sakuya712.github.io/post/vscode-gas01/" class="nav-link" title="VSCodeでGASの開発できるようにする">VSCodeでGASの開発できるようにする</a>
+        <a href="https://sakuya712.github.io/post/vscode-gas01/" class="nav-link" title="VSCodeでGASの開発をできるようにする">VSCodeでGASの開発をできるようにする</a>
+      </li>
+      <li>
+        <a href="https://sakuya712.github.io/post/cmd03/" class="nav-link" title="【cmd】サブディレクトリにある全てのファイルを上位にコピーする">【cmd】サブディレクトリにある全てのファイルを上位にコピーする</a>
       </li>
       <li>
         <a href="https://sakuya712.github.io/post/cmd01/" class="nav-link" title="【cmd】ベースフォルダの中身を同じ階層のフォルダに一括コピー">【cmd】ベースフォルダの中身を同じ階層のフォルダに一括コピー</a>
@@ -302,16 +305,13 @@ TaskAdd.bat</p>
       <li>
         <a href="https://sakuya712.github.io/post/vbamemo/" class="nav-link" title="VBA メモ">VBA メモ</a>
       </li>
-      <li>
-        <a href="https://sakuya712.github.io/post/gitea/" class="nav-link" title="Giteaを使ってローカルでGitHubライクサーバーを作成する">Giteaを使ってローカルでGitHubライクサーバーを作成する</a>
-      </li>
     </ul>
     <div>
       <h2 class="mt-4 taxonomy" id="categories-section">カテゴリー</h2>
       <nav class="tags_nav">
         <a href='https://sakuya712.github.io/categories/cmd/' class="post_tag button button_translucent" title="cmd">
           CMD
-          <span class="button_tally">2</span>
+          <span class="button_tally">3</span>
         </a>
         
         <a href='https://sakuya712.github.io/categories/minecraft/' class="post_tag button button_translucent" title="minecraft">
@@ -362,21 +362,21 @@ TaskAdd.bat</p>
       <nav class="tags_nav">
         <a href='https://sakuya712.github.io/tags/bat/' class="post_tag button button_translucent" title="bat">
           BAT
-          <span class="button_tally">2</span>
+          <span class="button_tally">3</span>
         </a>
         
         <a href='https://sakuya712.github.io/tags/cmd/' class="post_tag button button_translucent" title="cmd">
           CMD
-          <span class="button_tally">2</span>
-        </a>
-        
-        <a href='https://sakuya712.github.io/tags/git/' class="post_tag button button_translucent" title="git">
-          GIT
-          <span class="button_tally">2</span>
+          <span class="button_tally">3</span>
         </a>
         
         <a href='https://sakuya712.github.io/tags/gitea/' class="post_tag button button_translucent" title="gitea">
           GITEA
+          <span class="button_tally">3</span>
+        </a>
+        
+        <a href='https://sakuya712.github.io/tags/git/' class="post_tag button button_translucent" title="git">
+          GIT
           <span class="button_tally">2</span>
         </a>
         
@@ -436,7 +436,7 @@ TaskAdd.bat</p>
         <div class="post_tags">
           <div class="tags_list">
             
-            <a href='https://sakuya712.github.io/tags/bat/' class=" post_tag button button_translucent" data-position=2 title="bat">BAT<span class="button_tally">2</span>
+            <a href='https://sakuya712.github.io/tags/bat/' class=" post_tag button button_translucent" data-position=3 title="bat">BAT<span class="button_tally">3</span>
             </a>
             
             
@@ -444,7 +444,7 @@ TaskAdd.bat</p>
             </a>
             
             
-            <a href='https://sakuya712.github.io/tags/cmd/' class=" post_tag button button_translucent" data-position=2 title="cmd">CMD<span class="button_tally">2</span>
+            <a href='https://sakuya712.github.io/tags/cmd/' class=" post_tag button button_translucent" data-position=3 title="cmd">CMD<span class="button_tally">3</span>
             </a>
             
             
@@ -464,7 +464,7 @@ TaskAdd.bat</p>
             </a>
             
             
-            <a href='https://sakuya712.github.io/tags/gitea/' class=" post_tag button button_translucent" data-position=2 title="gitea">GITEA<span class="button_tally">2</span>
+            <a href='https://sakuya712.github.io/tags/gitea/' class=" post_tag button button_translucent" data-position=3 title="gitea">GITEA<span class="button_tally">3</span>
             </a>
             
             

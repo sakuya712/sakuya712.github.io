@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="jp" data-figures="" class="page">
   <head>
-<title>VSCodeでGASの開発できるようにする | saku note</title>
+<title>VSCodeでGASの開発をできるようにする | saku note</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -20,9 +20,9 @@
 <meta name="description" content="GASをVSCodeで書きたい">
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="">
-<meta name="twitter:title" content="VSCodeでGASの開発できるようにする" />
+<meta name="twitter:title" content="VSCodeでGASの開発をできるようにする" />
 <meta property="og:url" content="https://sakuya712.github.io/post/vscode-gas01/" />
-<meta property="og:title" content="VSCodeでGASの開発できるようにする" />
+<meta property="og:title" content="VSCodeでGASの開発をできるようにする" />
 <meta property="og:description" content="GASをVSCodeで書きたい" />
 <meta property="og:image" content="https://sakuya712.github.io/images/thumbnail.png" />
 
@@ -115,7 +115,7 @@
   
 <div class="grid-inverse wrap content">
   <article class="post_content">
-    <h1 class="post_title">VSCodeでGASの開発できるようにする</h1>
+    <h1 class="post_title">VSCodeでGASの開発をできるようにする</h1>
   <div class="post_meta">
     <span><svg class="icon">
   <use xlink:href="#calendar"></use>
@@ -130,12 +130,12 @@
     <span class="page_only">&nbsp;·
   <div class="post_share">
     Share on:
-    <a href="https://twitter.com/intent/tweet?text=VSCode%e3%81%a7GAS%e3%81%ae%e9%96%8b%e7%99%ba%e3%81%a7%e3%81%8d%e3%82%8b%e3%82%88%e3%81%86%e3%81%ab%e3%81%99%e3%82%8b&url=https%3a%2f%2fsakuya712.github.io%2fpost%2fvscode-gas01%2f&tw_p=tweetbutton" class="twitter" title="Share on Twitter" target="_blank" rel="nofollow">
+    <a href="https://twitter.com/intent/tweet?text=VSCode%e3%81%a7GAS%e3%81%ae%e9%96%8b%e7%99%ba%e3%82%92%e3%81%a7%e3%81%8d%e3%82%8b%e3%82%88%e3%81%86%e3%81%ab%e3%81%99%e3%82%8b&url=https%3a%2f%2fsakuya712.github.io%2fpost%2fvscode-gas01%2f&tw_p=tweetbutton" class="twitter" title="Share on Twitter" target="_blank" rel="nofollow">
       <svg class="icon">
   <use xlink:href="#twitter"></use>
 </svg>
     </a>
-    <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fsakuya712.github.io%2fpost%2fvscode-gas01%2f&t=VSCode%e3%81%a7GAS%e3%81%ae%e9%96%8b%e7%99%ba%e3%81%a7%e3%81%8d%e3%82%8b%e3%82%88%e3%81%86%e3%81%ab%e3%81%99%e3%82%8b" class="facebook" title="Share on Facebook" target="_blank" rel="nofollow">
+    <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fsakuya712.github.io%2fpost%2fvscode-gas01%2f&t=VSCode%e3%81%a7GAS%e3%81%ae%e9%96%8b%e7%99%ba%e3%82%92%e3%81%a7%e3%81%8d%e3%82%8b%e3%82%88%e3%81%86%e3%81%ab%e3%81%99%e3%82%8b" class="facebook" title="Share on Facebook" target="_blank" rel="nofollow">
       <svg class="icon">
   <use xlink:href="#facebook"></use>
 </svg>
@@ -156,6 +156,23 @@
 
     
     <p>GASをVSCodeで書きたい</p>
+<p>目次</p>
+<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
+<!-- code_chunk_output -->
+<ul>
+<li><a href="#gas%E3%81%AFtypescript%E3%81%A7%E6%9B%B8%E3%81%91%E3%82%8B">GASはTypeScriptで書ける</a></li>
+<li><a href="#%E9%96%8B%E7%99%BA%E7%92%B0%E5%A2%83%E3%82%92%E6%A7%8B%E7%AF%89%E3%81%99%E3%82%8B">開発環境を構築する</a>
+<ul>
+<li><a href="#1-nodejs%E3%82%92%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%99%E3%82%8B">1. Node.jsをインストールする</a></li>
+<li><a href="#2-typescripttslinstclasp%E3%82%92%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB">2. TypeScript、TSLinst、claspをインストール</a></li>
+<li><a href="#3-google-apps-script-api%E3%82%92%E3%82%AA%E3%83%B3%E3%81%AB%E3%81%99%E3%82%8B">3. Google Apps Script APIをオンにする</a></li>
+<li><a href="#4-%E3%83%AF%E3%83%BC%E3%82%AF%E3%82%B9%E3%83%9A%E3%83%BC%E3%82%B9%E3%82%92%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8B">4. ワークスペースを作成する。</a></li>
+<li><a href="#5-clasp%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%81%84%E3%82%8D%E3%81%84%E3%82%8D%E5%BC%84%E3%81%A3%E3%81%A6%E3%81%BF%E3%82%8B">5. claspを使っていろいろ弄ってみる</a></li>
+<li><a href="#6-%E5%AE%9F%E9%9A%9B%E3%81%AB%E6%9B%B8%E3%81%84%E3%81%A6push-pull%E3%81%97%E3%81%A6%E3%81%BF%E3%82%8B">6. 実際に書いてpush, pullしてみる</a></li>
+</ul>
+</li>
+</ul>
+<!-- /code_chunk_output -->
 <h2 id="gasはtypescriptで書ける">GASはTypeScriptで書ける</h2>
 <p>Google Apps Scripts（GAS）はJavaScriptベースで作れた言語です。<br>
 初期のころはブラウザ上でコーディングしていく感じでしたがgoogleが<a href="https://github.com/google/clasp">clasp</a>というツールを開発したおかげでローカル環境で開発、TypeScriptを変換してGASを書けるようになりました。<br>
@@ -188,7 +205,7 @@ Googleにログインして以下のURLからAPIをオンに変更してくだ�
 <p><a href="https://script.google.com/home/usersettings">https://script.google.com/home/usersettings</a></p>
 <h3 id="4-ワークスペースを作成する">4. ワークスペースを作成する。</h3>
 <p>ワークスペースとなるディレクトリを作成します。<br>
-ここでは分かりやすくC直下にGASディレクトリを作成し、<code>C:\GAS\test1</code>で開発したいともいます。</p>
+ここでは分かりやすくC直下にGASディレクトリを作成し、<code>C:\GAS\test1</code>で開発したいと思います。</p>
 <div class="highlight"><pre class="chroma"><code class="language-cmd" data-lang="cmd"><span class="ln">1</span><span class="k">cd</span> \
 <span class="ln">2</span><span class="k">mkdir</span> GAS
 <span class="ln">3</span><span class="k">cd</span> GAS
@@ -263,6 +280,9 @@ srcフォルダにHelloWorld.tsを作成し</p>
     <h2 class="mt-4">最近の記事</h2>
     <ul class="flex-column">
       <li>
+        <a href="https://sakuya712.github.io/post/cmd03/" class="nav-link" title="【cmd】サブディレクトリにある全てのファイルを上位にコピーする">【cmd】サブディレクトリにある全てのファイルを上位にコピーする</a>
+      </li>
+      <li>
         <a href="https://sakuya712.github.io/post/cmd02/" class="nav-link" title="【cmd】毎日決まった時間にバックアップし、一定期間経つと削除する方法">【cmd】毎日決まった時間にバックアップし、一定期間経つと削除する方法</a>
       </li>
       <li>
@@ -283,16 +303,13 @@ srcフォルダにHelloWorld.tsを作成し</p>
       <li>
         <a href="https://sakuya712.github.io/post/vbamemo/" class="nav-link" title="VBA メモ">VBA メモ</a>
       </li>
-      <li>
-        <a href="https://sakuya712.github.io/post/gitea/" class="nav-link" title="Giteaを使ってローカルでGitHubライクサーバーを作成する">Giteaを使ってローカルでGitHubライクサーバーを作成する</a>
-      </li>
     </ul>
     <div>
       <h2 class="mt-4 taxonomy" id="categories-section">カテゴリー</h2>
       <nav class="tags_nav">
         <a href='https://sakuya712.github.io/categories/cmd/' class="post_tag button button_translucent" title="cmd">
           CMD
-          <span class="button_tally">2</span>
+          <span class="button_tally">3</span>
         </a>
         
         <a href='https://sakuya712.github.io/categories/minecraft/' class="post_tag button button_translucent" title="minecraft">
@@ -343,21 +360,21 @@ srcフォルダにHelloWorld.tsを作成し</p>
       <nav class="tags_nav">
         <a href='https://sakuya712.github.io/tags/bat/' class="post_tag button button_translucent" title="bat">
           BAT
-          <span class="button_tally">2</span>
+          <span class="button_tally">3</span>
         </a>
         
         <a href='https://sakuya712.github.io/tags/cmd/' class="post_tag button button_translucent" title="cmd">
           CMD
-          <span class="button_tally">2</span>
-        </a>
-        
-        <a href='https://sakuya712.github.io/tags/git/' class="post_tag button button_translucent" title="git">
-          GIT
-          <span class="button_tally">2</span>
+          <span class="button_tally">3</span>
         </a>
         
         <a href='https://sakuya712.github.io/tags/gitea/' class="post_tag button button_translucent" title="gitea">
           GITEA
+          <span class="button_tally">3</span>
+        </a>
+        
+        <a href='https://sakuya712.github.io/tags/git/' class="post_tag button button_translucent" title="git">
+          GIT
           <span class="button_tally">2</span>
         </a>
         
@@ -417,7 +434,7 @@ srcフォルダにHelloWorld.tsを作成し</p>
         <div class="post_tags">
           <div class="tags_list">
             
-            <a href='https://sakuya712.github.io/tags/bat/' class=" post_tag button button_translucent" data-position=2 title="bat">BAT<span class="button_tally">2</span>
+            <a href='https://sakuya712.github.io/tags/bat/' class=" post_tag button button_translucent" data-position=3 title="bat">BAT<span class="button_tally">3</span>
             </a>
             
             
@@ -425,7 +442,7 @@ srcフォルダにHelloWorld.tsを作成し</p>
             </a>
             
             
-            <a href='https://sakuya712.github.io/tags/cmd/' class=" post_tag button button_translucent" data-position=2 title="cmd">CMD<span class="button_tally">2</span>
+            <a href='https://sakuya712.github.io/tags/cmd/' class=" post_tag button button_translucent" data-position=3 title="cmd">CMD<span class="button_tally">3</span>
             </a>
             
             
@@ -445,7 +462,7 @@ srcフォルダにHelloWorld.tsを作成し</p>
             </a>
             
             
-            <a href='https://sakuya712.github.io/tags/gitea/' class=" post_tag button button_translucent" data-position=2 title="gitea">GITEA<span class="button_tally">2</span>
+            <a href='https://sakuya712.github.io/tags/gitea/' class=" post_tag button button_translucent" data-position=3 title="gitea">GITEA<span class="button_tally">3</span>
             </a>
             
             

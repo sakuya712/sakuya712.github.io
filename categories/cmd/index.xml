@@ -9,6 +9,57 @@
     <copyright>Copyright © 2020–2021, sakuya712.</copyright>
     <lastBuildDate>Sun, 20 Jun 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://sakuya712.github.io/categories/cmd/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>【cmd】サブディレクトリにある全てのファイルを上位にコピーする</title>
+      <link>https://sakuya712.github.io/post/cmd03/</link>
+      <pubDate>Sun, 20 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://sakuya712.github.io/post/cmd03/</guid>
+      <description>
+        
+          &lt;p&gt;これもたまにやりたいときがあるのでメモ&lt;/p&gt;
+&lt;p&gt;目次&lt;/p&gt;
+&lt;!-- @import &#34;[TOC]&#34; {cmd=&#34;toc&#34; depthFrom=1 depthTo=6 orderedList=false} --&gt;
+&lt;!-- code_chunk_output --&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%E3%82%B5%E3%83%96%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E3%81%AB%E3%81%82%E3%82%8B%E5%85%A8%E3%81%A6%E3%81%AE%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E4%B8%8A%E4%BD%8D%E3%81%AB%E3%82%B3%E3%83%94%E3%83%BC&#34;&gt;サブディレクトリにある全てのファイルを上位にコピー&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;!-- /code_chunk_output --&gt;
+&lt;h2 id=&#34;サブディレクトリにある全てのファイルを上位にコピー&#34;&gt;サブディレクトリにある全てのファイルを上位にコピー&lt;/h2&gt;
+&lt;p&gt;ファイル整理したいときとかファイルを１つのフォルダにまとめたいときに使えるbatです。&lt;br&gt;
+以下のような場合&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;.
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;├batファイル.bat
+&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;├AAAフォルダ ─DDDフォルダ ─ foo.txt
+&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;├BBBフォルダ ─ bar.txt
+&lt;span class=&#34;ln&#34;&gt;5&lt;/span&gt;└CCCフォルダ ─ baz.txt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;以下のようになります。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;.
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;├batファイル.bat &amp;lt;- 実行
+&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;├AAAフォルダ ─DDDフォルダ ─ foo.txt
+&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;├BBBフォルダ ─ bar.txt
+&lt;span class=&#34;ln&#34;&gt;5&lt;/span&gt;├CCCフォルダ ─ baz.txt
+&lt;span class=&#34;ln&#34;&gt;6&lt;/span&gt;├foo.txt
+&lt;span class=&#34;ln&#34;&gt;7&lt;/span&gt;├bar.txt
+&lt;span class=&#34;ln&#34;&gt;8&lt;/span&gt;└baz.txt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;コピーするファイルの拡張子を&lt;br&gt;
+&lt;code&gt;set extension=.txt&lt;/code&gt;で設定できます。&lt;br&gt;
+拡張子を設定しない場合は&lt;code&gt;set extension=.*&lt;/code&gt;でOK&lt;br&gt;
+(bat自身もコピーしようとしてエラーが出ますが実害はありません。)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-cmd&#34; data-lang=&#34;cmd&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;@&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;echo&lt;/span&gt; off
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;rem &amp;#34;Set file extension&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;set&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;extension&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;=&lt;/span&gt;.txt
+&lt;span class=&#34;ln&#34;&gt;5&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;6&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; /r &lt;span class=&#34;se&#34;&gt;%%&lt;/span&gt;d &lt;span class=&#34;k&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;*&lt;span class=&#34;nv&#34;&gt;%extension%&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;do&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;7&lt;/span&gt;	&lt;span class=&#34;k&#34;&gt;copy&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;%%&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;d&amp;#34;&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;%~dp0&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;8&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;9&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;pause&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+        
+      </description>
+    </item>
+    
+    <item>
       <title>【cmd】毎日決まった時間にバックアップし、一定期間経つと削除する方法</title>
       <link>https://sakuya712.github.io/post/cmd02/</link>
       <pubDate>Sun, 20 Jun 2021 00:00:00 +0000</pubDate>
@@ -80,11 +131,11 @@ Backup.bat&lt;/p&gt;
 &lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;rem 保存するファイル世代の数&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;set&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;count&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;=&lt;/span&gt;10
 &lt;span class=&#34;ln&#34;&gt;6&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;cd&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;%BackupDir%&lt;/span&gt;
-&lt;span class=&#34;ln&#34;&gt;7&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;/f&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;skip=&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;%count%&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt; &lt;span class=&#34;se&#34;&gt;%%&lt;/span&gt;f &lt;span class=&#34;k&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;dir /b /ad /o-n&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;do&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
-&lt;span class=&#34;ln&#34;&gt;8&lt;/span&gt;    &lt;span class=&#34;k&#34;&gt;rmdir&lt;/span&gt; rd /s /q &lt;span class=&#34;se&#34;&gt;%%&lt;/span&gt;f
+&lt;span class=&#34;ln&#34;&gt;7&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;/f&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;skip=&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;%count%&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt; &lt;span class=&#34;se&#34;&gt;%%&lt;/span&gt;f &lt;span class=&#34;k&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;dir &amp;#34;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;%BackupDir%&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#34; /b /ad /o-n&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;do&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;8&lt;/span&gt;    &lt;span class=&#34;k&#34;&gt;rmdir&lt;/span&gt; rd /s /q &lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;%BackupDir%&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;\&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;%%&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;f&amp;#34;&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;9&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;これについて少し解説しておくと&lt;br&gt;
-&lt;code&gt;dir /b /ad /o-n&lt;/code&gt;はフォルダを降順で列挙します。&lt;br&gt;
+&lt;code&gt;dir &amp;quot;%BackupDir%&amp;quot; /b /ad /o-n&lt;/code&gt;はBackupDirにあるフォルダを降順で列挙します。&lt;br&gt;
 つまり&lt;code&gt;202106020, 202106021, 202106022&lt;/code&gt;のフォルダがあれば&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bat&#34; data-lang=&#34;bat&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;202106022
 &lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;202106021

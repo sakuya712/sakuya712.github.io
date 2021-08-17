@@ -9,7 +9,7 @@
     <copyright>Copyright © 2020–2021, sakuya712.</copyright>
     <lastBuildDate>Sun, 01 Aug 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://sakuya712.github.io/tags/typescript/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>VSCodeでGASの開発できるようにする</title>
+      <title>VSCodeでGASの開発をできるようにする</title>
       <link>https://sakuya712.github.io/post/vscode-gas01/</link>
       <pubDate>Sun, 01 Aug 2021 00:00:00 +0000</pubDate>
       
@@ -17,6 +17,23 @@
       <description>
         
           &lt;p&gt;GASをVSCodeで書きたい&lt;/p&gt;
+&lt;p&gt;目次&lt;/p&gt;
+&lt;!-- @import &#34;[TOC]&#34; {cmd=&#34;toc&#34; depthFrom=1 depthTo=6 orderedList=false} --&gt;
+&lt;!-- code_chunk_output --&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#gas%E3%81%AFtypescript%E3%81%A7%E6%9B%B8%E3%81%91%E3%82%8B&#34;&gt;GASはTypeScriptで書ける&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%E9%96%8B%E7%99%BA%E7%92%B0%E5%A2%83%E3%82%92%E6%A7%8B%E7%AF%89%E3%81%99%E3%82%8B&#34;&gt;開発環境を構築する&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#1-nodejs%E3%82%92%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%99%E3%82%8B&#34;&gt;1. Node.jsをインストールする&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#2-typescripttslinstclasp%E3%82%92%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB&#34;&gt;2. TypeScript、TSLinst、claspをインストール&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#3-google-apps-script-api%E3%82%92%E3%82%AA%E3%83%B3%E3%81%AB%E3%81%99%E3%82%8B&#34;&gt;3. Google Apps Script APIをオンにする&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#4-%E3%83%AF%E3%83%BC%E3%82%AF%E3%82%B9%E3%83%9A%E3%83%BC%E3%82%B9%E3%82%92%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8B&#34;&gt;4. ワークスペースを作成する。&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#5-clasp%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%81%84%E3%82%8D%E3%81%84%E3%82%8D%E5%BC%84%E3%81%A3%E3%81%A6%E3%81%BF%E3%82%8B&#34;&gt;5. claspを使っていろいろ弄ってみる&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#6-%E5%AE%9F%E9%9A%9B%E3%81%AB%E6%9B%B8%E3%81%84%E3%81%A6push-pull%E3%81%97%E3%81%A6%E3%81%BF%E3%82%8B&#34;&gt;6. 実際に書いてpush, pullしてみる&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;!-- /code_chunk_output --&gt;
 &lt;h2 id=&#34;gasはtypescriptで書ける&#34;&gt;GASはTypeScriptで書ける&lt;/h2&gt;
 &lt;p&gt;Google Apps Scripts（GAS）はJavaScriptベースで作れた言語です。&lt;br&gt;
 初期のころはブラウザ上でコーディングしていく感じでしたがgoogleが&lt;a href=&#34;https://github.com/google/clasp&#34;&gt;clasp&lt;/a&gt;というツールを開発したおかげでローカル環境で開発、TypeScriptを変換してGASを書けるようになりました。&lt;br&gt;
@@ -49,7 +66,7 @@ Googleにログインして以下のURLからAPIをオンに変更してくだ�
 &lt;p&gt;&lt;a href=&#34;https://script.google.com/home/usersettings&#34;&gt;https://script.google.com/home/usersettings&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id=&#34;4-ワークスペースを作成する&#34;&gt;4. ワークスペースを作成する。&lt;/h3&gt;
 &lt;p&gt;ワークスペースとなるディレクトリを作成します。&lt;br&gt;
-ここでは分かりやすくC直下にGASディレクトリを作成し、&lt;code&gt;C:\GAS\test1&lt;/code&gt;で開発したいともいます。&lt;/p&gt;
+ここでは分かりやすくC直下にGASディレクトリを作成し、&lt;code&gt;C:\GAS\test1&lt;/code&gt;で開発したいと思います。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-cmd&#34; data-lang=&#34;cmd&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;cd&lt;/span&gt; \
 &lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;mkdir&lt;/span&gt; GAS
 &lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;cd&lt;/span&gt; GAS

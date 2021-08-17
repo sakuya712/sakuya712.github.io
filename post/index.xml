@@ -9,7 +9,7 @@
     <copyright>Copyright © 2020–2021, sakuya712.</copyright>
     <lastBuildDate>Sun, 01 Aug 2021 00:00:00 +0000</lastBuildDate><atom:link href="https://sakuya712.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>VSCodeでGASの開発できるようにする</title>
+      <title>VSCodeでGASの開発をできるようにする</title>
       <link>https://sakuya712.github.io/post/vscode-gas01/</link>
       <pubDate>Sun, 01 Aug 2021 00:00:00 +0000</pubDate>
       
@@ -17,6 +17,23 @@
       <description>
         
           &lt;p&gt;GASをVSCodeで書きたい&lt;/p&gt;
+&lt;p&gt;目次&lt;/p&gt;
+&lt;!-- @import &#34;[TOC]&#34; {cmd=&#34;toc&#34; depthFrom=1 depthTo=6 orderedList=false} --&gt;
+&lt;!-- code_chunk_output --&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#gas%E3%81%AFtypescript%E3%81%A7%E6%9B%B8%E3%81%91%E3%82%8B&#34;&gt;GASはTypeScriptで書ける&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#%E9%96%8B%E7%99%BA%E7%92%B0%E5%A2%83%E3%82%92%E6%A7%8B%E7%AF%89%E3%81%99%E3%82%8B&#34;&gt;開発環境を構築する&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#1-nodejs%E3%82%92%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB%E3%81%99%E3%82%8B&#34;&gt;1. Node.jsをインストールする&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#2-typescripttslinstclasp%E3%82%92%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB&#34;&gt;2. TypeScript、TSLinst、claspをインストール&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#3-google-apps-script-api%E3%82%92%E3%82%AA%E3%83%B3%E3%81%AB%E3%81%99%E3%82%8B&#34;&gt;3. Google Apps Script APIをオンにする&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#4-%E3%83%AF%E3%83%BC%E3%82%AF%E3%82%B9%E3%83%9A%E3%83%BC%E3%82%B9%E3%82%92%E4%BD%9C%E6%88%90%E3%81%99%E3%82%8B&#34;&gt;4. ワークスペースを作成する。&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#5-clasp%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E3%81%84%E3%82%8D%E3%81%84%E3%82%8D%E5%BC%84%E3%81%A3%E3%81%A6%E3%81%BF%E3%82%8B&#34;&gt;5. claspを使っていろいろ弄ってみる&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#6-%E5%AE%9F%E9%9A%9B%E3%81%AB%E6%9B%B8%E3%81%84%E3%81%A6push-pull%E3%81%97%E3%81%A6%E3%81%BF%E3%82%8B&#34;&gt;6. 実際に書いてpush, pullしてみる&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;!-- /code_chunk_output --&gt;
 &lt;h2 id=&#34;gasはtypescriptで書ける&#34;&gt;GASはTypeScriptで書ける&lt;/h2&gt;
 &lt;p&gt;Google Apps Scripts（GAS）はJavaScriptベースで作れた言語です。&lt;br&gt;
 初期のころはブラウザ上でコーディングしていく感じでしたがgoogleが&lt;a href=&#34;https://github.com/google/clasp&#34;&gt;clasp&lt;/a&gt;というツールを開発したおかげでローカル環境で開発、TypeScriptを変換してGASを書けるようになりました。&lt;br&gt;
@@ -49,7 +66,7 @@ Googleにログインして以下のURLからAPIをオンに変更してくだ�
 &lt;p&gt;&lt;a href=&#34;https://script.google.com/home/usersettings&#34;&gt;https://script.google.com/home/usersettings&lt;/a&gt;&lt;/p&gt;
 &lt;h3 id=&#34;4-ワークスペースを作成する&#34;&gt;4. ワークスペースを作成する。&lt;/h3&gt;
 &lt;p&gt;ワークスペースとなるディレクトリを作成します。&lt;br&gt;
-ここでは分かりやすくC直下にGASディレクトリを作成し、&lt;code&gt;C:\GAS\test1&lt;/code&gt;で開発したいともいます。&lt;/p&gt;
+ここでは分かりやすくC直下にGASディレクトリを作成し、&lt;code&gt;C:\GAS\test1&lt;/code&gt;で開発したいと思います。&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-cmd&#34; data-lang=&#34;cmd&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;cd&lt;/span&gt; \
 &lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;mkdir&lt;/span&gt; GAS
 &lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;cd&lt;/span&gt; GAS
@@ -112,6 +129,57 @@ srcフォルダにHelloWorld.tsを作成し&lt;/p&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;HelloWorld.js&lt;/code&gt;がローカルに作成されます。&lt;/p&gt;
 &lt;p&gt;これでVSCodeで開発できるようになりました。&lt;br&gt;
 自分もこれで本格的にスプレッドシートのスクリプトを作成していきたいと思います。&lt;/p&gt;
+        
+      </description>
+    </item>
+    
+    <item>
+      <title>【cmd】サブディレクトリにある全てのファイルを上位にコピーする</title>
+      <link>https://sakuya712.github.io/post/cmd03/</link>
+      <pubDate>Sun, 20 Jun 2021 00:00:00 +0000</pubDate>
+      
+      <guid>https://sakuya712.github.io/post/cmd03/</guid>
+      <description>
+        
+          &lt;p&gt;これもたまにやりたいときがあるのでメモ&lt;/p&gt;
+&lt;p&gt;目次&lt;/p&gt;
+&lt;!-- @import &#34;[TOC]&#34; {cmd=&#34;toc&#34; depthFrom=1 depthTo=6 orderedList=false} --&gt;
+&lt;!-- code_chunk_output --&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#%E3%82%B5%E3%83%96%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E3%81%AB%E3%81%82%E3%82%8B%E5%85%A8%E3%81%A6%E3%81%AE%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E4%B8%8A%E4%BD%8D%E3%81%AB%E3%82%B3%E3%83%94%E3%83%BC&#34;&gt;サブディレクトリにある全てのファイルを上位にコピー&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;!-- /code_chunk_output --&gt;
+&lt;h2 id=&#34;サブディレクトリにある全てのファイルを上位にコピー&#34;&gt;サブディレクトリにある全てのファイルを上位にコピー&lt;/h2&gt;
+&lt;p&gt;ファイル整理したいときとかファイルを１つのフォルダにまとめたいときに使えるbatです。&lt;br&gt;
+以下のような場合&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;.
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;├batファイル.bat
+&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;├AAAフォルダ ─DDDフォルダ ─ foo.txt
+&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;├BBBフォルダ ─ bar.txt
+&lt;span class=&#34;ln&#34;&gt;5&lt;/span&gt;└CCCフォルダ ─ baz.txt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;以下のようになります。&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;.
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;├batファイル.bat &amp;lt;- 実行
+&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;├AAAフォルダ ─DDDフォルダ ─ foo.txt
+&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;├BBBフォルダ ─ bar.txt
+&lt;span class=&#34;ln&#34;&gt;5&lt;/span&gt;├CCCフォルダ ─ baz.txt
+&lt;span class=&#34;ln&#34;&gt;6&lt;/span&gt;├foo.txt
+&lt;span class=&#34;ln&#34;&gt;7&lt;/span&gt;├bar.txt
+&lt;span class=&#34;ln&#34;&gt;8&lt;/span&gt;└baz.txt
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;コピーするファイルの拡張子を&lt;br&gt;
+&lt;code&gt;set extension=.txt&lt;/code&gt;で設定できます。&lt;br&gt;
+拡張子を設定しない場合は&lt;code&gt;set extension=.*&lt;/code&gt;でOK&lt;br&gt;
+(bat自身もコピーしようとしてエラーが出ますが実害はありません。)&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-cmd&#34; data-lang=&#34;cmd&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;@&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;echo&lt;/span&gt; off
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;rem &amp;#34;Set file extension&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;set&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;extension&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;=&lt;/span&gt;.txt
+&lt;span class=&#34;ln&#34;&gt;5&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;6&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; /r &lt;span class=&#34;se&#34;&gt;%%&lt;/span&gt;d &lt;span class=&#34;k&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;*&lt;span class=&#34;nv&#34;&gt;%extension%&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;do&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;7&lt;/span&gt;	&lt;span class=&#34;k&#34;&gt;copy&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;%%&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;d&amp;#34;&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;%~dp0&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;8&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;9&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;pause&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
         
       </description>
     </item>
@@ -188,11 +256,11 @@ Backup.bat&lt;/p&gt;
 &lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;rem 保存するファイル世代の数&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;5&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;set&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;count&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;=&lt;/span&gt;10
 &lt;span class=&#34;ln&#34;&gt;6&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;cd&lt;/span&gt; &lt;span class=&#34;nv&#34;&gt;%BackupDir%&lt;/span&gt;
-&lt;span class=&#34;ln&#34;&gt;7&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;/f&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;skip=&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;%count%&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt; &lt;span class=&#34;se&#34;&gt;%%&lt;/span&gt;f &lt;span class=&#34;k&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;dir /b /ad /o-n&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;do&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
-&lt;span class=&#34;ln&#34;&gt;8&lt;/span&gt;    &lt;span class=&#34;k&#34;&gt;rmdir&lt;/span&gt; rd /s /q &lt;span class=&#34;se&#34;&gt;%%&lt;/span&gt;f
+&lt;span class=&#34;ln&#34;&gt;7&lt;/span&gt;&lt;span class=&#34;k&#34;&gt;for&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;/f&lt;/span&gt; &lt;span class=&#34;s2&#34;&gt;&amp;#34;skip=&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;%count%&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt; &lt;span class=&#34;se&#34;&gt;%%&lt;/span&gt;f &lt;span class=&#34;k&#34;&gt;in&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#39;dir &amp;#34;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;%BackupDir%&lt;/span&gt;&lt;span class=&#34;s1&#34;&gt;&amp;#34; /b /ad /o-n&amp;#39;&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt; &lt;span class=&#34;k&#34;&gt;do&lt;/span&gt; &lt;span class=&#34;p&#34;&gt;(&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;8&lt;/span&gt;    &lt;span class=&#34;k&#34;&gt;rmdir&lt;/span&gt; rd /s /q &lt;span class=&#34;s2&#34;&gt;&amp;#34;&lt;/span&gt;&lt;span class=&#34;nv&#34;&gt;%BackupDir%&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;\&lt;/span&gt;&lt;span class=&#34;se&#34;&gt;%%&lt;/span&gt;&lt;span class=&#34;s2&#34;&gt;f&amp;#34;&lt;/span&gt;
 &lt;span class=&#34;ln&#34;&gt;9&lt;/span&gt;&lt;span class=&#34;p&#34;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;これについて少し解説しておくと&lt;br&gt;
-&lt;code&gt;dir /b /ad /o-n&lt;/code&gt;はフォルダを降順で列挙します。&lt;br&gt;
+&lt;code&gt;dir &amp;quot;%BackupDir%&amp;quot; /b /ad /o-n&lt;/code&gt;はBackupDirにあるフォルダを降順で列挙します。&lt;br&gt;
 つまり&lt;code&gt;202106020, 202106021, 202106022&lt;/code&gt;のフォルダがあれば&lt;/p&gt;
 &lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-bat&#34; data-lang=&#34;bat&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;202106022
 &lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;202106021

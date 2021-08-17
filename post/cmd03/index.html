@@ -1,8 +1,8 @@
 
 <!DOCTYPE html>
-<html lang="jp" data-figures="">
+<html lang="jp" data-figures="" class="page">
   <head>
-<title>GitHub | saku note</title>
+<title>【cmd】サブディレクトリにある全てのファイルを上位にコピーする | saku note</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,24 +13,24 @@
   gtag('js', new Date());
   gtag('config', 'G-HRQY10EG2T');
 </script>
+  
 <meta property="og:locale" content="jp" />
 
 <meta property="og:type" content="article">
-<meta name="description" content="">
+<meta name="description" content="これもたまにやりたいときがあるのでメモ">
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="">
-<meta name="twitter:title" content="GitHub" />
-<meta property="og:url" content="https://sakuya712.github.io/tags/github/" />
-<meta property="og:title" content="GitHub" />
-<meta property="og:description" content="" />
+<meta name="twitter:title" content="【cmd】サブディレクトリにある全てのファイルを上位にコピーする" />
+<meta property="og:url" content="https://sakuya712.github.io/post/cmd03/" />
+<meta property="og:title" content="【cmd】サブディレクトリにある全てのファイルを上位にコピーする" />
+<meta property="og:description" content="これもたまにやりたいときがあるのでメモ" />
 <meta property="og:image" content="https://sakuya712.github.io/images/thumbnail.png" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="https://sakuya712.github.io/icons/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://sakuya712.github.io/icons/favicon-32x32.png">
 <link rel="manifest" href="https://sakuya712.github.io/icons/site.webmanifest">
 
-<link rel="canonical" href="https://sakuya712.github.io/tags/github/">
-<link rel="alternate" type="application/rss+xml" href="https://sakuya712.github.io/tags/github/index.xml" title="saku note" />
+<link rel="canonical" href="https://sakuya712.github.io/post/cmd03/">
 
     
 
@@ -112,36 +112,30 @@
 </header>
 
     <main>
-
+  
 <div class="grid-inverse wrap content">
-  <ul class="posts" id="posts">
-      <li class="post_item">
-  <div class="excerpt">
-    <div class="excerpt_header">
-      <h3 class="post_link">
-        <a href="https://sakuya712.github.io/post/gitea/" title="Giteaを使ってローカルでGitHubライクサーバーを作成する">Giteaを使ってローカルでGitHubライクサーバーを作成する</a>
-      </h3>
-      
+  <article class="post_content">
+    <h1 class="post_title">【cmd】サブディレクトリにある全てのファイルを上位にコピーする</h1>
   <div class="post_meta">
     <span><svg class="icon">
   <use xlink:href="#calendar"></use>
 </svg></span>
     <span class="post_date">
-      2021年3月22日</span>
-    <span class="post_time"> · 1 min read</span><span>&nbsp;· <a href='https://sakuya712.github.io/tags/git' title="Git" class="post_tag button button_translucent">Git
+      2021年6月20日</span>
+    <span class="post_time"> · 1 min read</span><span>&nbsp;· <a href='https://sakuya712.github.io/tags/bat' title="bat" class="post_tag button button_translucent">bat
+        </a><a href='https://sakuya712.github.io/tags/cmd' title="cmd" class="post_tag button button_translucent">cmd
         </a><a href='https://sakuya712.github.io/tags/gitea' title="Gitea" class="post_tag button button_translucent">Gitea
-        </a><a href='https://sakuya712.github.io/tags/github' title="GitHub" class="post_tag button button_translucent">GitHub
         </a>
     </span>
     <span class="page_only">&nbsp;·
   <div class="post_share">
     Share on:
-    <a href="https://twitter.com/intent/tweet?text=Gitea%e3%82%92%e4%bd%bf%e3%81%a3%e3%81%a6%e3%83%ad%e3%83%bc%e3%82%ab%e3%83%ab%e3%81%a7GitHub%e3%83%a9%e3%82%a4%e3%82%af%e3%82%b5%e3%83%bc%e3%83%90%e3%83%bc%e3%82%92%e4%bd%9c%e6%88%90%e3%81%99%e3%82%8b&url=https%3a%2f%2fsakuya712.github.io%2fpost%2fgitea%2f&tw_p=tweetbutton" class="twitter" title="Share on Twitter" target="_blank" rel="nofollow">
+    <a href="https://twitter.com/intent/tweet?text=%e3%80%90cmd%e3%80%91%e3%82%b5%e3%83%96%e3%83%87%e3%82%a3%e3%83%ac%e3%82%af%e3%83%88%e3%83%aa%e3%81%ab%e3%81%82%e3%82%8b%e5%85%a8%e3%81%a6%e3%81%ae%e3%83%95%e3%82%a1%e3%82%a4%e3%83%ab%e3%82%92%e4%b8%8a%e4%bd%8d%e3%81%ab%e3%82%b3%e3%83%94%e3%83%bc%e3%81%99%e3%82%8b&url=https%3a%2f%2fsakuya712.github.io%2fpost%2fcmd03%2f&tw_p=tweetbutton" class="twitter" title="Share on Twitter" target="_blank" rel="nofollow">
       <svg class="icon">
   <use xlink:href="#twitter"></use>
 </svg>
     </a>
-    <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fsakuya712.github.io%2fpost%2fgitea%2f&t=Gitea%e3%82%92%e4%bd%bf%e3%81%a3%e3%81%a6%e3%83%ad%e3%83%bc%e3%82%ab%e3%83%ab%e3%81%a7GitHub%e3%83%a9%e3%82%a4%e3%82%af%e3%82%b5%e3%83%bc%e3%83%90%e3%83%bc%e3%82%92%e4%bd%9c%e6%88%90%e3%81%99%e3%82%8b" class="facebook" title="Share on Facebook" target="_blank" rel="nofollow">
+    <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fsakuya712.github.io%2fpost%2fcmd03%2f&t=%e3%80%90cmd%e3%80%91%e3%82%b5%e3%83%96%e3%83%87%e3%82%a3%e3%83%ac%e3%82%af%e3%83%88%e3%83%aa%e3%81%ab%e3%81%82%e3%82%8b%e5%85%a8%e3%81%a6%e3%81%ae%e3%83%95%e3%82%a1%e3%82%a4%e3%83%ab%e3%82%92%e4%b8%8a%e4%bd%8d%e3%81%ab%e3%82%b3%e3%83%94%e3%83%bc%e3%81%99%e3%82%8b" class="facebook" title="Share on Facebook" target="_blank" rel="nofollow">
       <svg class="icon">
   <use xlink:href="#facebook"></use>
 </svg>
@@ -151,7 +145,7 @@
   <use xlink:href="#linkedin"></use>
 </svg>
     </a>
-    <a href="https://sakuya712.github.io/post/gitea/" title="Copy Link" class="link link_yank">
+    <a href="https://sakuya712.github.io/post/cmd03/" title="Copy Link" class="link link_yank">
       <svg class="icon">
   <use xlink:href="#copy"></use>
 </svg>
@@ -160,25 +154,48 @@
   </span>
   </div>
 
-    </div>
-      <div class="excerpt_footer">
-        <div>
-          <p class="pale">
-            
-              <p>GitHubには上げたくなけど専用サーバーをつくるのしんどい方は必見</p>
-            
-          </p>
-          <a href="https://sakuya712.github.io/post/gitea/" title="続きを読む" class="excerpt_more button">続きを読む</a>
-        </div>
-      </div>
-    </div>
-  </li>
+    
+    <p>これもたまにやりたいときがあるのでメモ</p>
+<p>目次</p>
+<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
+<!-- code_chunk_output -->
+<ul>
+<li><a href="#%E3%82%B5%E3%83%96%E3%83%87%E3%82%A3%E3%83%AC%E3%82%AF%E3%83%88%E3%83%AA%E3%81%AB%E3%81%82%E3%82%8B%E5%85%A8%E3%81%A6%E3%81%AE%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB%E3%82%92%E4%B8%8A%E4%BD%8D%E3%81%AB%E3%82%B3%E3%83%94%E3%83%BC">サブディレクトリにある全てのファイルを上位にコピー</a></li>
+</ul>
+<!-- /code_chunk_output -->
+<h2 id="サブディレクトリにある全てのファイルを上位にコピー">サブディレクトリにある全てのファイルを上位にコピー</h2>
+<p>ファイル整理したいときとかファイルを１つのフォルダにまとめたいときに使えるbatです。<br>
+以下のような場合</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>.
+<span class="ln">2</span>├batファイル.bat
+<span class="ln">3</span>├AAAフォルダ ─DDDフォルダ ─ foo.txt
+<span class="ln">4</span>├BBBフォルダ ─ bar.txt
+<span class="ln">5</span>└CCCフォルダ ─ baz.txt
+</code></pre></div><p>以下のようになります。</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>.
+<span class="ln">2</span>├batファイル.bat &lt;- 実行
+<span class="ln">3</span>├AAAフォルダ ─DDDフォルダ ─ foo.txt
+<span class="ln">4</span>├BBBフォルダ ─ bar.txt
+<span class="ln">5</span>├CCCフォルダ ─ baz.txt
+<span class="ln">6</span>├foo.txt
+<span class="ln">7</span>├bar.txt
+<span class="ln">8</span>└baz.txt
+</code></pre></div><p>コピーするファイルの拡張子を<br>
+<code>set extension=.txt</code>で設定できます。<br>
+拡張子を設定しない場合は<code>set extension=.*</code>でOK<br>
+(bat自身もコピーしようとしてエラーが出ますが実害はありません。)</p>
+<div class="highlight"><pre class="chroma"><code class="language-cmd" data-lang="cmd"><span class="ln">1</span><span class="p">@</span><span class="k">echo</span> off
+<span class="ln">2</span>
+<span class="ln">3</span><span class="c1">rem &#34;Set file extension&#34;</span>
+<span class="ln">4</span><span class="k">set</span> <span class="nv">extension</span><span class="p">=</span>.txt
+<span class="ln">5</span>
+<span class="ln">6</span><span class="k">for</span> /r <span class="se">%%</span>d <span class="k">in</span> <span class="p">(</span>*<span class="nv">%extension%</span><span class="p">)</span> <span class="k">do</span> <span class="p">(</span>
+<span class="ln">7</span>	<span class="k">copy</span> <span class="s2">&#34;</span><span class="se">%%</span><span class="s2">d&#34;</span> <span class="s2">&#34;</span><span class="nv">%~dp0</span><span class="s2">&#34;</span>
+<span class="ln">8</span><span class="p">)</span>
+<span class="ln">9</span><span class="k">pause</span>
+</code></pre></div>
 
-    <li>
-
-
-    </li>
-  </ul>
+  </article>
 <aside class="sidebar">
   <section class="sidebar_inner">
         <h2>sakuya712</h2>
@@ -190,9 +207,6 @@
     <ul class="flex-column">
       <li>
         <a href="https://sakuya712.github.io/post/vscode-gas01/" class="nav-link" title="VSCodeでGASの開発をできるようにする">VSCodeでGASの開発をできるようにする</a>
-      </li>
-      <li>
-        <a href="https://sakuya712.github.io/post/cmd03/" class="nav-link" title="【cmd】サブディレクトリにある全てのファイルを上位にコピーする">【cmd】サブディレクトリにある全てのファイルを上位にコピーする</a>
       </li>
       <li>
         <a href="https://sakuya712.github.io/post/cmd02/" class="nav-link" title="【cmd】毎日決まった時間にバックアップし、一定期間経つと削除する方法">【cmd】毎日決まった時間にバックアップし、一定期間経つと削除する方法</a>
@@ -211,6 +225,9 @@
       </li>
       <li>
         <a href="https://sakuya712.github.io/post/vscode01/" class="nav-link" title="コマンド【code】後コマンドプロンプトを閉じたい">コマンド【code】後コマンドプロンプトを閉じたい</a>
+      </li>
+      <li>
+        <a href="https://sakuya712.github.io/post/vbamemo/" class="nav-link" title="VBA メモ">VBA メモ</a>
       </li>
     </ul>
     <div>
@@ -442,9 +459,8 @@
   </section>
 </aside>
 
+  
 </div>
-
-
     </main><svg width="0" height="0" class="hidden">
   <symbol viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" id="facebook">
     <path d="M437 0H75C33.648 0 0 33.648 0 75v362c0 41.352 33.648 75 75 75h151V331h-60v-90h60v-61c0-49.629 40.371-90 90-90h91v90h-91v61h91l-15 90h-76v181h121c41.352 0 75-33.648 75-75V75c0-41.352-33.648-75-75-75zm0 0"></path>
