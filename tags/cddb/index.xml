@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>CDDB on saku note</title>
+    <link>https://sakuya712.github.io/tags/cddb/</link>
+    <description>Recent content in CDDB on saku note</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    <copyright>Copyright © 2020–2021, sakuya712.</copyright>
+    <lastBuildDate>Sat, 15 Jan 2022 00:00:00 +0000</lastBuildDate><atom:link href="https://sakuya712.github.io/tags/cddb/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>【2022年版】自分が使用しているCDDBにメタデータを登録する方法</title>
+      <link>https://sakuya712.github.io/post/cddbregister/</link>
+      <pubDate>Sat, 15 Jan 2022 00:00:00 +0000</pubDate>
+      
+      <guid>https://sakuya712.github.io/post/cddbregister/</guid>
+      <description>
+        
+          &lt;p&gt;いまどきのCD取り込みの話&lt;/p&gt;
+&lt;p&gt;目次&lt;/p&gt;
+&lt;!-- @import &#34;[TOC]&#34; {cmd=&#34;toc&#34; depthFrom=1 depthTo=6 orderedList=false} --&gt;
+&lt;!-- code_chunk_output --&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#freedb%E3%81%AE%E3%82%B5%E3%83%BC%E3%83%90%E3%81%AF%E5%81%9C%E6%AD%A2%E3%81%97%E3%81%A6%E3%81%84%E3%82%8B&#34;&gt;FreeDBのサーバは停止している&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#gnudb%E3%81%A8freedb%E6%97%A5%E6%9C%AC%E7%89%88%E3%81%AF%E4%B8%80%E9%95%B7%E4%B8%80%E7%9F%AD&#34;&gt;&amp;quot;gnudb&amp;quot;と&amp;quot;freedb日本版&amp;quot;は一長一短&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#eac%E3%82%92%E4%BD%BF%E3%81%A3%E3%81%A6%E8%87%AA%E5%88%86%E3%81%8C%E4%BD%BF%E7%94%A8%E3%81%97%E3%81%A6%E3%81%84%E3%82%8Bcddb%E3%81%AB%E7%99%BB%E9%8C%B2%E3%81%99%E3%82%8B%E6%96%B9%E6%B3%95&#34;&gt;EACを使って自分が使用しているCDDBに登録する方法&lt;/a&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;#1-eac%E3%82%92%E3%82%A4%E3%83%B3%E3%82%B9%E3%83%88%E3%83%BC%E3%83%AB&#34;&gt;1. EACをインストール&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#2-%E3%83%A1%E3%82%BF%E3%83%87%E3%83%BC%E3%82%BF%E3%82%AA%E3%83%97%E3%82%B7%E3%83%A7%E3%83%B3%E3%81%A7%E5%8F%96%E5%BE%97%E3%81%99%E3%82%8B%E3%82%B5%E3%83%BC%E3%83%90%E3%83%BC%E3%82%A2%E3%83%89%E3%83%AC%E3%82%B9%E3%82%92%E8%A8%AD%E5%AE%9A%E3%81%99%E3%82%8B&#34;&gt;2. メタデータオプションで取得するサーバーアドレスを設定する&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#3-%E3%83%A1%E3%82%BF%E3%83%87%E3%83%BC%E3%82%BF%E3%82%92%E5%8F%96%E5%BE%97%E3%81%97%E5%88%A5%E3%81%AEdb%E3%81%AB%E7%99%BB%E9%8C%B2%E3%81%99%E3%82%8B&#34;&gt;3. メタデータを取得し、別のDBに登録する&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;#4-%E7%99%BB%E9%8C%B2%E3%81%AE%E7%A2%BA%E8%AA%8D&#34;&gt;4. 登録の確認&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;!-- /code_chunk_output --&gt;
+&lt;h2 id=&#34;freedbのサーバは停止している&#34;&gt;FreeDBのサーバは停止している&lt;/h2&gt;
+&lt;p&gt;久々にCDリッピングする方向け情報&lt;br&gt;
+CDを取り込むときのタグはiTunesやWMPだと&amp;quot;gracenote&amp;quot;社が運営するCDDBを使用しています。&lt;br&gt;
+しかしこれには使用料があるようでフリーソフト系では採用されず、かわりに&amp;quot;FreeDB&amp;quot;というDBが長年使われていました。&lt;br&gt;
+ただこのFreeDB &lt;a href=&#34;https://forest.watch.impress.co.jp/docs/serial/yajiuma/1238939.html&#34;&gt;2020年3月31日でサーバを閉じて&lt;/a&gt;しまっています。&lt;br&gt;
+昔のフリーソフトを使い続ける方はこの影響でタグが取得できなくなっている状態になっていると思います。&lt;br&gt;
+そこで後釜となった所は&lt;a href=&#34;https://gnudb.org/&#34;&gt;gnudb&lt;/a&gt;というDBです。&lt;br&gt;
+また日本には&lt;a href=&#34;https://freedbtest.dyndns.org/&#34;&gt;freedb 日本語&lt;/a&gt;というDBも存在します。こちらは本家がなくなった今でも維持し続けてくれています。&lt;br&gt;
+今後はこれらに乗り換える必要があります。&lt;/p&gt;
+&lt;h3 id=&#34;gnudbとfreedb日本版は一長一短&#34;&gt;&amp;quot;gnudb&amp;quot;と&amp;quot;freedb日本版&amp;quot;は一長一短&lt;/h3&gt;
+&lt;p&gt;gnudbはFreeDBを受け継いだDBなので外国人はここを使用していると思います。&lt;br&gt;
+そのため洋楽が強いのですが、邦楽や洋楽でも「～日本版」にみたいなものは取得できないことが多いです。&lt;br&gt;
+freedb日本版は逆でいままで日本人が使い続けていたDBのためマイナーな洋楽はヒットしませんが、洋楽の「～日本版」や○○年代ヒットオムニバスCDなんかも取得できたりします。&lt;br&gt;
+ただ多くのソフトは1つしかDBを見れないことが多いためどちらかのDBを使うしかないということになります。&lt;br&gt;
+そこで他のDBにあるタグを自分が使っているDBに登録させるという作業がまれに発生するわけです。&lt;/p&gt;
+&lt;h2 id=&#34;eacを使って自分が使用しているcddbに登録する方法&#34;&gt;EACを使って自分が使用しているCDDBに登録する方法&lt;/h2&gt;
+&lt;p&gt;自分はCDをリッピングするときは&lt;a href=&#34;http://cue.tools/wiki/CUETools_Download&#34;&gt;CUERipper&lt;/a&gt;を使っています。&lt;br&gt;
+シンプルかつmp3、wav+cue、flac+cueでリッピングできる所が気に入っています。&lt;br&gt;
+このソフトのDB設定は&lt;code&gt;CUERipper.exe.config&lt;/code&gt;の&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-xml&#34; data-lang=&#34;xml&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;&lt;span class=&#34;nt&#34;&gt;&amp;lt;value&amp;gt;&lt;/span&gt;gnudb.gnudb.org&lt;span class=&#34;nt&#34;&gt;&amp;lt;/value&amp;gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;この部分にあります。&lt;br&gt;
+見ての通りgnudbを使用しているみたいです。&lt;br&gt;
+ですが今回データを取得できないCDがありましたので、gnudbにこのCDを情報を登録したいと思います。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/sakuya712/sakunoteImages/master/CDdbRegister/01.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;それでは本題に入ります。&lt;/p&gt;
+&lt;h3 id=&#34;1-eacをインストール&#34;&gt;1. EACをインストール&lt;/h3&gt;
+&lt;p&gt;まず登録するためのソフトとして、大昔から開発されているExact Audio Copy(EAC)を使用します。&lt;br&gt;
+ただ今回はこれでリッピングするのではなく、あくまでもDBに登録するために使います。&lt;br&gt;
+新しいバージョンだと上手くいかないときがあるので自分は&lt;a href=&#34;https://www.exactaudiocopy.de/en/index.php/resources/download/older-versions-for-download/&#34;&gt;Ver1.3&lt;/a&gt;を使用しています。&lt;br&gt;
+DLしたらインストールして起動します。&lt;br&gt;
+セットアップウィザードとかでますが無視してキャンセルしてください。&lt;/p&gt;
+&lt;h3 id=&#34;2-メタデータオプションで取得するサーバーアドレスを設定する&#34;&gt;2. メタデータオプションで取得するサーバーアドレスを設定する&lt;/h3&gt;
+&lt;p&gt;[F12]でメタデータオプションを開くと以下のようなダイアログがでるのでfreedbタブを開きます。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/sakuya712/sakunoteImages/master/CDdbRegister/02.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;メールアドレスをいれる欄がありますが、適当で構いません。&lt;br&gt;
+ただ&amp;quot;example.com&amp;quot;にはしておきましょう。(出鱈目なドメインでも使用されている可能性があります。)&lt;br&gt;
+&amp;quot;Freedb server&amp;quot;にサーバーアドレスを設定します。&lt;/p&gt;
+&lt;p&gt;↓各サイトの情報&lt;br&gt;
+&lt;a href=&#34;https://freedbtest.dyndns.org/test.html&#34;&gt;freedb日本版&lt;/a&gt;&lt;br&gt;
+&lt;a href=&#34;https://gnudb.org/howto.php&#34;&gt;gnudb&lt;/a&gt;&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;// 2022/1/15時点での情報
+&lt;span class=&#34;ln&#34;&gt;2&lt;/span&gt;gnudb
+&lt;span class=&#34;ln&#34;&gt;3&lt;/span&gt;http://gnudb.gnudb.org:80/~cddb/cddb.cgi
+&lt;span class=&#34;ln&#34;&gt;4&lt;/span&gt;
+&lt;span class=&#34;ln&#34;&gt;5&lt;/span&gt;freedb日本版
+&lt;span class=&#34;ln&#34;&gt;6&lt;/span&gt;http://freedbtest.dyndns.org:80/~cddb/cddb.cgi
+&lt;span class=&#34;ln&#34;&gt;7&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;今回の場合はfreedb日本版から取得したいので&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;http://freedbtest.dyndns.org:80/~cddb/cddb.cgi
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;を設定します。
+OKを押すと完了&lt;/p&gt;
+&lt;h3 id=&#34;3-メタデータを取得し別のdbに登録する&#34;&gt;3. メタデータを取得し、別のDBに登録する&lt;/h3&gt;
+&lt;p&gt;左上にあるCDアイコンを押すと、今のタグは消えるけどいいのかって聞かれるので&lt;code&gt;OK&lt;/code&gt;を押してDBを見に行きます。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/sakuya712/sakunoteImages/master/CDdbRegister/03.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;先ほどの画像では&amp;quot;freedb日本版&amp;quot;を設定したのですが、データが見つかったようです。&lt;br&gt;
+はやり「～日本版」のCDはfreedb日本版が強い！&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/sakuya712/sakunoteImages/master/CDdbRegister/04.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;OKを押すとタグが取得されていると思います。&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/sakuya712/sakunoteImages/master/CDdbRegister/05.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;極まれだと思いますが、どちらのサーバに存在しない場合は自分でデータを入れていくしかないです。。。&lt;/p&gt;
+&lt;p&gt;次にDBに送る方法ですが、2.でやったサーバーアドレス設定を今度は送るDBを設定します。
+今回の場合はgnudbに送るので&lt;/p&gt;
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre class=&#34;chroma&#34;&gt;&lt;code class=&#34;language-fallback&#34; data-lang=&#34;fallback&#34;&gt;&lt;span class=&#34;ln&#34;&gt;1&lt;/span&gt;http://gnudb.gnudb.org:80/~cddb/cddb.cgi
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;です。&lt;br&gt;
+そしてポストアイコンを押すとこのデータを送りますか？とでるのでOK&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/sakuya712/sakunoteImages/master/CDdbRegister/06.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;これで登録完了。&lt;br&gt;
+あとはサーバが反映されるの待つだけ&lt;/p&gt;
+&lt;h3 id=&#34;4-登録の確認&#34;&gt;4. 登録の確認&lt;/h3&gt;
+&lt;p&gt;サーバ反映のために数分開けて、CUERipperを起動します。&lt;br&gt;
+Reloadボタンを押すと先ほどまで取得できなかったメタデータが発見、選択すると&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://raw.githubusercontent.com/sakuya712/sakunoteImages/master/CDdbRegister/07.png&#34; alt=&#34;&#34;&gt;&lt;/p&gt;
+&lt;p&gt;無事、タグが反映されました。&lt;/p&gt;
+&lt;p&gt;結局どのサーバが生き残るかなんてわからないので自分はなるべくどちらでも取得できるように登録しています。&lt;/p&gt;
+        
+      </description>
+    </item>
+    
+  </channel>
+</rss>
