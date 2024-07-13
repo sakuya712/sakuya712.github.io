@@ -16,7 +16,8 @@
       <guid>https://sakuya712.github.io/post/kubejs01/</guid>
       <description>
         
-          &lt;h3 id=&#34;前置き&#34;&gt;前置き&lt;/h3&gt;
+          &lt;p&gt;最近のレシピ追加はこれ&lt;/p&gt;
+&lt;h3 id=&#34;前置き&#34;&gt;前置き&lt;/h3&gt;
 &lt;p&gt;久々にマイクラ工業MODをやってみようと調べていたらMC1.20にgregtechがあるということで環境を作って遊んでいました。&lt;br&gt;
 で、遊んでいる内にどうしてもレシピを独自に追加してみたくなるのですが、&lt;br&gt;
 こういうときMC1.12時代はCraftTweakerを使うのが一般的だったのですが、 &lt;br&gt;
@@ -237,7 +238,6 @@ jsonファイルはMODによって構成が違うと思うのですぐには見�
 &lt;/span&gt;&lt;span class=&#34;ln&#34;&gt;28&lt;/span&gt;&lt;span class=&#34;c1&#34;&gt;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;完全に自分用のメモになっちゃってるけど とりあえずレシピについては終わり&lt;br&gt;
 MODPACK作る気力が出たらアイテム追加やブロック追加も調べていく。&lt;/p&gt;
-
         
       </description>
     </item>
