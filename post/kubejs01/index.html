@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="jp" data-figures="" class="page">
   <head>
-<title>VBA メモ | saku note</title>
+<title>KubeJSでレシピの追加・削除を行う | saku note</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -17,20 +17,24 @@
 <meta property="og:locale" content="jp" />
 
 <meta property="og:type" content="article">
-<meta name="description" content="VBAに関するちょっとしたメモ">
+<meta name="description" content="前置き 久々にマイクラ工業MODをやってみようと調べていたらMC1.20にgregtechがあるということで環境を作って遊んでいました。
+で、遊んでいる内にどうしてもレシピを独自に追加してみたくなるのですが、
+こういうときMC1.12時代はCraftTweakerを使うのが一般的だったのですが、 今はKubeJSってい …">
 <meta name="twitter:card" content="summary" />
 <meta name="twitter:creator" content="">
-<meta name="twitter:title" content="VBA メモ" />
-<meta property="og:url" content="https://sakuya712.github.io/post/vbamemo/" />
-<meta property="og:title" content="VBA メモ" />
-<meta property="og:description" content="VBAに関するちょっとしたメモ" />
+<meta name="twitter:title" content="KubeJSでレシピの追加・削除を行う" />
+<meta property="og:url" content="https://sakuya712.github.io/post/kubejs01/" />
+<meta property="og:title" content="KubeJSでレシピの追加・削除を行う" />
+<meta property="og:description" content="前置き 久々にマイクラ工業MODをやってみようと調べていたらMC1.20にgregtechがあるということで環境を作って遊んでいました。
+で、遊んでいる内にどうしてもレシピを独自に追加してみたくなるのですが、
+こういうときMC1.12時代はCraftTweakerを使うのが一般的だったのですが、 今はKubeJSってい …" />
 <meta property="og:image" content="https://sakuya712.github.io/images/thumbnail.png" />
 
 <link rel="apple-touch-icon" sizes="180x180" href="https://sakuya712.github.io/icons/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="https://sakuya712.github.io/icons/favicon-32x32.png">
 <link rel="manifest" href="https://sakuya712.github.io/icons/site.webmanifest">
 
-<link rel="canonical" href="https://sakuya712.github.io/post/vbamemo/">
+<link rel="canonical" href="https://sakuya712.github.io/post/kubejs01/">
 
     
 
@@ -115,26 +119,26 @@
   
 <div class="grid-inverse wrap content">
   <article class="post_content">
-    <h1 class="post_title">VBA メモ</h1>
+    <h1 class="post_title">KubeJSでレシピの追加・削除を行う</h1>
   <div class="post_meta">
     <span><svg class="icon">
   <use xlink:href="#calendar"></use>
 </svg></span>
     <span class="post_date">
-      2021年5月6日</span>
-    <span class="post_time"> · 1 min read</span><span>&nbsp;· <a href='https://sakuya712.github.io/tags/vba' title="VBA" class="post_tag button button_translucent">VBA
-        </a><a href='https://sakuya712.github.io/tags/excel' title="Excel" class="post_tag button button_translucent">Excel
+      2024年7月13日</span>
+    <span class="post_time"> · 2 min read</span><span>&nbsp;· <a href='https://sakuya712.github.io/tags/minecraft' title="MineCraft" class="post_tag button button_translucent">MineCraft
+        </a><a href='https://sakuya712.github.io/tags/kubejs' title="KubeJS" class="post_tag button button_translucent">KubeJS
         </a>
     </span>
     <span class="page_only">&nbsp;·
   <div class="post_share">
     Share on:
-    <a href="https://twitter.com/intent/tweet?text=VBA%20%e3%83%a1%e3%83%a2&url=https%3a%2f%2fsakuya712.github.io%2fpost%2fvbamemo%2f&tw_p=tweetbutton" class="twitter" title="Share on Twitter" target="_blank" rel="nofollow">
+    <a href="https://twitter.com/intent/tweet?text=KubeJS%e3%81%a7%e3%83%ac%e3%82%b7%e3%83%94%e3%81%ae%e8%bf%bd%e5%8a%a0%e3%83%bb%e5%89%8a%e9%99%a4%e3%82%92%e8%a1%8c%e3%81%86&url=https%3a%2f%2fsakuya712.github.io%2fpost%2fkubejs01%2f&tw_p=tweetbutton" class="twitter" title="Share on Twitter" target="_blank" rel="nofollow">
       <svg class="icon">
   <use xlink:href="#twitter"></use>
 </svg>
     </a>
-    <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fsakuya712.github.io%2fpost%2fvbamemo%2f&t=VBA%20%e3%83%a1%e3%83%a2" class="facebook" title="Share on Facebook" target="_blank" rel="nofollow">
+    <a href="https://www.facebook.com/sharer.php?u=https%3a%2f%2fsakuya712.github.io%2fpost%2fkubejs01%2f&t=KubeJS%e3%81%a7%e3%83%ac%e3%82%b7%e3%83%94%e3%81%ae%e8%bf%bd%e5%8a%a0%e3%83%bb%e5%89%8a%e9%99%a4%e3%82%92%e8%a1%8c%e3%81%86" class="facebook" title="Share on Facebook" target="_blank" rel="nofollow">
       <svg class="icon">
   <use xlink:href="#facebook"></use>
 </svg>
@@ -144,7 +148,7 @@
   <use xlink:href="#linkedin"></use>
 </svg>
     </a>
-    <a href="https://sakuya712.github.io/post/vbamemo/" title="Copy Link" class="link link_yank">
+    <a href="https://sakuya712.github.io/post/kubejs01/" title="Copy Link" class="link link_yank">
       <svg class="icon">
   <use xlink:href="#copy"></use>
 </svg>
@@ -154,71 +158,228 @@
   </div>
 
     
-    <p>VBAに関するちょっとしたメモ</p>
-<p>目次</p>
-<!-- @import "[TOC]" {cmd="toc" depthFrom=1 depthTo=6 orderedList=false} -->
-<!-- code_chunk_output -->
+    <h3 id="前置き">前置き</h3>
+<p>久々にマイクラ工業MODをやってみようと調べていたらMC1.20にgregtechがあるということで環境を作って遊んでいました。<br>
+で、遊んでいる内にどうしてもレシピを独自に追加してみたくなるのですが、<br>
+こういうときMC1.12時代はCraftTweakerを使うのが一般的だったのですが、 <br>
+今はKubeJSっていうので書くのが一般的になっているみたいです。<br>
+ということでKubeJSについて勉強してみた。</p>
+<h3 id="kubejsとは">KubeJSとは</h3>
+<p>名前からお察しの通りJavaScriptでスクリプトを作成するMODです。<br>
+CraftTweakerと異なり、基本構文はJSの知識があれば書けるというはメリット <br>
+あとはドキュメントとにらめっこして書いていくって感じか</p>
+<p>KubeJS公式ドキュメント<br>
+<a href="https://kubejs.com/wiki">https://kubejs.com/wiki</a></p>
+<p>gregtechの話もしたいので <br>
+GregTech CEu modpack開発者向けドキュメント<br>
+<a href="https://gregtechceu.github.io/gtceu-modern-docs/Modpacks/">https://gregtechceu.github.io/gtceu-modern-docs/Modpacks/</a></p>
+<p>なおこの記事は全てMC1.20時点の情報です。</p>
+<h3 id="とりあえずレシピを追加してみる">とりあえずレシピを追加してみる</h3>
+<p>まずMODを入れたら一度MCを起動してみる。<br>
+すると<code>kubejs</code>のフォルダができて、その配下にサンプル等が生成されています。<br>
+今回行いたいレシピ追加は「server_scripts」のフォルダに入れるので作成しておきます。</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>.\kubejs\server_scripts
+</code></pre></div><p>ここにスクリプトを書いていきます。<br>
+test.jsというファイルを作成して</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="ln"> 1</span><span class="nx">ServerEvents</span><span class="p">.</span><span class="nx">recipes</span><span class="p">(</span><span class="nx">event</span> <span class="p">=&gt;</span> <span class="p">{</span>
+<span class="ln"> 2</span>    <span class="nx">event</span><span class="p">.</span><span class="nx">shaped</span><span class="p">(</span>
+<span class="ln"> 3</span>        <span class="s1">&#39;10x minecraft:stone&#39;</span><span class="p">,</span>
+<span class="ln"> 4</span>        <span class="p">[</span>
+<span class="ln"> 5</span>            <span class="s1">&#39;A B&#39;</span><span class="p">,</span>
+<span class="ln"> 6</span>            <span class="s1">&#39; C &#39;</span><span class="p">,</span>
+<span class="ln"> 7</span>            <span class="s1">&#39;B A&#39;</span>
+<span class="ln"> 8</span>        <span class="p">],</span>
+<span class="ln"> 9</span>        <span class="p">{</span>
+<span class="ln">10</span>            <span class="nx">A</span><span class="o">:</span> <span class="s1">&#39;minecraft:andesite&#39;</span><span class="p">,</span>
+<span class="ln">11</span>            <span class="nx">B</span><span class="o">:</span> <span class="s1">&#39;minecraft:diorite&#39;</span><span class="p">,</span>
+<span class="ln">12</span>            <span class="nx">C</span><span class="o">:</span> <span class="s1">&#39;minecraft:granite&#39;</span>
+<span class="ln">13</span>        <span class="p">}</span>
+<span class="ln">14</span>    <span class="p">)</span>
+<span class="ln">15</span><span class="p">})</span>
+</code></pre></div><p>これを保存すると、焼石のレシピが追加できました。簡単！</p>
+<p>なお、MCのコマンドで<code>/reload</code>すれば起動中でもリロードできます。</p>
+<p>で、上記のコードを一ずつ解説すると</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="ln">1</span><span class="nx">ServerEvents</span><span class="p">.</span><span class="nx">recipes</span><span class="p">(</span><span class="nx">event</span> <span class="p">=&gt;</span> <span class="p">{</span>
+<span class="ln">2</span>    <span class="c1">// ここに追加レシピ追加削除していく
+</span><span class="ln">3</span><span class="c1"></span><span class="p">})</span>
+</code></pre></div><p>この中にレシピを書いていきます。レシピ毎にこれをつける必要はなくカッコ内で<code>event</code>を何度もつかっていけばよい。</p>
+<p>今回は固定形クラフトなので<code>event.shaped()</code>を使っていく</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="ln">1</span><span class="nx">event</span><span class="p">.</span><span class="nx">shaped</span><span class="p">(</span><span class="nx">完成品</span><span class="p">,</span> <span class="nx">クラフト形状</span><span class="err">【</span><span class="nx">配列</span><span class="err">】</span><span class="p">,</span> <span class="nx">材料</span><span class="err">【</span><span class="nx">連想配列</span><span class="err">】）</span>
+</code></pre></div><p>完成品は<br>
+<code>'10x minecraft:stone'</code>で個数とアイテム名を設定できる。<br>
+1個の場合は個数の部分は不要で単純にアイテム名だけでよい</p>
+<p>クラフト形状【配列】は<br>
+一つの文字をクラフトのマスとしてあてはめて、
+3文字ずつ入った(空白含み)[上段,中段,下段]の配列を作成する。<br>
+これをぱっと見でわかるように改行しています。</p>
+<p>材料【連想配列】は<br>
+クラフト形状で設定した文字の材料を連想配列で指定します。<br>
+{ 文字A: 材料1, 文字B: 材料2, 文字C: 材料3}のように作成する。<br>
+文字はA-Z a-z 自由に使えるので実際は頭文字なんかが使われると思います。</p>
+<p>これでレシピの完成</p>
+<h3 id="アイテム指定">アイテム指定</h3>
+<p>アイテム名を調べたい場合は、CraftTweakerと同じように<br>
+調べたいアイテムを持った状態でMC内コマンドで<code>/kubejs hand</code>で表示され、チャットをクリックするとコピーもできます。</p>
+<p>基本的に<code>/kubejs hand</code>で調べれば大抵は解決できるはず</p>
 <ul>
-<li><a href="#formula%E3%81%AE%E8%A8%AD%E5%AE%9A%E6%99%82%E3%82%92%E3%81%A4%E3%81%91%E3%82%8C%E3%81%B0%E7%9B%B8%E5%AF%BE%E5%8F%82%E7%85%A7%E3%81%A7%E6%9B%B8%E3%81%8D%E8%BE%BC%E3%82%93%E3%81%A7%E3%81%8F%E3%82%8C%E3%82%8B">Formulaの設定時、=をつければ相対参照で書き込んでくれる</a></li>
-<li><a href="#%E5%85%A5%E5%8A%9B%E8%A6%8F%E5%88%B6%E3%81%8C%E3%81%86%E3%81%BE%E3%81%8F%E3%81%84%E3%81%8B%E3%81%AA%E3%81%84%E3%81%A8%E3%81%8D">入力規制がうまくいかないとき</a>
+<li>一般的な方法。アイテムIDを指定する。<code>F3+H</code>で表示されるもの。</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="ln">1</span><span class="s1">&#39;minecraft:stone&#39;</span>
+</code></pre></div><ul>
+<li>複数個数指定する場合、<code>個数x</code><br>
+焼石64個なら</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="ln">1</span><span class="s1">&#39;64x minecraft:stone&#39;</span>
+</code></pre></div><p>実は<code>Item.of()</code>を使って第二引数に個数は指定でき</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="ln">1</span><span class="nx">Item</span><span class="p">.</span><span class="k">of</span><span class="p">(</span><span class="s1">&#39;minecraft:stone&#39;</span><span class="p">,</span> <span class="mi">64</span><span class="p">)</span>
+</code></pre></div><p>のようにも書けます。<br>
+ただ単純にアイテムを指定するだけなら<code>Item.of()</code>は不要</p>
 <ul>
-<li><a href="#%E6%9C%80%E5%88%9D%E3%81%ABdelete%E3%81%97%E3%82%88%E3%81%86">最初にDeleteしよう</a></li>
-<li><a href="#%E5%8F%82%E7%85%A7%E5%BD%A2%E5%BC%8F%E3%81%8C%E5%90%88%E3%81%A3%E3%81%A6%E3%81%84%E3%81%AA%E3%81%84">参照形式が合っていない</a></li>
+<li>鉱石辞書で指定したい場合は＃から始まっているもの<br>
+羊毛いずれかでよいなら</li>
 </ul>
-</li>
-<li><a href="#sortorientation%E3%81%AFxlsortorientation%E5%88%97%E6%8C%99%E3%82%92%E4%BD%BF%E3%82%8F%E3%81%AA%E3%81%84">Sort.OrientationはXlSortOrientation列挙を使わない</a></li>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="ln">1</span><span class="s1">&#39;#minecraft:wool&#39;</span>
+</code></pre></div><p>但し完成品には指定できません。</p>
+<ul>
+<li>エンチャントブックならこんな感じ<br>
+このような特殊な指定をするときは<code>Item.of()</code>が必須となります。<br>
+※1や3の部分は個数ではなくエンチャントレベルです。</li>
 </ul>
-<!-- /code_chunk_output -->
-<h3 id="formulaの設定時をつければ相対参照で書き込んでくれる">Formulaの設定時、=をつければ相対参照で書き込んでくれる</h3>
-<p>A列は、B列の同じ行を参照するという処理をしたい場合</p>
-<div class="highlight"><pre class="chroma"><code class="language-vb" data-lang="vb"><span class="ln">1</span><span class="n">Range</span><span class="p">(</span><span class="s">&#34;A1:A100&#34;</span><span class="p">).</span><span class="n">Formula</span> <span class="o">=</span> <span class="s">&#34;=B1&#34;</span>
-</code></pre></div><p>と書けば、 セルA1は&quot;=B1&quot;、セルA2は&quot;=B2&quot;と処理してくれる。<br>
-逆に絶対参照したい場合は</p>
-<div class="highlight"><pre class="chroma"><code class="language-vb" data-lang="vb"><span class="ln">1</span><span class="n">Range</span><span class="p">(</span><span class="s">&#34;A1:A100&#34;</span><span class="p">).</span><span class="n">Formula</span> <span class="o">=</span> <span class="s">&#34;=$B$1&#34;</span>
-</code></pre></div><p>とすれば全部B1を参照してくれる。<br>
-これは入力規制などでセル範囲を指定する場合も同じで</p>
-<div class="highlight"><pre class="chroma"><code class="language-vb" data-lang="vb"><span class="ln">1</span><span class="k">With</span> <span class="n">Range</span><span class="p">(</span><span class="s">&#34;A1:A100&#34;</span><span class="p">).</span><span class="n">Validation</span>
-<span class="ln">2</span>    <span class="p">.</span><span class="n">Delete</span>
-<span class="ln">3</span>    <span class="p">.</span><span class="n">Add</span> <span class="n">Type</span><span class="p">:</span><span class="o">=</span><span class="n">xlValidateList</span><span class="p">,</span> <span class="n">Formula1</span><span class="p">:</span><span class="o">=</span><span class="s">&#34;=B1:B3&#34;</span>
-<span class="ln">4</span><span class="k">End</span> <span class="k">With</span>
-</code></pre></div><p>と指定してもちゃんと相対的に入力規制を設定してくれる<br>
-またこれらは【R1C1参照形式】を使用するとしているとちゃんと処理も変わる<br>
-渡すのはただの文字列だが、思ってた以上に賢く処理しているみたいです。</p>
-<h3 id="入力規制がうまくいかないとき">入力規制がうまくいかないとき</h3>
-<h4 id="最初にdeleteしよう">最初にDeleteしよう</h4>
-<p>既に入力規制があるところにAddしようとすると<code>「1004：アプリケーション定義またはオブジェクト定義のエラーです」</code>がでます。<br>
-逆に入力規制がない状態でDeleteしても特になにも言ってこないので、とりあえず最初はDeleteしとけば問題ないと思います</p>
-<div class="highlight"><pre class="chroma"><code class="language-vb" data-lang="vb"><span class="ln">1</span><span class="k">With</span> <span class="n">Range</span><span class="p">(</span><span class="s">&#34;A1&#34;</span><span class="p">).</span><span class="n">Validation</span>
-<span class="ln">2</span>    <span class="p">.</span><span class="n">Delete</span>
-<span class="ln">3</span>    <span class="p">.</span><span class="n">Add</span> <span class="c">&#39;入力規制内容
-</span><span class="ln">4</span><span class="c"></span><span class="k">End</span> <span class="k">With</span>
-</code></pre></div><h4 id="参照形式が合っていない">参照形式が合っていない</h4>
-<p>通常の設定では</p>
-<div class="highlight"><pre class="chroma"><code class="language-vb" data-lang="vb"><span class="ln">1</span><span class="k">With</span> <span class="n">Range</span><span class="p">(</span><span class="s">&#34;A1&#34;</span><span class="p">).</span><span class="n">Validation</span>
-<span class="ln">2</span>    <span class="p">.</span><span class="n">Delete</span>
-<span class="ln">3</span>    <span class="p">.</span><span class="n">Add</span> <span class="n">Type</span><span class="p">:</span><span class="o">=</span><span class="n">xlValidateList</span><span class="p">,</span> <span class="n">Formula1</span><span class="p">:</span><span class="o">=</span><span class="s">&#34;=B1:B3&#34;</span>
-<span class="ln">4</span><span class="k">End</span> <span class="k">With</span>
-</code></pre></div><p>は設定できるのですが、【R1C1参照形式】に設定している場合、参照できずにエラーを出してしまいます。</p>
-<p>そこで<a href="https://docs.microsoft.com/ja-jp/office/vba/api/excel.application.convertformula">Application.ConvertFormulaメソッド</a>を使って置換を行います。<br>
-さらに現在の設定を<a href="https://docs.microsoft.com/ja-jp/office/vba/api/excel.application.referencestyle">Application.ReferenceStyleプロパティ</a>で取得できます。</p>
-<p>ですので</p>
-<div class="highlight"><pre class="chroma"><code class="language-vb" data-lang="vb"><span class="ln">1</span><span class="n">Application</span><span class="p">.</span><span class="n">ConvertFormula</span><span class="p">(</span><span class="n">参照内容</span><span class="p">,</span> <span class="err">←</span><span class="n">の参照の形式</span><span class="p">,</span> <span class="n">Application</span><span class="p">.</span><span class="n">ReferenceStyle</span><span class="p">)</span>
-</code></pre></div><p>とすればどちらでも対応できるマクロになります。</p>
-<p>&lt;例&gt;</p>
-<div class="highlight"><pre class="chroma"><code class="language-vb" data-lang="vb"><span class="ln">1</span><span class="k">With</span> <span class="n">Range</span><span class="p">(</span><span class="s">&#34;A1&#34;</span><span class="p">).</span><span class="n">Validation</span>
-<span class="ln">2</span>    <span class="p">.</span><span class="n">Delete</span>
-<span class="ln">3</span>    <span class="p">.</span><span class="n">Add</span> <span class="n">Type</span><span class="p">:</span><span class="o">=</span><span class="n">xlValidateList</span><span class="p">,</span> _
-<span class="ln">4</span>        <span class="n">Formula1</span><span class="p">:</span><span class="o">=</span><span class="n">Application</span><span class="p">.</span><span class="n">ConvertFormula</span><span class="p">(</span> _
-<span class="ln">5</span>                    <span class="s">&#34;=B1:B3&#34;</span><span class="p">,</span> _
-<span class="ln">6</span>                    <span class="n">xlA1</span><span class="p">,</span> _
-<span class="ln">7</span>                    <span class="n">Application</span><span class="p">.</span><span class="n">ReferenceStyle</span><span class="p">)</span>
-<span class="ln">8</span><span class="k">End</span> <span class="k">With</span>
-</code></pre></div><h3 id="sortorientationはxlsortorientation列挙を使わない">Sort.OrientationはXlSortOrientation列挙を使わない</h3>
-<p>Sort.Orientationはソートを行か列かの設定を行うプロパティである。<br>
-この引数はXlSortOrientationを指定しているが、この列挙の変数名がややこしいということで使われていません。→<a href="https://docs.microsoft.com/ja-jp/office/vba/api/excel.sort">Sortオブジェクトのドキュメントにも使われていない</a><br>
-そこで代わりに<code>xlTopToBottom</code>(行方向の並び替え)、<code>xlLeftToRight</code>(列方向の並び替え)を使います。この列挙はエクセルのConstantsにあります。</p>
-<div class="highlight"><pre class="chroma"><code class="language-vb" data-lang="vb"><span class="ln">1</span><span class="n">Excel</span><span class="p">.</span><span class="n">Constants</span><span class="p">.</span><span class="n">xlTopToBottom</span>
-</code></pre></div><p>恐らく後付けでこの定数を作成したんだとおもいます。(新しい列挙型作ってそれを引数にすればいいのに…)</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="ln">1</span><span class="nx">Item</span><span class="p">.</span><span class="k">of</span><span class="p">(</span><span class="s1">&#39;minecraft:enchanted_book&#39;</span><span class="p">).</span><span class="nx">enchant</span><span class="p">(</span><span class="s1">&#39;minecraft:silk_touch&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="ln">2</span><span class="nx">Item</span><span class="p">.</span><span class="k">of</span><span class="p">(</span><span class="s1">&#39;minecraft:enchanted_book&#39;</span><span class="p">).</span><span class="nx">enchant</span><span class="p">(</span><span class="s1">&#39;minecraft:looting&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</code></pre></div><ul>
+<li>あまりないかもしれませんが耐久値の指定もできます。</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="ln">1</span><span class="nx">Item</span><span class="p">.</span><span class="k">of</span><span class="p">(</span><span class="s1">&#39;minecraft:stone_axe&#39;</span><span class="p">,</span> <span class="s1">&#39;{Damage:0}&#39;</span><span class="p">)</span>
+</code></pre></div><p>基本的にはこれくらいか</p>
+<p>あとこれはJSの仕様ですが、文字列を表すクォーテーションはシングル、ダブルどちらでも問題ありません。</p>
+<h3 id="追加できるレシピ">追加できるレシピ</h3>
+<ul>
+<li>固定形クラフト</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="ln">1</span><span class="nx">event</span><span class="p">.</span><span class="nx">shaped</span><span class="p">(</span><span class="nx">完成品</span><span class="p">,</span> <span class="nx">クラフト形状</span><span class="err">【</span><span class="nx">配列</span><span class="err">】</span><span class="p">,</span> <span class="nx">材料</span><span class="err">【</span><span class="nx">連想配列</span><span class="err">】）</span><span class="p">)</span>
+</code></pre></div><p>これは上記で説明したので省略</p>
+<ul>
+<li>不定形クラフト</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="ln">1</span><span class="nx">event</span><span class="p">.</span><span class="nx">shapeles</span><span class="p">(</span><span class="nx">完成品</span><span class="p">,</span> <span class="nx">クラフト素材</span><span class="err">【</span><span class="nx">配列</span><span class="err">】</span><span class="p">)</span>
+</code></pre></div><p>クラフト素材は固定形と異なり、形が重要ではないため単純に素材名を列挙するだけの配列になります。<br>
+当たり前ですが、9個以上を列挙することはできません。</p>
+<ul>
+<li>精錬レシピ</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="ln">1</span><span class="c1">// かまど
+</span><span class="ln">2</span><span class="c1"></span><span class="nx">event</span><span class="p">.</span><span class="nx">smelting</span><span class="p">(</span><span class="nx">完成品</span><span class="p">,</span> <span class="nx">素材</span><span class="p">)</span>
+<span class="ln">3</span><span class="c1">// 溶鉱炉
+</span><span class="ln">4</span><span class="c1"></span><span class="nx">event</span><span class="p">.</span><span class="nx">blasting</span><span class="p">(</span><span class="nx">完成品</span><span class="p">,</span> <span class="nx">素材</span><span class="p">)</span>
+<span class="ln">5</span><span class="c1">// 燻製器
+</span><span class="ln">6</span><span class="c1"></span><span class="nx">event</span><span class="p">.</span><span class="nx">smoking</span><span class="p">(</span><span class="nx">完成品</span><span class="p">,</span> <span class="nx">素材</span><span class="p">)</span>
+<span class="ln">7</span><span class="c1">// 焚き火
+</span><span class="ln">8</span><span class="c1"></span><span class="nx">event</span><span class="p">.</span><span class="nx">campfireCooking</span><span class="p">(</span><span class="nx">完成品</span><span class="p">,</span> <span class="nx">素材</span><span class="p">)</span>
+</code></pre></div><p>形はどれも一緒。</p>
+<ul>
+<li>石切台レシピ</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="ln">1</span><span class="nx">event</span><span class="p">.</span><span class="nx">stonecutting</span><span class="p">(</span><span class="nx">完成品</span><span class="p">,</span> <span class="nx">素材</span><span class="p">)</span>
+</code></pre></div><p>これも製錬レシピと同じ</p>
+<ul>
+<li>鍛冶台レシピ</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="ln">1</span><span class="nx">event</span><span class="p">.</span><span class="nx">smithing</span><span class="p">(</span><span class="nx">完成品</span><span class="p">,</span> <span class="nx">鍛冶型テンプレート</span><span class="p">,</span> <span class="nx">ベースアイテム</span><span class="p">,</span> <span class="nx">アップグレード素材</span><span class="p">)</span>
+</code></pre></div><p>ネザライト製のアイテムの作成に必要(らしい…)<br>
+1.20から鍛冶型テンプレートが必要になっているので4つ引数がある。</p>
+<h3 id="レシピ削除">レシピ削除</h3>
+<p>追加できるようになると今度は元のレシピは削除したくなる。<br>
+ということで削除方法は</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="ln">1</span><span class="c1">// レシピIDで特定のレシピ削除
+</span><span class="ln">2</span><span class="c1"></span><span class="nx">event</span><span class="p">.</span><span class="nx">remove</span><span class="p">({</span> <span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;minecraft:glowstone&#39;</span> <span class="p">})</span>
+<span class="ln">3</span><span class="c1">// 特定のアイテムのレシピ全て削除(鉱石辞書で指定も可)
+</span><span class="ln">4</span><span class="c1"></span><span class="nx">event</span><span class="p">.</span><span class="nx">remove</span><span class="p">({</span> <span class="nx">output</span><span class="o">:</span> <span class="s1">&#39;minecraft:stone_pickaxe&#39;</span> <span class="p">})</span>
+<span class="ln">5</span><span class="nx">event</span><span class="p">.</span><span class="nx">remove</span><span class="p">({</span> <span class="nx">output</span><span class="o">:</span> <span class="s1">&#39;#minecraft:wool&#39;</span> <span class="p">})</span>
+</code></pre></div><p>この二種類が使いやすいと思われる。<br>
+レシピIDは、<code>F3+H</code>でデバック有効にしている状態でJEIで確認できます。</p>
+<p>大型MODPACKを作っていて特定のMOD加工で全てやらせたいんだってときは</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="ln">1</span><span class="c1">// 特定のMODのレシピ全て削除
+</span><span class="ln">2</span><span class="c1"></span><span class="nx">event</span><span class="p">.</span><span class="nx">remove</span><span class="p">({</span> <span class="nx">mod</span><span class="o">:</span> <span class="s1">&#39;farmersdelight&#39;</span> <span class="p">})</span>
+<span class="ln">3</span><span class="c1">// 特定のクラフト方法のレシピ全て削除
+</span><span class="ln">4</span><span class="c1"></span><span class="nx">event</span><span class="p">.</span><span class="nx">remove</span><span class="p">({</span> <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;minecraft:campfire_cooking&#39;</span> <span class="p">})</span>
+</code></pre></div><p>のような削除方法も可能。</p>
+<h3 id="modで追加されたクラフト方法のレシピを追加する">MODで追加されたクラフト方法のレシピを追加する</h3>
+<p>MODで追加されるクラフト方法<br>
+JEIでレシピ確認しているときの上タブの部分<br>
+上で少し触れていますがクラフト方法は<code>type</code>で管理されています。<br>
+このtype名調べる方法ですが、、、</p>
+<p><a href="https://kubejs.com/wiki/tutorials/recipes#custom-modded-json-recipes">公式ドキュメント</a>に書かれている通り、MOD側のレシピのjsonを見てtypeを見つけるという方法があります<br>
+Farmer's Delightのまな板を使うレシピは</p>
+<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="ln"> 1</span><span class="p">{</span>
+<span class="ln"> 2</span>  <span class="nt">&#34;type&#34;</span><span class="p">:</span> <span class="s2">&#34;farmersdelight:cutting&#34;</span><span class="p">,</span>
+<span class="ln"> 3</span>  <span class="nt">&#34;ingredients&#34;</span><span class="p">:</span> <span class="p">[</span>
+<span class="ln"> 4</span>    <span class="p">{</span>
+<span class="ln"> 5</span>      <span class="nt">&#34;item&#34;</span><span class="p">:</span> <span class="s2">&#34;minecraft:cake&#34;</span>
+<span class="ln"> 6</span>    <span class="p">}</span>
+<span class="ln"> 7</span>  <span class="p">],</span>
+<span class="ln"> 8</span>  <span class="nt">&#34;tool&#34;</span><span class="p">:</span> <span class="p">{</span>
+<span class="ln"> 9</span>    <span class="nt">&#34;tag&#34;</span><span class="p">:</span> <span class="s2">&#34;forge:tools/knives&#34;</span>
+<span class="ln">10</span>  <span class="p">},</span>
+<span class="ln">11</span>  <span class="nt">&#34;result&#34;</span><span class="p">:</span> <span class="p">[</span>
+<span class="ln">12</span>    <span class="p">{</span>
+<span class="ln">13</span>      <span class="nt">&#34;item&#34;</span><span class="p">:</span> <span class="s2">&#34;farmersdelight:cake_slice&#34;</span><span class="p">,</span>
+<span class="ln">14</span>      <span class="nt">&#34;count&#34;</span><span class="p">:</span> <span class="mi">7</span>
+<span class="ln">15</span>    <span class="p">}</span>
+<span class="ln">16</span>  <span class="p">]</span>
+<span class="ln">17</span><span class="p">}</span>
+</code></pre></div><p>これを<code>event.custom()</code>で同じように作成してみる</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="ln"> 1</span><span class="nx">event</span><span class="p">.</span><span class="nx">custom</span><span class="p">({</span>
+<span class="ln"> 2</span>    <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;farmersdelight:cutting&#39;</span><span class="p">,</span>
+<span class="ln"> 3</span>    <span class="nx">ingredients</span><span class="o">:</span> <span class="p">[{</span>
+<span class="ln"> 4</span>        <span class="nx">item</span><span class="o">:</span> <span class="s1">&#39;minecraft:honeycomb_block&#39;</span>
+<span class="ln"> 5</span>    <span class="p">}],</span>
+<span class="ln"> 6</span>    <span class="nx">tool</span><span class="o">:</span> <span class="p">{</span>
+<span class="ln"> 7</span>        <span class="nx">tag</span><span class="o">:</span> <span class="s1">&#39;forge:tools/knives&#39;</span>
+<span class="ln"> 8</span>    <span class="p">},</span>
+<span class="ln"> 9</span>    <span class="nx">result</span><span class="o">:</span> <span class="p">[{</span>
+<span class="ln">10</span>        <span class="nx">item</span><span class="o">:</span> <span class="s1">&#39;minecraft:honeycomb&#39;</span><span class="p">,</span>
+<span class="ln">11</span>        <span class="nx">count</span><span class="o">:</span> <span class="mi">4</span>
+<span class="ln">12</span>    <span class="p">}]</span>
+<span class="ln">13</span><span class="p">})</span>
+</code></pre></div><p>これでFarmer's Delightのまな板でハニカムブロックからハニカムに戻すレシピが追加できます。</p>
+<p>ただぶっちゃけ<a href="https://github.com/AllTheMods/ATM-9/tree/main/kubejs/server_scripts/mods">大型MODPACK</a>を覗くのが早いと思います。<br>
+jsonファイルはMODによって構成が違うと思うのですぐには見つからないと思います。<br>
+確認して書き方さえわかればあとは自由にレシピを作成するだけです。</p>
+<p>gregtechは特殊で追加が容易で切るようになっています。これはCraftTweakerの時とほぼ一緒。 <br>
+作ろうと思えば機械やマテリアルも追加できる。<br>
+ただ今回はレシピ関係だけの例</p>
+<div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="ln"> 1</span><span class="kr">const</span> <span class="nx">greg</span> <span class="o">=</span> <span class="nx">event</span><span class="p">.</span><span class="nx">recipes</span><span class="p">.</span><span class="nx">gtceu</span><span class="p">;</span>
+<span class="ln"> 2</span><span class="c1">// 合金かまどでAE2のクォーツガラスのレシピを追加する
+</span><span class="ln"> 3</span><span class="c1"></span><span class="nx">greg</span>
+<span class="ln"> 4</span>    <span class="p">.</span><span class="nx">alloy_smelter</span><span class="p">(</span><span class="s1">&#39;gtceu:quartz_glass&#39;</span><span class="p">)</span>  <span class="c1">//レシピID(被らなければなんでもいい)
+</span><span class="ln"> 5</span><span class="c1"></span>    <span class="p">.</span><span class="nx">itemInputs</span><span class="p">(</span><span class="s1">&#39;4x #forge:glass&#39;</span><span class="p">,</span> <span class="s1">&#39;5x gtceu:certus_quartz_dust&#39;</span><span class="p">)</span> <span class="c1">//素材
+</span><span class="ln"> 6</span><span class="c1"></span>    <span class="p">.</span><span class="nx">itemOutputs</span><span class="p">(</span><span class="s1">&#39;4x ae2:quartz_glass&#39;</span><span class="p">)</span>  <span class="c1">//完成品
+</span><span class="ln"> 7</span><span class="c1"></span>    <span class="p">.</span><span class="nx">duration</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span> <span class="c1">// 加工時間(tick) 20tick=1秒
+</span><span class="ln"> 8</span><span class="c1"></span>    <span class="p">.</span><span class="nx">EUt</span><span class="p">(</span><span class="mi">8</span><span class="p">);</span> <span class="c1">// 必要電圧
+</span><span class="ln"> 9</span><span class="c1">// 
+</span><span class="ln">10</span><span class="c1"></span>
+<span class="ln">11</span><span class="c1">// メモ
+</span><span class="ln">12</span><span class="c1">// その他 入出力関係
+</span><span class="ln">13</span><span class="c1"></span>    <span class="p">.</span><span class="nx">inputFluids</span><span class="p">(</span><span class="s1">&#39;gtceu:rocket_fuel 1000&#39;</span><span class="p">)</span> <span class="c1">//液体素材
+</span><span class="ln">14</span><span class="c1"></span>    <span class="p">.</span><span class="nx">outputFluids</span><span class="p">(</span><span class="s1">&#39;gtceu:rocket_fuel 1000&#39;</span><span class="p">)</span> <span class="c1">//液体完成品
+</span><span class="ln">15</span><span class="c1"></span>    <span class="p">.</span><span class="nx">notConsumable</span><span class="p">(</span><span class="s2">&#34;gtceu:rubber_sapling&#34;</span><span class="p">)</span> <span class="c1">// 消費しないアイテム(鋳型等)
+</span><span class="ln">16</span><span class="c1"></span>
+<span class="ln">17</span><span class="c1">// 機械
+</span><span class="ln">18</span><span class="c1"></span>    <span class="p">.</span><span class="nx">assembler</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="c1">//組立機
+</span><span class="ln">19</span><span class="c1"></span>    <span class="p">.</span><span class="nx">macerator</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="c1">//粉砕機
+</span><span class="ln">20</span><span class="c1">// .etc
+</span><span class="ln">21</span><span class="c1"></span>
+<span class="ln">22</span><span class="c1">// その他、クラフトで使いそうなアイテム
+</span><span class="ln">23</span><span class="c1"></span>    <span class="nx">Item</span><span class="p">.</span><span class="k">of</span><span class="p">(</span><span class="s1">&#39;gtceu:programmed_circuit&#39;</span><span class="p">,</span> <span class="s1">&#39;{Configuration:15}&#39;</span><span class="p">)</span> <span class="c1">//回路番号
+</span><span class="ln">24</span><span class="c1"></span>    <span class="s1">&#39;gtceu:orange_glass_lens&#39;</span>   <span class="c1">//レンズ
+</span><span class="ln">25</span><span class="c1"></span>    <span class="s1">&#39;gtceu:plate_casting_mold&#39;</span>  <span class="c1">//鋳型
+</span><span class="ln">26</span><span class="c1"></span>    <span class="s1">&#39;gtceu:gear_extruder_mold&#39;</span>  <span class="c1">//金型
+</span><span class="ln">27</span><span class="c1"></span>    <span class="s1">&#39;#forge:tools/wrench&#39;</span>       <span class="c1">//レンチ 
+</span><span class="ln">28</span><span class="c1"></span>
+</code></pre></div><p>完全に自分用のメモになっちゃってるけど とりあえずレシピについては終わり<br>
+MODPACK作る気力が出たらアイテム追加やブロック追加も調べていく。</p>
+
 
   </article>
 <aside class="sidebar">
@@ -230,9 +391,6 @@
       <a href='https://sakuya712.github.io/about/' class="button mt-1" role="button" title='続きを読む'>続きを読む</a>
     <h2 class="mt-4">最近の記事</h2>
     <ul class="flex-column">
-      <li>
-        <a href="https://sakuya712.github.io/post/kubejs01/" class="nav-link" title="KubeJSでレシピの追加・削除を行う">KubeJSでレシピの追加・削除を行う</a>
-      </li>
       <li>
         <a href="https://sakuya712.github.io/post/cddbregister/" class="nav-link" title="【2022年版】自分が使用しているCDDBにメタデータを登録する方法">【2022年版】自分が使用しているCDDBにメタデータを登録する方法</a>
       </li>
@@ -253,6 +411,9 @@
       </li>
       <li>
         <a href="https://sakuya712.github.io/post/cspython/" class="nav-link" title="【Python】C#から機能を逆引きメモ">【Python】C#から機能を逆引きメモ</a>
+      </li>
+      <li>
+        <a href="https://sakuya712.github.io/post/crafttweaker01/" class="nav-link" title="CraftTweakerの構文メモ">CraftTweakerの構文メモ</a>
       </li>
     </ul>
     <div>
