@@ -329,15 +329,19 @@ javaにはオーバーロードが採用されています。<br>
 <div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback"><span class="ln">1</span>./kubejs/assets/gtceu/lang/en_us.json
 <span class="ln">2</span>./kubejs/assets/gtceu/lang/ja_jp.json
 </code></pre></div><p>jsonファイルの内容は</p>
-<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="ln">1</span><span class="p">{</span>
-<span class="ln">2</span>    <span class="nt">&#34;block.gtceu.planter&#34;</span><span class="p">:</span><span class="s2">&#34;Planter&#34;</span><span class="p">,</span> 
-<span class="ln">3</span>    <span class="nt">&#34;gtceu.planter&#34;</span><span class="p">:</span><span class="s2">&#34;Planter&#34;</span>
-<span class="ln">4</span><span class="p">}</span>
-<span class="ln">5</span><span class="err">//</span> <span class="err">日本語なら</span>
-<span class="ln">6</span><span class="p">{</span>
-<span class="ln">7</span>    <span class="nt">&#34;block.gtceu.planter&#34;</span><span class="p">:</span><span class="s2">&#34;自動栽培機&#34;</span><span class="p">,</span> 
-<span class="ln">8</span>    <span class="nt">&#34;gtceu.planter&#34;</span><span class="p">:</span><span class="s2">&#34;栽培機&#34;</span>
-<span class="ln">9</span><span class="p">}</span>
+<div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="ln"> 1</span><span class="p">{</span>
+<span class="ln"> 2</span>    <span class="nt">&#34;block.gtceu.lv_planter&#34;</span><span class="p">:</span><span class="s2">&#34;Basic Planter&#34;</span><span class="p">,</span> 
+<span class="ln"> 3</span>    <span class="nt">&#34;block.gtceu.mv_planter&#34;</span><span class="p">:</span><span class="s2">&#34;Advanced Planter&#34;</span><span class="p">,</span> 
+<span class="ln"> 4</span>    <span class="nt">&#34;block.gtceu.hv_planter&#34;</span><span class="p">:</span><span class="s2">&#34;Advanced Planter II&#34;</span><span class="p">,</span> 
+<span class="ln"> 5</span>    <span class="nt">&#34;gtceu.planter&#34;</span><span class="p">:</span><span class="s2">&#34;Planter&#34;</span>
+<span class="ln"> 6</span><span class="p">}</span>
+<span class="ln"> 7</span><span class="err">//</span> <span class="err">日本語なら</span>
+<span class="ln"> 8</span><span class="p">{</span>
+<span class="ln"> 9</span>    <span class="nt">&#34;block.gtceu.lv_planter&#34;</span><span class="p">:</span><span class="s2">&#34;基本型自動栽培機&#34;</span><span class="p">,</span> 
+<span class="ln">10</span>    <span class="nt">&#34;block.gtceu.mv_planter&#34;</span><span class="p">:</span><span class="s2">&#34;発展型自動栽培機&#34;</span><span class="p">,</span> 
+<span class="ln">11</span>    <span class="nt">&#34;block.gtceu.hv_planter&#34;</span><span class="p">:</span><span class="s2">&#34;発展型自動栽培機 II&#34;</span><span class="p">,</span> 
+<span class="ln">12</span>    <span class="nt">&#34;gtceu.planter&#34;</span><span class="p">:</span><span class="s2">&#34;栽培機&#34;</span>
+<span class="ln">13</span><span class="p">}</span>
 </code></pre></div><p>上はアイテム名<br>
 下はレシピタイプ名(JEIの上タブの部分)</p>
 <p>ここまで来たら、あとはちゃんとテスクチャを用意すれば立派な自動栽培機、アドオンとして公開できるはずです。</p>
@@ -366,9 +370,11 @@ javaにはオーバーロードが採用されています。<br>
 </code></pre></div><div class="highlight"><pre class="chroma"><code class="language-json" data-lang="json"><span class="ln">1</span>
 <span class="ln">2</span><span class="err">.\kubejs\assets\gtceu\lang\en_us.json</span>
 <span class="ln">3</span><span class="p">{</span>
-<span class="ln">4</span>    <span class="nt">&#34;block.gtceu.planter&#34;</span><span class="p">:</span><span class="s2">&#34;Planter&#34;</span><span class="p">,</span> 
-<span class="ln">5</span>    <span class="nt">&#34;gtceu.planter&#34;</span><span class="p">:</span><span class="s2">&#34;Planter&#34;</span>
-<span class="ln">6</span><span class="p">}</span>
+<span class="ln">4</span>    <span class="nt">&#34;block.gtceu.lv_planter&#34;</span><span class="p">:</span><span class="s2">&#34;Basic Planter&#34;</span><span class="p">,</span> 
+<span class="ln">5</span>    <span class="nt">&#34;block.gtceu.mv_planter&#34;</span><span class="p">:</span><span class="s2">&#34;Advanced Planter&#34;</span><span class="p">,</span> 
+<span class="ln">6</span>    <span class="nt">&#34;block.gtceu.hv_planter&#34;</span><span class="p">:</span><span class="s2">&#34;Advanced Planter II&#34;</span><span class="p">,</span> 
+<span class="ln">7</span>    <span class="nt">&#34;gtceu.planter&#34;</span><span class="p">:</span><span class="s2">&#34;Planter&#34;</span>
+<span class="ln">8</span><span class="p">}</span>
 </code></pre></div><div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="ln"> 1</span><span class="p">.</span><span class="err">\</span><span class="nx">kubejs</span><span class="err">\</span><span class="nx">server_scripts</span><span class="err">\</span><span class="nx">planter</span><span class="p">.</span><span class="nx">js</span>
 <span class="ln"> 2</span>
 <span class="ln"> 3</span><span class="nx">ServerEvents</span><span class="p">.</span><span class="nx">recipes</span><span class="p">(</span><span class="nx">event</span> <span class="p">=&gt;</span> <span class="p">{</span>
