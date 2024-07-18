@@ -3,7 +3,7 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://sakuya712.github.io/</loc>
-    <lastmod>2024-07-13T00:00:00+00:00</lastmod>
+    <lastmod>2024-07-18T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -16,7 +16,7 @@
                 />
   </url><url>
     <loc>https://sakuya712.github.io/categories/</loc>
-    <lastmod>2024-07-13T00:00:00+00:00</lastmod>
+    <lastmod>2024-07-18T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -28,23 +28,26 @@
                 href="https://sakuya712.github.io/categories/"
                 />
   </url><url>
-    <loc>https://sakuya712.github.io/tags/kubejs/</loc>
-    <lastmod>2024-07-13T00:00:00+00:00</lastmod>
+    <loc>https://sakuya712.github.io/tags/gregtech/</loc>
+    <lastmod>2024-07-18T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://sakuya712.github.io/post/kubejs01/</loc>
-    <lastmod>2024-07-13T00:00:00+00:00</lastmod>
+    <loc>https://sakuya712.github.io/tags/kubejs/</loc>
+    <lastmod>2024-07-18T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://sakuya712.github.io/post/kubejs02/</loc>
+    <lastmod>2024-07-18T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://sakuya712.github.io/tags/minecraft/</loc>
-    <lastmod>2024-07-13T00:00:00+00:00</lastmod>
+    <lastmod>2024-07-18T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://sakuya712.github.io/categories/minecraft/</loc>
-    <lastmod>2024-07-13T00:00:00+00:00</lastmod>
+    <lastmod>2024-07-18T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://sakuya712.github.io/post/</loc>
-    <lastmod>2024-07-13T00:00:00+00:00</lastmod>
+    <lastmod>2024-07-18T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://sakuya712.github.io/tags/</loc>
-    <lastmod>2024-07-13T00:00:00+00:00</lastmod>
+    <lastmod>2024-07-18T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
@@ -55,6 +58,9 @@
                 hreflang="jp"
                 href="https://sakuya712.github.io/tags/"
                 />
+  </url><url>
+    <loc>https://sakuya712.github.io/post/kubejs01/</loc>
+    <lastmod>2024-07-13T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://sakuya712.github.io/tags/cddb/</loc>
     <lastmod>2022-01-15T00:00:00+00:00</lastmod>
@@ -106,9 +112,6 @@
   </url><url>
     <loc>https://sakuya712.github.io/post/cmd01/</loc>
     <lastmod>2021-06-06T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>https://sakuya712.github.io/tags/gregtech/</loc>
-    <lastmod>2021-06-05T00:00:00+00:00</lastmod>
   </url><url>
     <loc>https://sakuya712.github.io/post/gtcejapanese/</loc>
     <lastmod>2021-06-05T00:00:00+00:00</lastmod>

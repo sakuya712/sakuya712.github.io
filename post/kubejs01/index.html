@@ -343,9 +343,11 @@ Farmer's Delightのまな板を使うレシピは</p>
 <p>ただぶっちゃけ<a href="https://github.com/AllTheMods/ATM-9/tree/main/kubejs/server_scripts/mods">大型MODPACK</a>を覗くのが早いと思います。<br>
 jsonファイルはMODによって構成が違うと思うのですぐには見つからないと思います。<br>
 確認して書き方さえわかればあとは自由にレシピを作成するだけです。</p>
-<p>gregtechは特殊で追加が容易で切るようになっています。これはCraftTweakerの時とほぼ一緒。 <br>
+<p>gregtechは特殊で追加が容易にできるようになっています。これはCraftTweakerの時とほぼ一緒。<br>
 作ろうと思えば機械やマテリアルも追加できる。<br>
-ただ今回はレシピ関係だけの例</p>
+ただ今回はレシピ関係だけの例<br>
+参考<br>
+<a href="https://gregtechceu.github.io/gtceu-modern-docs/Modpacks/Other-Topics/Adding-and-Removing-Recipes/">https://gregtechceu.github.io/gtceu-modern-docs/Modpacks/Other-Topics/Adding-and-Removing-Recipes/</a></p>
 <div class="highlight"><pre class="chroma"><code class="language-js" data-lang="js"><span class="ln"> 1</span><span class="kr">const</span> <span class="nx">greg</span> <span class="o">=</span> <span class="nx">event</span><span class="p">.</span><span class="nx">recipes</span><span class="p">.</span><span class="nx">gtceu</span><span class="p">;</span>
 <span class="ln"> 2</span><span class="c1">// 合金かまどでAE2のクォーツガラスのレシピを追加する
 </span><span class="ln"> 3</span><span class="c1"></span><span class="nx">greg</span>
@@ -358,23 +360,30 @@ jsonファイルはMODによって構成が違うと思うのですぐには見�
 </span><span class="ln">10</span><span class="c1"></span>
 <span class="ln">11</span><span class="c1">// メモ
 </span><span class="ln">12</span><span class="c1">// その他 入出力関係
-</span><span class="ln">13</span><span class="c1"></span>    <span class="p">.</span><span class="nx">inputFluids</span><span class="p">(</span><span class="s1">&#39;gtceu:rocket_fuel 1000&#39;</span><span class="p">)</span> <span class="c1">//液体素材
+</span><span class="ln">13</span><span class="c1"></span>    <span class="p">.</span><span class="nx">inputFluids</span><span class="p">(</span><span class="s1">&#39;gtceu:rocket_fuel 1000&#39;</span><span class="p">)</span>  <span class="c1">//液体素材
 </span><span class="ln">14</span><span class="c1"></span>    <span class="p">.</span><span class="nx">outputFluids</span><span class="p">(</span><span class="s1">&#39;gtceu:rocket_fuel 1000&#39;</span><span class="p">)</span> <span class="c1">//液体完成品
-</span><span class="ln">15</span><span class="c1"></span>    <span class="p">.</span><span class="nx">notConsumable</span><span class="p">(</span><span class="s2">&#34;gtceu:rubber_sapling&#34;</span><span class="p">)</span> <span class="c1">// 消費しないアイテム(鋳型等)
-</span><span class="ln">16</span><span class="c1"></span>
-<span class="ln">17</span><span class="c1">// 機械
-</span><span class="ln">18</span><span class="c1"></span>    <span class="p">.</span><span class="nx">assembler</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="c1">//組立機
-</span><span class="ln">19</span><span class="c1"></span>    <span class="p">.</span><span class="nx">macerator</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="c1">//粉砕機
-</span><span class="ln">20</span><span class="c1">// .etc
-</span><span class="ln">21</span><span class="c1"></span>
-<span class="ln">22</span><span class="c1">// その他、クラフトで使いそうなアイテム
-</span><span class="ln">23</span><span class="c1"></span>    <span class="nx">Item</span><span class="p">.</span><span class="k">of</span><span class="p">(</span><span class="s1">&#39;gtceu:programmed_circuit&#39;</span><span class="p">,</span> <span class="s1">&#39;{Configuration:15}&#39;</span><span class="p">)</span> <span class="c1">//回路番号
-</span><span class="ln">24</span><span class="c1"></span>    <span class="s1">&#39;gtceu:orange_glass_lens&#39;</span>   <span class="c1">//レンズ
-</span><span class="ln">25</span><span class="c1"></span>    <span class="s1">&#39;gtceu:plate_casting_mold&#39;</span>  <span class="c1">//鋳型
-</span><span class="ln">26</span><span class="c1"></span>    <span class="s1">&#39;gtceu:gear_extruder_mold&#39;</span>  <span class="c1">//金型
-</span><span class="ln">27</span><span class="c1"></span>    <span class="s1">&#39;#forge:tools/wrench&#39;</span>       <span class="c1">//レンチ 
-</span><span class="ln">28</span><span class="c1"></span>
-</code></pre></div><p>完全に自分用のメモになっちゃってるけど とりあえずレシピについては終わり<br>
+</span><span class="ln">15</span><span class="c1"></span>    <span class="p">.</span><span class="nx">notConsumable</span><span class="p">(</span><span class="s2">&#34;gtceu:rubber_sapling&#34;</span><span class="p">)</span>  <span class="c1">//消費しないアイテム(鋳型等)
+</span><span class="ln">16</span><span class="c1"></span>    <span class="p">.</span><span class="nx">circuit</span><span class="p">(</span><span class="mi">15</span><span class="p">)</span>                            <span class="c1">//回路番号
+</span><span class="ln">17</span><span class="c1"></span>    <span class="c1">// アイテム、 確率、ティアブースト
+</span><span class="ln">18</span><span class="c1"></span>    <span class="c1">//確率消費 20%の確率で消費する 機械ティアによるブーストはなし
+</span><span class="ln">19</span><span class="c1"></span>    <span class="p">.</span><span class="nx">chancedInput</span><span class="p">(</span><span class="s1">&#39;gtceu:fertilizer&#39;</span><span class="p">,</span> <span class="mi">2000</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="ln">20</span>    <span class="c1">//確率生成 20%の確率で生成する 機械ティアが上がる毎に10%UP
+</span><span class="ln">21</span><span class="c1"></span>    <span class="p">.</span><span class="nx">chancedOutput</span><span class="p">(</span><span class="s1">&#39;gtceu:fertilizer&#39;</span><span class="p">,</span> <span class="mi">2000</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="ln">22</span>
+<span class="ln">23</span><span class="c1">// 機械
+</span><span class="ln">24</span><span class="c1"></span>    <span class="p">.</span><span class="nx">assembler</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="c1">//組立機
+</span><span class="ln">25</span><span class="c1"></span>    <span class="p">.</span><span class="nx">macerator</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="c1">//粉砕機
+</span><span class="ln">26</span><span class="c1">// .etc 下記の「各機械のレシピタイプ」を確認
+</span><span class="ln">27</span><span class="c1"></span>
+<span class="ln">28</span><span class="c1">// その他、クラフトで使いそうなアイテム
+</span><span class="ln">29</span><span class="c1"></span>    <span class="s1">&#39;gtceu:orange_glass_lens&#39;</span>   <span class="c1">//レンズ
+</span><span class="ln">30</span><span class="c1"></span>    <span class="s1">&#39;gtceu:plate_casting_mold&#39;</span>  <span class="c1">//鋳型
+</span><span class="ln">31</span><span class="c1"></span>    <span class="s1">&#39;gtceu:gear_extruder_mold&#39;</span>  <span class="c1">//金型
+</span><span class="ln">32</span><span class="c1"></span>    <span class="s1">&#39;#forge:tools/wrench&#39;</span>       <span class="c1">//レンチ 
+</span><span class="ln">33</span><span class="c1"></span>
+</code></pre></div><p>各機械のレシピタイプ<br>
+<a href="https://github.com/GregTechCEu/GregTech-Modern/blob/1.20.1/src/main/java/com/gregtechceu/gtceu/common/data/GTRecipeTypes.java">https://github.com/GregTechCEu/GregTech-Modern/blob/1.20.1/src/main/java/com/gregtechceu/gtceu/common/data/GTRecipeTypes.java</a></p>
+<p>完全に自分用のメモになっちゃってるけど とりあえずレシピについては終わり<br>
 MODPACK作る気力が出たらアイテム追加やブロック追加も調べていく。</p>
 
   </article>
@@ -387,6 +396,9 @@ MODPACK作る気力が出たらアイテム追加やブロック追加も調べ�
       <a href='https://sakuya712.github.io/about/' class="button mt-1" role="button" title='続きを読む'>続きを読む</a>
     <h2 class="mt-4">最近の記事</h2>
     <ul class="flex-column">
+      <li>
+        <a href="https://sakuya712.github.io/post/kubejs02/" class="nav-link" title="KubeJSでGregTechの機械を追加する">KubeJSでGregTechの機械を追加する</a>
+      </li>
       <li>
         <a href="https://sakuya712.github.io/post/cddbregister/" class="nav-link" title="【2022年版】自分が使用しているCDDBにメタデータを登録する方法">【2022年版】自分が使用しているCDDBにメタデータを登録する方法</a>
       </li>
@@ -408,20 +420,17 @@ MODPACK作る気力が出たらアイテム追加やブロック追加も調べ�
       <li>
         <a href="https://sakuya712.github.io/post/cspython/" class="nav-link" title="【Python】C#から機能を逆引きメモ">【Python】C#から機能を逆引きメモ</a>
       </li>
-      <li>
-        <a href="https://sakuya712.github.io/post/crafttweaker01/" class="nav-link" title="CraftTweakerの構文メモ">CraftTweakerの構文メモ</a>
-      </li>
     </ul>
     <div>
       <h2 class="mt-4 taxonomy" id="categories-section">カテゴリー</h2>
       <nav class="tags_nav">
-        <a href='https://sakuya712.github.io/categories/cmd/' class="post_tag button button_translucent" title="cmd">
-          CMD
-          <span class="button_tally">3</span>
-        </a>
-        
         <a href='https://sakuya712.github.io/categories/minecraft/' class="post_tag button button_translucent" title="minecraft">
           MINECRAFT
+          <span class="button_tally">4</span>
+        </a>
+        
+        <a href='https://sakuya712.github.io/categories/cmd/' class="post_tag button button_translucent" title="cmd">
+          CMD
           <span class="button_tally">3</span>
         </a>
         
@@ -471,6 +480,11 @@ MODPACK作る気力が出たらアイテム追加やブロック追加も調べ�
     <div>
       <h2 class="mt-4 taxonomy" id="tags-section">タグ</h2>
       <nav class="tags_nav">
+        <a href='https://sakuya712.github.io/tags/minecraft/' class="post_tag button button_translucent" title="minecraft">
+          MINECRAFT
+          <span class="button_tally">4</span>
+        </a>
+        
         <a href='https://sakuya712.github.io/tags/bat/' class="post_tag button button_translucent" title="bat">
           BAT
           <span class="button_tally">3</span>
@@ -478,11 +492,6 @@ MODPACK作る気力が出たらアイテム追加やブロック追加も調べ�
         
         <a href='https://sakuya712.github.io/tags/cmd/' class="post_tag button button_translucent" title="cmd">
           CMD
-          <span class="button_tally">3</span>
-        </a>
-        
-        <a href='https://sakuya712.github.io/tags/minecraft/' class="post_tag button button_translucent" title="minecraft">
-          MINECRAFT
           <span class="button_tally">3</span>
         </a>
         
@@ -496,8 +505,18 @@ MODPACK作る気力が出たらアイテム追加やブロック追加も調べ�
           <span class="button_tally">2</span>
         </a>
         
+        <a href='https://sakuya712.github.io/tags/gregtech/' class="post_tag button button_translucent" title="gregtech">
+          GREGTECH
+          <span class="button_tally">2</span>
+        </a>
+        
         <a href='https://sakuya712.github.io/tags/hugo/' class="post_tag button button_translucent" title="hugo">
           HUGO
+          <span class="button_tally">2</span>
+        </a>
+        
+        <a href='https://sakuya712.github.io/tags/kubejs/' class="post_tag button button_translucent" title="kubejs">
+          KUBEJS
           <span class="button_tally">2</span>
         </a>
         
@@ -528,16 +547,6 @@ MODPACK作る気力が出たらアイテム追加やブロック追加も調べ�
         
         <a href='https://sakuya712.github.io/tags/freedb/' class="post_tag button button_translucent" title="freedb">
           FREEDB
-          <span class="button_tally">1</span>
-        </a>
-        
-        <a href='https://sakuya712.github.io/tags/gas/' class="post_tag button button_translucent" title="gas">
-          GAS
-          <span class="button_tally">1</span>
-        </a>
-        
-        <a href='https://sakuya712.github.io/tags/github/' class="post_tag button button_translucent" title="github">
-          GITHUB
           <span class="button_tally">1</span>
         </a>
         
@@ -599,7 +608,7 @@ MODPACK作る気力が出たらアイテム追加やブロック追加も調べ�
             </a>
             
             
-            <a href='https://sakuya712.github.io/tags/gregtech/' class=" post_tag button button_translucent" data-position=1 title="gregtech">GREGTECH<span class="button_tally">1</span>
+            <a href='https://sakuya712.github.io/tags/gregtech/' class=" post_tag button button_translucent" data-position=2 title="gregtech">GREGTECH<span class="button_tally">2</span>
             </a>
             
             
@@ -615,7 +624,7 @@ MODPACK作る気力が出たらアイテム追加やブロック追加も調べ�
             </a>
             
             
-            <a href='https://sakuya712.github.io/tags/kubejs/' class=" post_tag button button_translucent" data-position=1 title="kubejs">KUBEJS<span class="button_tally">1</span>
+            <a href='https://sakuya712.github.io/tags/kubejs/' class=" post_tag button button_translucent" data-position=2 title="kubejs">KUBEJS<span class="button_tally">2</span>
             </a>
             
             
@@ -623,7 +632,7 @@ MODPACK作る気力が出たらアイテム追加やブロック追加も調べ�
             </a>
             
             
-            <a href='https://sakuya712.github.io/tags/minecraft/' class=" post_tag button button_translucent" data-position=3 title="minecraft">MINECRAFT<span class="button_tally">3</span>
+            <a href='https://sakuya712.github.io/tags/minecraft/' class=" post_tag button button_translucent" data-position=4 title="minecraft">MINECRAFT<span class="button_tally">4</span>
             </a>
             
             
